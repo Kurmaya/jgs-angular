@@ -1,29 +1,17 @@
+<!--
+  /home: Google Ads landing page (website change brief, Section 7, items A2 to A9).
+  Renders straight away (no loading spinner) and keeps only the sections a parent
+  arriving from an ad needs, with the enquiry form on the first screen.
+-->
 <main>
-    <div class="classA {{loader ? 'vSpinner' : ''}}">
-        <div class="spinner-border" role="status"  *ngIf="loader">
-            <span class="sr-only">Loading...</span>
-          </div>
-    </div>
-    <div *ngIf="!loader">
-        <app-landingheader></app-landingheader>
-        <app-newlandinghero></app-newlandinghero>
-        <app-fourdecades></app-fourdecades>
-        <app-customslider></app-customslider>
-        <app-educationsection></app-educationsection>
-        <app-aboutcounter></app-aboutcounter>
-        <app-whyibpyp></app-whyibpyp>
-        <app-bannersection></app-bannersection>
-        <!--<app-coursetab></app-coursetab>-->
-        <app-facilitiesslider></app-facilitiesslider>
-        <app-galleryhome></app-galleryhome>
-        <!-- <app-admissionopen></app-admissionopen> -->
-        <!--<app-categories></app-categories>-->
-        <!--<app-featuresection></app-featuresection>-->
-        <!--<app-studentsection></app-studentsection>-->
-        <app-testimonialslider></app-testimonialslider>
-        <!--<app-brandslider></app-brandslider>-->
-        <!-- hidden replace with blog <app-newseducation></app-newseducation>-->
-        <app-bloghome></app-bloghome>     
-        <app-landingfooter></app-landingfooter>
-    </div>
+    <app-landingheader></app-landingheader>
+    <app-newlandinghero></app-newlandinghero>       <!-- A3, A6: hero with the form on the page -->
+    <app-homewhy></app-homewhy>                     <!-- Why families choose JGS (C6) -->
+    <app-homeadmissions [showForm]="false"></app-homeadmissions> <!-- Admissions steps and documents (C9) -->
+    <app-testimonialslider></app-testimonialslider> <!-- Parent testimonials (C10) -->
+    <app-facilitiesslider></app-facilitiesslider>   <!-- Facilities -->
+    <app-galleryhome></app-galleryhome>             <!-- Campus photos -->
+    <app-homefaq></app-homefaq>                     <!-- FAQ (C11) -->
+    <app-landingfooter></app-landingfooter>
+    <app-stickycta></app-stickycta>                 <!-- A3: Call | WhatsApp | Enquire bar on phones -->
 </main>

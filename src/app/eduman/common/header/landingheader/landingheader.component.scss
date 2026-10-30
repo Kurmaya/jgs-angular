@@ -42,3 +42,9 @@
         padding:0.5rem;
     }
 }
+// On phones the sticky Call | WhatsApp | Enquire bar replaces this button (brief item A3).
+@media (max-width: 767px) {
+  .landing-header-call {
+    display: none !important;
+  }
+}

@@ -1,0 +1,8 @@
+<!-- Spacer so the bar never covers the end of the page -->
+<div class="sticky-cta-spacer" aria-hidden="true"></div>
+<nav class="sticky-cta" aria-label="Contact the admissions team">
+  <a href="tel:+919513251488" (click)="tracking.contactClicked('call')">Call</a>
+  <a href="https://wa.me/918977006304?text=Hello.%20I%20would%20like%20to%20know%20more%20about%20the%20admission%20process"
+     target="_blank" rel="noopener" (click)="tracking.contactClicked('whatsapp')">WhatsApp</a>
+  <a class="sticky-cta-primary" [routerLink]="[]" fragment="enquire">Enquire</a>
+</nav>
