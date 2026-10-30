@@ -1,17 +1,19 @@
 <!--
-  /home: Google Ads landing page (website change brief, Section 7, items A2 to A9).
-  Renders straight away (no loading spinner) and keeps only the sections a parent
-  arriving from an ad needs, with the enquiry form on the first screen.
+  /home: Google Ads landing page (website change brief, Section 7).
+  The school's choice: parents look through the page first, then reach the
+  enquiry form in the admissions section (#enquire). The sticky bar on phones
+  and the hero buttons jump straight to it.
 -->
 <main>
     <app-landingheader></app-landingheader>
-    <app-newlandinghero></app-newlandinghero>       <!-- A3, A6: hero with the form on the page -->
-    <app-homewhy></app-homewhy>                     <!-- Why families choose JGS (C6) -->
-    <app-homeadmissions [showForm]="false"></app-homeadmissions> <!-- Admissions steps and documents (C9) -->
-    <app-testimonialslider></app-testimonialslider> <!-- Parent testimonials (C10) -->
+    <app-newlandinghero></app-newlandinghero>       <!-- A6: admissions headline, proof points, Explore / Enquire -->
+    <app-homewhy></app-homewhy>                     <!-- #why: Why families choose JGS -->
+    <app-homesafety></app-homesafety>               <!-- #safety: child safety measures -->
     <app-facilitiesslider></app-facilitiesslider>   <!-- Facilities -->
+    <app-testimonialslider></app-testimonialslider> <!-- Parent testimonials -->
     <app-galleryhome></app-galleryhome>             <!-- Campus photos -->
-    <app-homefaq></app-homefaq>                     <!-- FAQ (C11) -->
+    <app-homeadmissions></app-homeadmissions>       <!-- #enquire: how to apply, documents and the enquiry form -->
+    <app-homefaq></app-homefaq>                     <!-- FAQ -->
     <app-landingfooter></app-landingfooter>
     <app-stickycta></app-stickycta>                 <!-- A3: Call | WhatsApp | Enquire bar on phones -->
 </main>

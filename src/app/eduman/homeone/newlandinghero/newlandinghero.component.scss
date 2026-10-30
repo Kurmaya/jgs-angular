@@ -57,13 +57,34 @@
   .landing-hero-art {
     display: block;
     width: 100%;
-    max-width: 420px;
+    max-width: 460px;
     height: auto;
-    margin: 8px auto 0;
+    margin: 0 auto;
   }
 
-  #enquire {
-    scroll-margin-top: 110px;
+  .landing-hero-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    .edu-btn {
+      margin: 0;
+    }
+  }
+
+  .landing-btn-primary {
+    background: #EB0008;
+  }
+
+  .landing-btn-outline {
+    background: transparent;
+    border: 2px solid $theme-color;
+    color: $theme-color;
+
+    &:hover {
+      background: $theme-color;
+      color: #ffffff;
+    }
   }
 }
 
@@ -75,9 +96,9 @@
       font-size: 30px;
     }
 
-    // On phones and tablets the form comes straight after the text.
     .landing-hero-art {
-      display: none;
+      max-width: 300px;
+      margin-top: 24px;
     }
   }
 }
@@ -92,6 +113,15 @@
 
     .landing-hero-sub {
       font-size: 16px;
+    }
+
+    .landing-hero-btns .edu-btn {
+      flex: 1 1 100%;
+      text-align: center;
+    }
+
+    .landing-hero-art {
+      max-width: 240px;
     }
   }
 }

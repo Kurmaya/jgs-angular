@@ -1,12 +1,12 @@
 <!--
-  /home ad landing page hero (website change brief items A3 and A6):
-  admissions headline, proof points and the enquiry form on the first screen.
-  The form container has id="enquire" for the "Enquire" buttons on this page.
+  /home ad landing page hero (website change brief item A6).
+  The school's choice: parents look through the page first, so the enquiry form
+  sits further down (#enquire, in the admissions section) rather than in the hero.
 -->
 <section class="landing-hero">
   <div class="container">
-    <div class="row align-items-start">
-      <div class="col-lg-6 landing-hero-text">
+    <div class="row align-items-center">
+      <div class="col-lg-7 landing-hero-text">
         <h1>Admissions 2027&ndash;28 at JGS Kokapet &amp; Mokila, Hyderabad</h1>
         <p class="landing-hero-sub">
           JGS Kokapet is an IB World School for the Primary Years Programme, Nursery to Grade 5.
@@ -17,13 +17,16 @@
         <ul class="landing-proof">
           <li><strong>47 years</strong><span>in Hyderabad</span></li>
           <li><strong>IB Diploma</strong><span>Programme since 2008</span></li>
-          <li><strong>Safe campus</strong><span>and school transport</span></li>
+          <li><strong>Safety first</strong><span>Verified staff, CCTV, GPS-tracked buses</span></li>
         </ul>
+        <div class="landing-hero-btns">
+          <a class="edu-btn landing-btn-primary" [routerLink]="[]" fragment="why">Explore JGS</a>
+          <a class="edu-btn landing-btn-outline" [routerLink]="[]" fragment="enquire">Enquire for 2027&ndash;28</a>
+        </div>
+      </div>
+      <div class="col-lg-5">
         <img class="landing-hero-art" src="assets/img/whatsinaname/landing-hero-child.webp"
              width="560" height="549" alt="" loading="eager">
-      </div>
-      <div class="col-lg-6" id="enquire">
-        <app-enquiry-form [inline]="true"></app-enquiry-form>
       </div>
     </div>
   </div>
