@@ -85,6 +85,13 @@ Output: `dist/eduman/browser/`. It contains `index.html` (the prerendered home p
 3. Update `.htaccess` using `deploy/htaccess-example`. **Other URLs must fall back to `index.original.html`, not `index.html`.** Otherwise every page would show the home page's text and canonical link to search engines.
 4. Keep Google Ads pointing to `/home` for now (brief item A2).
 
+### Staging check (Hostinger, 30 October 2026)
+
+The first staging upload used a normal `ng build`, so the server sent an empty app shell and crawlers saw no text. Also, direct visits to `/about` and `/home` returned 404 because the staging site had no `.htaccess`. To fix:
+- Upload the output of `npx ng run eduman:prerender` (not `ng build`), including `index.original.html`.
+- Add the rewrite rules from `deploy/htaccess-example` to the staging `.htaccess` (Hostinger supports Apache rules).
+- The staging `robots.txt` blocks Googlebot. That is right for staging; never copy it to the live site.
+
 ## 4. How to test after deploying
 
 - `curl -s https://www.jgschool.in/ | grep "Nursery to Grade 5"` returns a match (S1).
@@ -119,11 +126,11 @@ Output: `dist/eduman/browser/`. It contains `index.html` (the prerendered home p
 
 These sections are not part of the Angular app, so they need their own changes.
 
-- **Server config:** `deploy/htaccess-example` now passes `/blog/` and `/gallery/` straight through. Without this, WordPress post URLs (which are not real files) would be sent to the Angular app.
+- **Server config:** `deploy/htaccess-example` is now the server's actual `public_html/.htaccess` with the changes needed for prerendering (fallback and `/contact` rule to `index.original.html`, 301 redirects, `DirectoryIndex index.html`). It keeps the existing pass-through rules for `/blog/` and `/gallery/`. The blog's own WordPress `.htaccess` needs no changes.
 - **Tracking (T4, T5):** the blog and gallery load no Google Tag Manager, GA4 or Meta Pixel, so their visits and any enquiries that start there are not measured. Add the same GTM container (GTM-T57VRH2) and the same GA4 and Meta Pixel set-up as the main site (for WordPress, via a header-code or GTM plugin). Do **not** add a Google Ads conversion that fires on page load.
 - **Blog titles:** every post's `<title>` is "My WordPress Site". In WordPress, set Settings > General > Site Title to "Johnson Grammar School" (the site name in the structured data currently reads "https://jgschool.in/"), and make sure the theme lets Yoast SEO control the title (theme support for `title-tag`, or Yoast's title settings), so each post shows its own SEO title.
 - **Blog footer email:** check that it links to hello@jgschool.in.
-- **Gallery:** /gallery/ is served as a plain HTML page (no WordPress files were found in its source). It has no meta description, canonical link or social tags, and all 24 photos have empty alt text. Add a description, `<link rel="canonical" href="https://www.jgschool.in/gallery/">`, Open Graph tags, and descriptive alt text (e.g. "Children in the library at JGS Kokapet, Hyderabad").
+- **Gallery:** /gallery/ is a separate PHP page (not WordPress). It has no meta description, canonical link or social tags, and all 24 photos have empty alt text. Add a description, `<link rel="canonical" href="https://www.jgschool.in/gallery/">`, Open Graph tags, and descriptive alt text (e.g. "Children in the library at JGS Kokapet, Hyderabad").
 - **Sitemaps (S12):** `robots.txt` lists `https://jgschool.in/sitemap.xml` (without www). List the sitemaps on the www host, including the blog's Yoast sitemap:
   ```
   Sitemap: https://www.jgschool.in/sitemap.xml

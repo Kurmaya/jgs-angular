@@ -386,3 +386,9 @@ html body [data-ca3_iconfont="ETmodules"]::before {
 		}
 	}
 }
+// On phones the sticky Call | WhatsApp | Enquire bar replaces the floating WhatsApp icon.
+@media (max-width: 767px) {
+  .landing-float-contact {
+    display: none !important;
+  }
+}

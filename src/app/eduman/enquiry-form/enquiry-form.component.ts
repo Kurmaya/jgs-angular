@@ -27,6 +27,13 @@ const KOKAPET_GRADES = [
   'Grade 5'
 ];
 
+/** Grades JGS Mokila admits for 2027–28 (Nursery to Grade 7). */
+const MOKILA_GRADES = [...KOKAPET_GRADES, 'Grade 6', 'Grade 7'];
+
+/** reCAPTCHA is loaded only on pages that show this form (brief item A9). */
+const RECAPTCHA_SCRIPT_ID = 'jgs-recaptcha-script';
+const RECAPTCHA_SCRIPT_SRC = 'https://www.google.com/recaptcha/api.js?render=explicit';
+
 declare const grecaptcha: any;
 
 @Component({
@@ -65,23 +72,6 @@ private captchaRenderTimer: ReturnType<typeof setTimeout> | null = null;
   recaptchaToken = '';
   captchaAttempted = false;
 
-  grades: string[] = [
-    'Nursery',
-    'PP1',
-    'PP2',
-    'Grade 1',
-    'Grade 2',
-    'Grade 3',
-    'Grade 4',
-    'Grade 5',
-    'Grade 6',
-    'Grade 7',
-    'Grade 8',
-    'Grade 9',
-    'Grade 10',
-    'Grade 11',
-    'Grade 12'
-  ];
 
   form = this.fb.group({
     studentName: ['', [
@@ -131,7 +121,21 @@ private captchaRenderTimer: ReturnType<typeof setTimeout> | null = null;
 
   /** Grades offered for the campus currently selected in the form. */
   get availableGrades(): string[] {
-    return this.form.controls.location.value === 'Kokapet' ? KOKAPET_GRADES : this.grades;
+    // Before a campus is chosen, show every grade either campus admits.
+    return this.form.controls.location.value === 'Kokapet' ? KOKAPET_GRADES : MOKILA_GRADES;
+  }
+
+  /** Adds the reCAPTCHA script to the page the first time the form is shown. */
+  private ensureRecaptchaScript(): void {
+    if (!this.isBrowser || document.getElementById(RECAPTCHA_SCRIPT_ID)) {
+      return;
+    }
+    const script = document.createElement('script');
+    script.id = RECAPTCHA_SCRIPT_ID;
+    script.src = RECAPTCHA_SCRIPT_SRC;
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
   }
 
   ngAfterViewInit(): void {
@@ -175,6 +179,8 @@ private waitForRecaptcha(): void {
   if (!this.isActive() || !this.isBrowser) {
     return;
   }
+
+  this.ensureRecaptchaScript();
 
   this.captchaRenderTimer = setTimeout(() => {
     this.captchaRenderTimer = null;
