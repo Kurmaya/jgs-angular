@@ -1,11 +1,31 @@
 
 import {
+  AfterViewInit,
   Component,
   HostListener,
-  OnDestroy
+  Inject,
+  Input,
+  OnDestroy,
+  PLATFORM_ID
 } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 import { FormBuilder, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
+
+import { TrackingService } from '../tracking.service';
+
+/** Grades JGS Kokapet admits (IB PYP, Nursery to Grade 5). */
+const KOKAPET_GRADES = [
+  'Nursery',
+  'PP1',
+  'PP2',
+  'Grade 1',
+  'Grade 2',
+  'Grade 3',
+  'Grade 4',
+  'Grade 5'
+];
 
 declare const grecaptcha: any;
 
@@ -14,7 +34,19 @@ declare const grecaptcha: any;
   templateUrl: './enquiry-form.component.html',
   styleUrls: ['./enquiry-form.component.scss']
 })
-export class EnquiryFormComponent implements OnDestroy {
+export class EnquiryFormComponent implements AfterViewInit, OnDestroy {
+  /**
+   * true: show the form directly on the page (home page).
+   * false (default): show it as a popup opened by openAdmissionModal() (/home).
+   * Use only one instance per page, because the reCAPTCHA container has a fixed id.
+   */
+  @Input() inline = false;
+
+  readonly academicYearLabel = '2027\u201328';
+
+  private readonly isBrowser: boolean;
+  private locationSub?: Subscription;
+
   private readonly scriptUrl =
     'https://script.google.com/macros/s/AKfycbzhNZeGQy2r5D8UAYjzRvqpPVP4ZBop58JvHHzEDVVkVSjO_gTAIoV9J-qiEriejbW9/exec';
 
@@ -81,7 +113,38 @@ private captchaRenderTimer: ReturnType<typeof setTimeout> | null = null;
     location: ['', Validators.required]
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private tracking: TrackingService,
+    @Inject(PLATFORM_ID) platformId: object
+  ) {
+    this.isBrowser = isPlatformBrowser(platformId);
+
+    // Kokapet admits only up to Grade 5: clear a grade that does not apply to the chosen campus.
+    this.locationSub = this.form.controls.location.valueChanges.subscribe(() => {
+      const grade = this.form.controls.studentGrade.value;
+      if (grade && !this.availableGrades.includes(grade)) {
+        this.form.controls.studentGrade.setValue('');
+      }
+    });
+  }
+
+  /** Grades offered for the campus currently selected in the form. */
+  get availableGrades(): string[] {
+    return this.form.controls.location.value === 'Kokapet' ? KOKAPET_GRADES : this.grades;
+  }
+
+  ngAfterViewInit(): void {
+    if (this.inline && this.isBrowser) {
+      this.captchaRenderAttempts = 0;
+      this.waitForRecaptcha();
+    }
+  }
+
+  /** The form is visible either as the on-page form or as an open popup. */
+  private isActive(): boolean {
+    return this.inline || this.showAdmissionModal;
+  }
 
  
 openAdmissionModal(): void {
@@ -109,7 +172,7 @@ openAdmissionModal(): void {
 }
 
 private waitForRecaptcha(): void {
-  if (!this.showAdmissionModal) {
+  if (!this.isActive() || !this.isBrowser) {
     return;
   }
 
@@ -129,7 +192,8 @@ private waitForRecaptcha(): void {
     ) {
       this.captchaRenderAttempts++;
 
-      if (this.captchaRenderAttempts < 20) {
+      // The on-page form starts before the reCAPTCHA script may have loaded, so it waits longer.
+      if (this.captchaRenderAttempts < (this.inline ? 120 : 20)) {
         this.waitForRecaptcha();
       } else {
         this.errorMessage =
@@ -148,7 +212,7 @@ private waitForRecaptcha(): void {
 private renderRecaptcha(): void {
   const container = document.getElementById('admission-recaptcha');
 
-  if (!container || !this.showAdmissionModal) {
+  if (!container || !this.isActive()) {
     return;
   }
 
@@ -301,6 +365,9 @@ private renderRecaptcha(): void {
       // With no-cors, this does not confirm that Apps Script saved the row.
       this.submitted = true;
 
+      // Google Ads conversion, GA4 generate_lead and Meta Lead (brief items T1 and T3).
+      this.tracking.enquirySubmitted(values.location, values.studentGrade);
+
     } catch (error) {
       console.error('Admission enquiry submission error:', error);
 
@@ -320,6 +387,12 @@ startAnotherEnquiry(): void {
 
 
   ngOnDestroy(): void {
+    this.locationSub?.unsubscribe();
+
+    if (!this.isBrowser) {
+      return;
+    }
+
     document.body.style.overflow = '';
 
     if (this.captchaRenderTimer !== null) {

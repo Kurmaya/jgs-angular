@@ -1,0 +1,17 @@
+<section class="home-faq pt-60 pb-40">
+  <div class="container">
+    <div class="section-title text-center mb-40">
+      <h2>Frequently asked <span class="down-mark-line">questions</span></h2>
+    </div>
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1">
+        <div class="home-faq-list">
+          <div class="home-faq-item" *ngFor="let item of faq">
+            <h3>{{ item.question }}</h3>
+            <p>{{ item.answer }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

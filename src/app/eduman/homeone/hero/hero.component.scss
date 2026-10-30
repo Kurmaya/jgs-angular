@@ -323,3 +323,91 @@
 		bottom:-55vh;
 	}
 }
+
+// Home page hero (brief item C1)
+.hero-text {
+	.hero-title {
+		line-height: 1.2;
+		margin-bottom: 20px;
+		font-size: 44px;
+		@media #{$xl} {
+			font-size: 34px;
+		}
+		@media #{$lg} {
+			font-size: 32px;
+		}
+		@media #{$xs,$sm,$md} {
+			font-size: 28px;
+		}
+	}
+	.hero-title,
+	.hero-sub {
+		max-width: 470px; // keep the text clear of the photo on the right
+	}
+	.hero-sub {
+		font-size: 18px;
+		line-height: 1.6;
+		margin-bottom: 12px;
+	}
+	.hero-brand-line {
+		font-style: italic;
+		font-weight: 600;
+		margin-bottom: 24px;
+	}
+	.hero-btn-group {
+		max-width: 520px;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 12px;
+		.edu-btn {
+			margin: 0;
+		}
+	}
+	.hero-btn-outline {
+		background: transparent;
+		border: 2px solid $theme-color;
+		color: $theme-color;
+		&:hover {
+			background: $theme-color;
+			color: #fff;
+		}
+	}
+}
+
+// Home page hero on phones: let the section grow with the text, keep the photo
+// visible below it, and put the text on a light panel so it stays readable.
+@media (max-width: 767px) {
+	.vHeroBg.hero-height {
+		height: auto !important;
+		min-height: 680px;
+		padding: 110px 0 320px !important;
+		align-items: flex-start;
+		background-position: 70% 100% !important;
+		background-size: auto 360px !important;
+		background-color: #fbe3e6 !important;
+	}
+	.hero-text.vPt-95 {
+		margin-bottom: 0;
+		padding: 18px 16px;
+		background: rgba(255, 255, 255, 0.88);
+		border-radius: 12px;
+		p {
+			width: 100%;
+		}
+		.hero-title {
+			font-size: 26px;
+			max-width: none;
+		}
+		.hero-sub {
+			font-size: 16px;
+			max-width: none;
+		}
+		.hero-btn-group .edu-btn {
+			flex: 1 1 100%;
+			text-align: center;
+		}
+	}
+	.vScrollDown1 {
+		display: none;
+	}
+}

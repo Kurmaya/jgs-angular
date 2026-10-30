@@ -1,0 +1,149 @@
+<!-- C2: facts strip -->
+<section class="home-facts" aria-label="Johnson Grammar School in numbers">
+  <div class="container">
+    <ul class="home-facts-list">
+      <li *ngFor="let fact of facts">
+        <strong>{{ fact.value }}</strong>
+        <span>{{ fact.label }}</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- C3: about -->
+<section class="home-section pt-60 pb-40">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2 text-center">
+        <div class="section-title mb-30">
+          <h2>About <span class="down-mark-line">Johnson Grammar School</span></h2>
+        </div>
+        <p>
+          Johnson Grammar School (JGS) was founded in Hyderabad in 1979 by S.R.N. Mudiraj and has grown into
+          a group of schools offering the International Baccalaureate (IB) and ICSE curricula. JGS has run the
+          IB Diploma Programme at its Mallapur campus since 2008. In west Hyderabad, JGS Kokapet has been an
+          IB World School for the Primary Years Programme since 10 April 2025, and our new campus at Mokila
+          is under development.
+        </p>
+        <p>
+          We believe children learn best when they are curious, cared for and given room to think for
+          themselves. From the way we speak to the way we teach, our teachers aim to model the values we
+          hope our students will carry with them.
+        </p>
+        <a class="edu-sec-btn" [routerLink]="['/about']">About us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- C4: campuses -->
+<section class="home-section section-bg-mild pt-60 pb-40">
+  <div class="container">
+    <div class="section-title text-center mb-40">
+      <h2>Our campuses in <span class="down-mark-line">west Hyderabad</span></h2>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 mb-30">
+        <div class="home-card">
+          <h3>JGS Kokapet</h3>
+          <p>
+            IB World School for the Primary Years Programme (PYP), Nursery to Grade 5.
+            Plot No. 65/6, Brindavan Colony, Narsingi, Hyderabad 500075, close to the Financial District
+            and Gachibowli. Safe school transport is available.
+          </p>
+          <div class="home-card-actions">
+            <a class="edu-btn" [routerLink]="['/curriculum']">Explore the IB</a>
+            <a class="edu-sec-btn" [routerLink]="['/']" fragment="enquire">Enquire</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 mb-30">
+        <div class="home-card">
+          <h3>JGS Mokila</h3>
+          <!-- Mokila wording is interim until the IB replies to the school's letter. Do not add IB or CISCE logos here. -->
+          <p>
+            Our new campus on SARC Garden Villas Road, Mokila, Shankarpally, Hyderabad.
+            JGS Mokila is planned to offer the IB and ICSE curricula. JGS Mokila is not yet an IB World School
+            or IB candidate school, and is not yet affiliated to the CISCE.
+            Admissions enquiries are open for 2027&ndash;28.
+          </p>
+          <div class="home-card-actions">
+            <a class="edu-btn" [routerLink]="['/']" fragment="enquire">Register interest</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- C5: curriculum -->
+<section class="home-section pt-60 pb-40">
+  <div class="container">
+    <div class="section-title text-center mb-40">
+      <h2>Our <span class="down-mark-line">curriculum</span></h2>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-30">
+        <a class="home-card home-card-link" [routerLink]="['/curriculum']">
+          <h3>International Baccalaureate (IB)</h3>
+          <p>
+            The IB Primary Years Programme at JGS Kokapet (since 2025) and the IB Diploma Programme at
+            JGS IBDP, Mallapur (since 2008).
+          </p>
+          <span class="home-card-more">Explore the IB &rarr;</span>
+        </a>
+      </div>
+      <div class="col-md-6 mb-30">
+        <a class="home-card home-card-link" [routerLink]="['/icse']" fragment="ICSE">
+          <h3>ICSE (CISCE)</h3>
+          <p>A broad, rigorous national curriculum at our Habsiguda and Mallapur campuses.</p>
+          <span class="home-card-more">Explore ICSE &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- C6: why families choose JGS -->
+<section class="home-section section-bg-mild pt-60 pb-40">
+  <div class="container">
+    <div class="section-title text-center mb-40">
+      <h2>Why families <span class="down-mark-line">choose JGS</span></h2>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-lg-4 mb-30">
+        <div class="home-card">
+          <h3>Inquiry-based learning</h3>
+          <p>Through the IB Primary Years Programme, children learn by asking questions, investigating and reflecting, building real understanding rather than memorising.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-30">
+        <div class="home-card">
+          <h3>Experience you can trust</h3>
+          <p>47 years of educating Hyderabad's children, and the IB Diploma Programme since 2008.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-30">
+        <div class="home-card">
+          <h3>Confident, caring learners</h3>
+          <p>A balanced approach to the mind, body and wellbeing, with attention to each child's social and emotional growth.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 offset-lg-2 mb-30">
+        <div class="home-card">
+          <h3>Safe campus</h3>
+          <p>24x7 CCTV and security guards, a full-time nurse, an on-call doctor and annual health check-ups.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-30">
+        <div class="home-card">
+          <h3>Safe transport</h3>
+          <p>Safe, comfortable school transport. Ask our admissions team about routes for your area.</p>
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <a class="edu-sec-btn" [routerLink]="['/jgsdifference']">The JGS difference</a>
+    </div>
+  </div>
+</section>

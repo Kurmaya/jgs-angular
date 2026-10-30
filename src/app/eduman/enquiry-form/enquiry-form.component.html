@@ -1,33 +1,15 @@
-
-<div
-  class="admission-modal-backdrop"
-  *ngIf="showAdmissionModal"
-  (click)="onBackdropClick()">
-
-  <div
-    class="admission-modal"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="admissionModalTitle"
-    (click)="$event.stopPropagation()">
-
-    <!-- Close button -->
-    <button
-      type="button"
-      class="modal-close"
-      aria-label="Close admission enquiry"
-      [disabled]="submitting"
-      (click)="closeAdmissionModal()">
-      &times;
-    </button>
-
+<!-- The form body is shared by the popup (used on /home) and the on-page form (used on the home page). -->
+<ng-template #formBody>
     <!-- Header -->
     <div class="admission-heading">
       <span class="eyebrow">JOHNSON GRAMMAR SCHOOL</span>
 
-      <h2 id="admissionModalTitle">
+      <h2 *ngIf="!inline" id="admissionModalTitle">
         Admission Enquiry
       </h2>
+      <h3 *ngIf="inline" class="inline-title">
+        Admission Enquiry, {{ academicYearLabel }}
+      </h3>
 
       <p>
         Begin your child's journey with us.
@@ -120,7 +102,7 @@
             <option value="">Select grade</option>
 
             <option
-              *ngFor="let grade of grades"
+              *ngFor="let grade of availableGrades"
               [value]="grade">
 
               {{ grade }}
@@ -320,7 +302,43 @@
         * All marked fields are required.
       </p>
 
-    </form>
+      <!-- Consent line (brief item T7) -->
+      <p class="consent-note">
+        By submitting, you agree that Johnson Grammar School may contact you about admissions.
+        See our <a [routerLink]="['/privacypolicy']" target="_blank" rel="noopener">Privacy Policy</a>.
+      </p>
 
+    </form>
+</ng-template>
+
+<!-- Popup version -->
+<div
+  class="admission-modal-backdrop"
+  *ngIf="!inline && showAdmissionModal"
+  (click)="onBackdropClick()">
+
+  <div
+    class="admission-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="admissionModalTitle"
+    (click)="$event.stopPropagation()">
+
+    <!-- Close button -->
+    <button
+      type="button"
+      class="modal-close"
+      aria-label="Close admission enquiry"
+      [disabled]="submitting"
+      (click)="closeAdmissionModal()">
+      &times;
+    </button>
+
+    <ng-container *ngTemplateOutlet="formBody"></ng-container>
   </div>
+</div>
+
+<!-- On-page version -->
+<div class="admission-inline" *ngIf="inline">
+  <ng-container *ngTemplateOutlet="formBody"></ng-container>
 </div>

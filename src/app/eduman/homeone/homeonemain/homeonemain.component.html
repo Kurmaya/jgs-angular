@@ -1,29 +1,18 @@
+<!--
+  Home page. The page renders straight away (the old one-second loading spinner
+  hid all content from search engines and slowed the first view; brief item S1).
+  Section order follows the website change brief, items C1 to C12.
+-->
 <main>
-    <div class="classA {{loader ? 'vSpinner' : ''}}">
-        <div class="spinner-border" role="status"  *ngIf="loader">
-            <span class="sr-only">Loading...</span>
-          </div>
-    </div>
-    <div *ngIf="!loader">
-        <app-headerone></app-headerone>
-        <app-hero></app-hero>
-        <app-fourdecades></app-fourdecades>
-        <app-customslider></app-customslider>
-        <app-educationsection></app-educationsection>
-        <app-aboutcounter></app-aboutcounter>
-        <app-whyibpyp></app-whyibpyp>
-        <app-bannersection></app-bannersection>
-        <!--<app-coursetab></app-coursetab>-->
-        <app-facilitiesslider></app-facilitiesslider>
-        <app-galleryhome></app-galleryhome>
-        <!-- <app-admissionopen></app-admissionopen> -->
-        <!--<app-categories></app-categories>-->
-        <!--<app-featuresection></app-featuresection>-->
-        <!--<app-studentsection></app-studentsection>-->
-        <app-testimonialslider></app-testimonialslider>
-        <!--<app-brandslider></app-brandslider>-->
-        <!-- hidden replace with blog <app-newseducation></app-newseducation>-->
-        <app-bloghome></app-bloghome>     
-        <app-footerone></app-footerone>
-    </div>
+    <app-headerone></app-headerone>
+    <app-hero></app-hero>                         <!-- C1 hero -->
+    <app-homeintro></app-homeintro>               <!-- C2 facts, C3 about, C4 campuses, C5 curriculum, C6 why JGS -->
+    <app-educationsection></app-educationsection> <!-- C7 Chairman's message -->
+    <app-facilitiesslider></app-facilitiesslider> <!-- C8 facilities -->
+    <app-galleryhome></app-galleryhome>
+    <app-homeadmissions></app-homeadmissions>     <!-- C9 admissions and on-page enquiry form -->
+    <app-testimonialslider></app-testimonialslider> <!-- C10 testimonials -->
+    <app-homefaq></app-homefaq>                   <!-- C11 FAQ -->
+    <app-bloghome></app-bloghome>                 <!-- C12 blog -->
+    <app-footerone></app-footerone>
 </main>

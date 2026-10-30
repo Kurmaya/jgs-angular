@@ -5,25 +5,29 @@
        <div class="row">
           <div class="col-xl-6 col-lg-6 col-md-6">
              <div class="hero-text vPt-95">
-                <h2>Good for your  <span class="down-mark-line">kid.</span><br/>
-                  Good for the <span class="down-mark-line">world.</span>
-               </h2>
-                <p>A balanced approach to nurture the mind, body & soul.</p>
-                <div class="vAdmissionUnit vNoMobNew">
-                  <!-- <img src="assets/img/whatsinaname/AdmissionNewwIcon.png" alt="Admission Unit"> -->
+                <h1 class="hero-title">Johnson Grammar School Kokapet &amp; Mokila, Hyderabad</h1>
+                <p class="hero-sub">
+                  An IB World School for the Primary Years Programme, Nursery to Grade 5, at Kokapet,
+                  and our new campus at Mokila. Part of Johnson Grammar School, educating Hyderabad's
+                  children since 1979.
+                </p>
+                <p class="hero-brand-line">All I want to Be...</p>
+                <div class="hero-btn hero-btn-group">
+                   <a class="edu-btn vAdbtm" [routerLink]="['/']" fragment="enquire">Enquire for 2027&ndash;28</a>
+                   <a class="edu-btn hero-btn-outline"
+                      href="https://wa.me/918977006304?text=Hello.%20I%20would%20like%20to%20know%20more%20about%20the%20admission%20process"
+                      target="_blank" rel="noopener"
+                      (click)="tracking.contactClicked('whatsapp')">WhatsApp us</a>
+                   <a class="edu-btn hero-btn-outline" href="tel:+919513251488"
+                      (click)="tracking.contactClicked('call')">Call +91 95132 51488</a>
+                   <a class="edu-btn hero-btn-outline" [routerLink]="['/']" fragment="enquire">Book a campus visit</a>
                 </div>
-                <div class="hero-btn">
-                   <a class="edu-btn" [routerLink]="['/about']">Know More</a>
-                   <a class="edu-btn vAdbtm ml-20" [routerLink]="['/enquiry-form']">Admissions</a>
-                </div>
-                
-                
              </div>
           </div>
           <div class="col-xl-6 col-lg-6 col-md-6">
              <div class="hero-right position-relative">
-                <img data-depth="0.2" class="shape shape-1" src="assets/img/shape/shape-01.png" alt="shape">
-                <img data-depth="0.2" class="shape-2" src="assets/img/shape/shape-02.png" alt="shape">
+                <img data-depth="0.2" class="shape shape-1" src="assets/img/shape/shape-01.png" alt="">
+                <img data-depth="0.2" class="shape-2" src="assets/img/shape/shape-02.png" alt="">
              </div>
           </div>
        </div>

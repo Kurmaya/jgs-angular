@@ -31,13 +31,13 @@ export class NewlandingpageComponent implements OnInit {
 
     // SEO title
     this.title.setTitle(
-      'Best International School in Mokila, Kokapet, HYD | Admissions | Academy'
+      'Admissions 2027\u201328 | JGS Kokapet, IB PYP School, Hyderabad'
     );
 
     // SEO description
     this.meta.updateTag({
       name: 'description',
-      content: 'Johnson Grammar School offers all the required amenities. Best IB School in Mokila, Kokapet, Hyderabad. Careers | School Fees | Staff Directory | Admissions'
+      content: 'Admissions open at JGS Kokapet, an IB World School for the Primary Years Programme, Nursery to Grade 5, in Hyderabad. Part of Johnson Grammar School since 1979. Enquire today.'
     });
 
     // Load Google Ads tag

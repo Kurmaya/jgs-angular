@@ -166,6 +166,9 @@ import { NewlandingheroComponent } from './homeone/newlandinghero/newlandinghero
 import { LandingmobilemenuComponent } from './common/header/landingmobilemenu/landingmobilemenu.component';
 import { LandingfooterComponent } from './common/footer/landingfooter/landingfooter.component';
 import { EnquiryFormComponent } from './enquiry-form/enquiry-form.component';
+import { HomeintroComponent } from './homeone/homeintro/homeintro.component';
+import { HomeadmissionsComponent } from './homeone/homeadmissions/homeadmissions.component';
+import { HomefaqComponent } from './homeone/homefaq/homefaq.component';
 
 
 
@@ -341,6 +344,9 @@ import { EnquiryFormComponent } from './enquiry-form/enquiry-form.component';
     LandingmobilemenuComponent,
     LandingfooterComponent,
     EnquiryFormComponent,
+    HomeintroComponent,
+    HomeadmissionsComponent,
+    HomefaqComponent,
     
     
   ]
