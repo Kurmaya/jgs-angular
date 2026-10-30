@@ -1,0 +1,36 @@
+@import '../../../../custom-palettes.scss';
+
+.home-admissions {
+  scroll-margin-top: 110px; // keeps the sticky header from covering the form
+  background: #f5f8ff;
+
+  h3 {
+    font-size: 20px;
+    margin: 0 0 12px;
+  }
+
+  .home-steps,
+  .home-docs {
+    margin: 0 0 28px;
+    padding-left: 20px;
+
+    li {
+      margin-bottom: 8px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    a {
+      color: $theme-color;
+      text-decoration: underline;
+    }
+  }
+
+  .home-steps {
+    list-style: decimal;
+  }
+
+  .home-docs {
+    list-style: disc;
+  }
+}

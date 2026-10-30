@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, PLATFORM_ID, ViewEncapsulation } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-mobilemenu',
@@ -6,11 +7,10 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./mobilemenu.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class MobilemenuComponent implements OnInit {
+export class MobilemenuComponent {
+  readonly isBrowser: boolean;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(@Inject(PLATFORM_ID) platformId: object) {
+    this.isBrowser = isPlatformBrowser(platformId);
   }
-
 }

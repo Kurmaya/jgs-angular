@@ -1,0 +1,29 @@
+.home-faq {
+  .home-faq-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 32px;
+  }
+
+  .home-faq-item {
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e6e9f0;
+
+    h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 0;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .home-faq-list {
+      grid-template-columns: 1fr;
+    }
+  }
+}

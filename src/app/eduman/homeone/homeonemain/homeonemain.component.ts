@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
+import { SeoService } from '../../seo.service';
+import { HOME_SEO } from '../home-content';
 
 @Component({
   selector: 'app-homeonemain',
@@ -7,16 +8,11 @@ import { Meta, Title } from '@angular/platform-browser';
   styleUrls: ['./homeonemain.component.scss']
 })
 export class HomeonemainComponent implements OnInit {
-  loader=true;
-  constructor(private title: Title, private meta: Meta) { 
-  }
+  constructor(private seo: SeoService) {}
 
   ngOnInit(): void {
-    this.title.setTitle('Best International School in Kokapet, HYD | Admissions | Academy');
-    this.meta.addTag({name: 'description', content: 'Johnson Grammar School offers all the required amenities. Best IB School in Kokapet, Hyderabad. Careers | School Fees | Staff Directory | Admissions'})
-    setTimeout(()=>{
-      this.loader = false
-    }, 1000);
+    // Title, description, canonical link, social sharing tags and structured data
+    // (website change brief items S2, S3, S5, S6).
+    this.seo.apply(HOME_SEO);
   }
-
 }

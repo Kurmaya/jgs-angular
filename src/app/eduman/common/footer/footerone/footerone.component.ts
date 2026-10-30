@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { TrackingService } from '../../../tracking.service';
 
 @Component({
   selector: 'app-footerone',
@@ -8,7 +9,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class FooteroneComponent implements OnInit {
 
-  constructor() { }
+  constructor(public tracking: TrackingService) { }
 
   ngOnInit(): void {
     

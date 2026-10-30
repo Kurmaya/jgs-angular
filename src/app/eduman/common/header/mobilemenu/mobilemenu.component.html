@@ -1,6 +1,7 @@
 <div class="mobile-menus mb-50 d-xl-none fix">
     <div>
-       <ul metis-menu>
+       <!-- The MetisMenu plugin needs a real browser, so the mobile menu is built only there (not during prerendering). -->
+       <ul metis-menu *ngIf="isBrowser">
           <li><a [routerLink]="['/about']">About Us</a></li>
           <li class="has-arrow"><a href="javascript:void(0)">Why JGS</a>
              <ul class="sub-menu">

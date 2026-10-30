@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
+import { TrackingService } from '../../tracking.service';
 
 @Component({
   selector: 'app-hero',
@@ -6,11 +7,6 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./hero.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class HeroComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class HeroComponent {
+  constructor(public tracking: TrackingService) {}
 }
