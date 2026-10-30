@@ -85,6 +85,13 @@ Output: `dist/eduman/browser/`. It contains `index.html` (the prerendered home p
 3. Update `.htaccess` using `deploy/htaccess-example`. **Other URLs must fall back to `index.original.html`, not `index.html`.** Otherwise every page would show the home page's text and canonical link to search engines.
 4. Keep Google Ads pointing to `/home` for now (brief item A2).
 
+### Staging check (Hostinger, 30 October 2026)
+
+The first staging upload used a normal `ng build`, so the server sent an empty app shell and crawlers saw no text. Also, direct visits to `/about` and `/home` returned 404 because the staging site had no `.htaccess`. To fix:
+- Upload the output of `npx ng run eduman:prerender` (not `ng build`), including `index.original.html`.
+- Add the rewrite rules from `deploy/htaccess-example` to the staging `.htaccess` (Hostinger supports Apache rules).
+- The staging `robots.txt` blocks Googlebot. That is right for staging; never copy it to the live site.
+
 ## 4. How to test after deploying
 
 - `curl -s https://www.jgschool.in/ | grep "Nursery to Grade 5"` returns a match (S1).
