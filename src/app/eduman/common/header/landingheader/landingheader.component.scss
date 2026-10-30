@@ -1,0 +1,44 @@
+// singup style
+@import '../../../../../custom-palettes.scss';
+
+.header-logo img{
+    width: 220px;
+    padding:0.5rem;
+    // height: 60px;
+    // object-fit: contain;
+}
+.header-transparent{
+    top:0;
+}
+.active {
+    color: #eb0008 !important;
+}
+.cta-btn {
+    background-color: $theme-color;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: darken($theme-color, 10%);
+        color: #fff;
+    }
+}
+
+.mob{
+    width: max-content;
+    display: none;
+    margin-left:-25px;
+}
+@media (max-width: 768px) {
+
+    .mob{
+        display: block;
+    }
+    .header-logo img{
+        width: 150px;
+        padding:0.5rem;
+    }
+}

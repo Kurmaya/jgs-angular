@@ -1,0 +1,40 @@
+.newseducationsection {
+    padding: 60px 0;
+}
+.blogsection1 {
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    border: 1px solid #80808029;
+    flex: 1;
+}
+.blogsection1:hover{
+    box-shadow: 0 17px 7px rgb(0 0 0 / 18%);
+    position: relative;
+    top: -5px;
+}
+.blogsection1 img{
+    margin-bottom: 10px;
+}
+.blogsection1 p {
+    min-height: 100px;
+}
+.course-btn1 {
+    height: 40px;
+    background: #1429A9;
+    padding: 0 25px;
+    display: inline-block;
+    line-height: 40px;
+    border-radius: 3px;
+    font-weight: 600;
+    color: #fff;
+}
+.course-btn1:hover {
+    //background:#EB0008;
+    color: #FFF;
+}
+@media screen and (max-width:767px){
+    .blogsection{
+        margin-bottom: 15px;
+    }
+}

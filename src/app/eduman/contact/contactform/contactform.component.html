@@ -1,0 +1,206 @@
+<!--<div class="contact-form">
+    <form action="#">
+         <div class="row">
+             <div class="col-xl-6">
+             <div class="contact-from-input mb-20">
+                 <input type="text" placeholder="Name">
+             </div>
+             </div>
+             <div class="col-xl-6">
+             <div class="contact-from-input mb-20">
+                 <input type="text" placeholder="Phone">
+             </div>
+             </div>
+             <div class="col-xl-6">
+             <div class="contact-from-input mb-20">
+                 <input type="text" placeholder="Email">
+             </div>
+             </div>
+             <div class="col-xl-6">
+             <div class="contact-select">
+                 <select class="mb-20">
+                     <option value="Subject">Course</option>
+                     <option value="Subject">Financial Aid</option>
+                     <option value="Subject">Payment</option>
+                     <option value="Subject">Information</option>
+                 </select>
+             </div>
+             </div>
+             <div class="col-xl-12">
+             <div class="contact-from-input mb-20">
+                 <textarea placeholder="Message" name="message"></textarea>
+             </div>
+             </div>
+             <div class="col-xl-2 ">
+             <div class="cont-btn mb-20">
+                 <a href="#" class="cont-btn">Submit</a>
+             </div>
+             </div>
+         </div>
+    </form>
+ </div>-->
+<section class="contact-area pt-40 pb-50">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 offset-lg-1">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="vContactTopHead">
+                  <h3>Know more about one of the best schools in Kokapet</h3>
+                  <p>
+                    We understand your parental urge to dig deep into the organisation
+                    and know as much as you can about us. We appreciate your interest
+                    and are glad to answer all your queries. Please fill out the form
+                    below, and we will get back to you soon.
+                  </p>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-5">
+                <div class="vAddress">
+                    <h4>Want to <span class="down-mark-line">get in touch</span> with us?</h4>
+                    <strong>Address:</strong>
+                    <p><strong>Mokila: </strong>Behind Vijetha Supermaket, <br> SARC Garden Villas Road, Mokila, <br> Shankerpally, Hyderabad</p>
+                    <p> <br>
+                      <strong>Kokapet:</strong>
+                      Plot No 65/6, Brindavan Colony, Narsingi, <br>Hyderabad - 500075 </p>
+                      <p><strong>Kokapet Landmark:</strong> Lane next to Ratnadeep select,<br/> Opp to Rajapushpa Regalia - Kokapet.</p>
+                    <!--<p><strong>Phone / Whatsapp:</strong> +91 89 77 00 6304, +91 89 77 00 4363</p>-->
+                    <p><strong>Phone:</strong> +91 95 13 25 1488</p>
+                    <p><strong>Email:</strong> hello@jgschool.in</p>
+                </div>
+                <div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.5629069196616!2d78.3401889!3d17.3847532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb95520415506d%3A0xbe7cb41dde272c64!2sJohnson%20Grammar%20School%20IB%20PYP!5e0!3m2!1sen!2suk!4v1668674403362!5m2!1sen!2suk" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-7">
+              
+
+<div class="contact-form-wrapper">
+
+  <div class="contact-form-header">
+    <h3>Send us a message</h3>
+  </div>
+
+  <form #contactForm="ngForm" (ngSubmit)="submitForm(contactForm)">
+
+    <div class="row">
+
+      <!-- Name -->
+      <div class="col-lg-6 col-md-6">
+        <div class="contact-form-group">
+          <label for="name">Full Name <span>*</span></label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            [(ngModel)]="formData.name"
+            placeholder="Enter your name"
+            required>
+        </div>
+      </div>
+
+      <!-- Phone -->
+      <div class="col-lg-6 col-md-6">
+        <div class="contact-form-group">
+          <label for="phone">Phone Number <span>*</span></label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            [(ngModel)]="formData.phone"
+            placeholder="Enter your phone number"
+            required>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="col-lg-6 col-md-6">
+        <div class="contact-form-group">
+          <label for="email">Email Address <span>*</span></label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            [(ngModel)]="formData.email"
+            placeholder="Enter your email address"
+            required>
+        </div>
+      </div>
+
+      <!-- Subject -->
+      <div class="col-lg-6 col-md-6">
+        <div class="contact-form-group">
+          <label for="subject">Subject</label>
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            [(ngModel)]="formData.subject"
+            placeholder="What is your enquiry about?">
+        </div>
+      </div>
+
+      <!-- Message -->
+      <div class="col-12">
+        <div class="contact-form-group">
+          <label for="message">Message <span>*</span></label>
+          <textarea
+            id="message"
+            name="message"
+            rows="6"
+            [(ngModel)]="formData.message"
+            placeholder="Write your message here..."
+            required></textarea>
+        </div>
+      </div>
+
+      <!-- Status message -->
+      <div class="col-12" *ngIf="successMessage">
+        <div class="form-success">
+          {{ successMessage }}
+        </div>
+      </div>
+
+      <div class="col-12" *ngIf="errorMessage">
+        <div class="form-error">
+          {{ errorMessage }}
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <div class="col-12">
+        <div class="contact-form-submit">
+
+          <button
+            type="submit"
+            [disabled]="isSubmitting">
+
+            <span *ngIf="!isSubmitting">
+              Send Message
+              <i class="fas fa-arrow-right"></i>
+            </span>
+
+            <span *ngIf="isSubmitting">
+              Sending...
+            </span>
+
+          </button>
+
+        </div>
+      </div>
+
+    </div>
+
+  </form>
+
+</div>
+
+
+
+
+              </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

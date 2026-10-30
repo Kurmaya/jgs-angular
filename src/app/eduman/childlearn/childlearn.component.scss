@@ -1,0 +1,35 @@
+.stand-out-block {
+    background: url(/assets/img/whatsinaname/Grey-Background.jpg) no-repeat;
+    background-size: cover;
+}
+.vStandOutPic {
+    height: 100px;
+    margin: 0 0 30px;
+}
+.counter-number-stand span {
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: inline-block;
+    color: #00afef;
+    line-height: 28px;
+}
+.counter-number-stand p {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 0;
+    line-height: 18px;
+}
+@media screen and (max-width:767px){
+    .counter-number-stand span{
+        font-size: 30px;
+        margin-bottom: 5px;
+    }
+    .counter-number-stand p{
+        font-size: 14px;
+    }
+    .vStandOutPic {
+        height: 80px;
+        margin: 0 0 15px;
+    }
+}

@@ -1,0 +1,751 @@
+<app-headerone></app-headerone>
+<app-breadcrumb breadcrumbTitle="Gallery"  breadcrumbSubTitle="Gallery" imgName="Gallery" imgMobName="GalleryMob"></app-breadcrumb>
+<div class="container pb-40">
+    <div class="row">
+        <div class="col-xl-12 pt-40">
+            <div class="section-title text-center mb-40">
+                <h2>
+                    <span class="down-mark-line">Gallery</span>
+                </h2>
+                <p>World of JGS</p>
+            </div>
+        </div>
+
+        <div *ngIf="currDiv == 'FieldTripBotanicalGarden'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of FieldTripBotanicalGarden; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        <div *ngIf="currDiv == 'RepublicDay'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of RepublicDay; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        <div *ngIf="currDiv == 'SankranthiCelebrations'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of SankranthiCelebrations; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        <div *ngIf="currDiv == 'ChristmasCelebrations'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of ChristmasCelebrations; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        <div *ngIf="currDiv == 'NationalMathematicsDay'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of NationalMathematicsDay; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        <div *ngIf="currDiv == 'NatureWalk'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of NatureWalk; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        <div *ngIf="currDiv == 'ProfilesDay'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of ProfilesDay; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        <div *ngIf="currDiv == 'GrandparentsDay'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of GrandparentsDay; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        <div *ngIf="currDiv == 'GaneshChaturthi'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of GaneshChaturthi; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        <div *ngIf="currDiv == 'Dusshera'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of Dusshera; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        <div *ngIf="currDiv == 'Diwali'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of Diwali; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        <div *ngIf="currDiv == 'ChildrensDay'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of ChildrensDay; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        <div *ngIf="currDiv == 'WorldSmileDay'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of WorldSmileDay; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        <div *ngIf="currDiv == 'ThanksgivingDay'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of ThanksgivingDay; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        <div *ngIf="currDiv == 'SubStaff'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of SubStaff; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        <div *ngIf="currDiv == 'TeachersDay'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of TeachersDay; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        <div *ngIf="currDiv == 'NumismaticExhibition'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of NumismaticExhibition; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        <div *ngIf="currDiv == 'Janmashtami'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of Janmashtami; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        <div *ngIf="currDiv == 'Halloween'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of Halloween; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        <div *ngIf="currDiv == 'HindiDiwas'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of HindiDiwas; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        <div *ngIf="currDiv == 'HealthCheckUp'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of HealthCheckUp; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        <div *ngIf="currDiv == 'WorldHeartDay'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of WorldHeartDay; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        <div *ngIf="currDiv == 'Independence'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of Independence; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        <div *ngIf="currDiv == 'Friendship'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of Friendship; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        <div *ngIf="currDiv == 'Gurupoornima'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of Gurupoornima; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        <div *ngIf="currDiv == 'Onam'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of Onam; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+        
+
+        <div *ngIf="currDiv == 'ParentOrientation'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of ParentOrientation; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          <div *ngIf="currDiv == 'ParentsDay'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of ParentsDay; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        <div *ngIf="currDiv == 'RakhiCelebration'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of RakhiCelebration; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        <div *ngIf="currDiv == 'YogaDay'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of YogaDay; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+
+        <div *ngIf="currDiv == 'BookDay'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of BookDay; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div *ngIf="currDiv == 'Zoo'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of Zoo; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div *ngIf="currDiv == 'others'" class="row">
+            <div class="col-lg-12 col-md-12">
+                <button type="button" class="vBackBtn" (click)="ShowBlock()">back</button>
+            </div>
+            <div *ngFor="let data of data; let i=index" class="col-lg-4 col-md-6">
+                <div class="vWrapper">
+                    <div class="vImageList">
+                        <img (click)="onPreviewImage(i,currDiv)" [src]="data.imageSrc" class="img-fluid" [alt]="data.imageAlt" />
+                    </div>
+                </div>
+            </div>
+          </div>
+          
+          <div *ngIf="showblock" class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('FieldTripBotanicalGarden')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/FieldTripBotanicalGarden/01.jpg" alt="" class="img-fluid" />
+                        Field Trip - Botanical Garden
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('RepublicDay')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/RepublicDay/01.jpg" alt="" class="img-fluid" />
+                        Republic Day
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('SankranthiCelebrations')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/SankranthiCelebrations/01.jpg" alt="" class="img-fluid" />
+                        Sankranthi Celebrations
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('ChristmasCelebrations')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/ChristmasCelebrations/01.jpg" alt="" class="img-fluid" />
+                        Christmas Celebrations
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('NationalMathematicsDay')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/NationalMathematicsDay/01.jpg" alt="" class="img-fluid" />
+                        National Mathematic's Day
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('NatureWalk')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/NatureWalk/01.jpg" alt="" class="img-fluid" />
+                        Nature Walk
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('ProfilesDay')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/ProfilesDay/01.jpg" alt="" class="img-fluid" />
+                        Profile's Day
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('GrandparentsDay')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/GrandparentsDay/01.jpg" alt="" class="img-fluid" />
+                        Grandparent's Day
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('GaneshChaturthi')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/GaneshChaturthi/01.jpg" alt="" class="img-fluid" />
+                        Ganesh Chaturthi
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('Dusshera')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/Dusshera/01.jpg" alt="" class="img-fluid" />
+                        Dusshera
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('Diwali')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/Diwali/01.jpg" alt="" class="img-fluid" />
+                        Diwali
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('ChildrensDay')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/ChildrensDay/01.jpg" alt="" class="img-fluid" />
+                        Children's Day
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('WorldSmileDay')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/WorldSmileDay/01.jpg" alt="" class="img-fluid" />
+                        World Smile Day
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('ThanksgivingDay')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/ThanksgivingDay/01.jpg" alt="" class="img-fluid" />
+                        Thanksgiving Day
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('SubStaff')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/Substaff/01.jpg" alt="" class="img-fluid" />
+                        Thank You Card for Substaff
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('TeachersDay')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/TeacherDay/01.jpg" alt="" class="img-fluid" />
+                        Teacher's Day
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('NumismaticExhibition')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/NumismaticExhibition/01.jpg" alt="" class="img-fluid" />
+                        Numismatic Exhibition
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('Janmashtami')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/Janmashtami/01.jpg" alt="" class="img-fluid" />
+                        Janmashtami
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('Halloween')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/Halloween/01.jpg" alt="" class="img-fluid" />
+                        Halloween
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('HindiDiwas')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/HindiDiwas/01.jpg" alt="" class="img-fluid" />
+                        Hindi Diwas
+                    </button>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('HealthCheckUp')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/HealthCheckup/01.jpg" alt="" class="img-fluid" />
+                        Health Checkup
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('WorldHeartDay')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/WorldHeartDay/01.jpg" alt="" class="img-fluid" />
+                        World Heart Day
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('YogaDay')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/YogaDay/01.jpg" alt="" class="img-fluid" />
+                        Yoga
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('Zoo')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/Zoo/01.jpg" alt="" class="img-fluid" />
+                        Zoo
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('BookDay')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/BookDay/01.jpg" alt="" class="img-fluid" />
+                        Book Day
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('RakhiCelebration')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/RakhiCelebration/01.jpg" alt="" class="img-fluid" />
+                        Rakhi Celebration
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('ParentOrientation')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/ParentOrientation/01.jpg" alt="" class="img-fluid" />
+                        Parent Orientation
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('Onam')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/Onam/01.jpg" alt="" class="img-fluid" />
+                        Onam
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('ParentsDay')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/ParentsDay/01.jpg" alt="" class="img-fluid" />
+                        Parents Day
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('Gurupoornima')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/Gurupoornima/01.jpg" alt="" class="img-fluid" />
+                        Gurupoornima
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('Friendship')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/Friendship/01.jpg" alt="" class="img-fluid" />
+                        Friendship Day
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('Independence')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/Independence/01.jpg" alt="" class="img-fluid" />
+                        Independence Day
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="vImageList">
+                    <button type="button" (click)="ShowDiv('others')">
+                        <img src="assets/img/whatsinaname/GalleryNew/417x504/Days/Day1-2/01.jpg" alt="" class="img-fluid" />
+                        Others
+                    </button>
+                </div>
+            </div>
+          </div>
+          
+
+
+
+
+        
+        <!--<div class="col-lg-12 text-center pt-30 pb-60">
+            <a [routerLink]="['/gallery']" class="vLearnMoreNew">Load More</a>
+        </div>-->
+    </div>
+    <div *ngIf="showMask" class="lightbox" animation2>
+        <span *ngIf="showCount" class="count">{{currentIndex + 1}}/{{totalImageCount}}</span>
+        <button *ngIf="previewImage" class="close-btn" (click)="onClosePreview()">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+        <button *ngIf="controls" class="pre-btn" (click)="prev(currDiv)">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+        </button>
+        <button *ngIf="controls" class="next-btn" (click)="next(currDiv)">
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </button>
+        <div *ngIf="previewImage" [@animation]="{value: 'visible'}" (@animation.done)="onAnimationEnd($event)" class="lightbox-img">
+            <img [src]="currentLightBoxImage.imageSrc" [alt]="currentLightBoxImage.imageAlt" />
+        </div>
+    </div>
+</div>
+<app-footerone></app-footerone>

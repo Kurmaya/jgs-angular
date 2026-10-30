@@ -1,0 +1,530 @@
+<!--<app-headerlanding></app-headerlanding>-->
+<!-- header-area-start  -->
+<header>
+    <div class="header-area header-transparent sticky-header" [ngClass]="{'mat-elevation-z5' : true, 'sticky' : isSticky}">
+       <div class="container-fluid">
+          <div class="header-main-wrapper">
+             <div class="row align-items-center">
+                <div class="col-xl-12 col-lg-9 col-md-9 col-sm-9 col-9">
+                   <div class="header-left d-flex align-items-center justify-content-between">
+                      <div class="header-logo">
+                         <a [routerLink]="['/admissions']" (click)="admissions()"><img src="assets/img/whatsinaname/JGSNewwLogo.png" alt="logo"></a>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-xl-5 col-lg-3 col-md-3 col-sm-3 col-3">
+                   <div class="header-right d-flex align-items-center justify-content-end">
+                      <!--<div class="menu-bar d-xl-none ml-20">
+                         <a class="side-toggle" href="javascript:void(0)">
+                            <div class="bar-icon">
+                               <span></span>
+                               <span></span>
+                               <span></span>
+                            </div>
+                         </a>
+                      </div>-->
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </header>
+ <!-- header-area-end -->
+<div *ngIf="showLanding">
+    <div id="form1"></div>
+    <app-herolanding></app-herolanding>
+    <app-admissionprograms></app-admissionprograms>
+    <section>
+      <div class="vDesk">
+        <img src="assets/img/whatsinaname/JGSClasroomDesktop.jpg" class="img-fluid" alt="" />
+      </div>
+      <div class="vMobile">
+        <img src="assets/img/whatsinaname/JGSClasroomMobile.jpg" class="img-fluid" alt="" />
+      </div>
+    </section>
+    <app-childlearn></app-childlearn>
+    <Section class="mt-30">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="text-center">
+              <h2>About <span  class="down-mark-line">IBPYP</span> Curriculum</h2>
+              <p>
+                International Baccalaureate Primary Years Program (IBPYP) is a leading international early years program for children aged 3 to 12 focusing on inquiry-based and trans-disciplinary learning. It encourages students to be active participants in their own learning through inquiries and self-reflection. It adapts quickly to the rapidly changing world and fosters strong relationships within the learning community.
+              </p>
+              <h3>IBPYP emphasises the three pillars of school life</h3>
+              <ul>
+                <li>The learner</li>
+                <li>Learning and teaching</li>
+                <li>The learning community</li>
+              </ul>
+            </div>
+            <div class="mt-30 text-center">
+              <h2><span class="down-mark-line">IB Mission</span> Statement</h2>
+              <p>
+                The International Baccalaureate® aims to develop inquiring, knowledgeable and caring young people who help to create a better and more peaceful world through intercultural understanding and respect.
+              </p>
+              <p>
+                To this end, the organisation works with schools, governments and international organisations to develop challenging programmes of international education and rigorous assessment.
+              </p>
+              <p>
+                These programmes encourage students across the world to become active, compassionate and lifelong learners who understand that other people, with their differences, can also be right.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </Section>
+    <app-fourdecadeslanding></app-fourdecadeslanding>
+    <section class="mt-30">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <div class="section-title text-center">
+              <h2>
+                  JGS <span class="down-mark-line">Accolades</span>
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <app-legacystandards></app-legacystandards>
+
+    <app-facilitiesslider></app-facilitiesslider>
+    
+    <!--<app-whyibpyplanding></app-whyibpyplanding>-->
+    <app-gallerylanding></app-gallerylanding>
+    <!--<app-admissionopenlanding></app-admissionopenlanding>-->
+    <app-testimonialslider></app-testimonialslider>
+    <app-faqlanding></app-faqlanding>
+</div>
+
+<div *ngIf="showTerms">
+    <section class="pt-140 pb-80">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div>
+                <h2>Terms &amp; Conditions</h2>
+                <p>
+                  Welcome to our website - <a href="https://www.jgschool.in/">www.jgschool.in</a> If you
+                  continue to browse and use this website, you agree to comply with
+                  and be bound by the following terms and conditions of use, which,
+                  together with our privacy policy, govern Johnson Grammar School's
+                  relationship with you concerning this website. If you disagree with
+                  any part of these terms and conditions, please do not use our
+                  website.
+                </p>
+                <p>
+                  The term 'Johnson Grammar School' or 'us' or 'we' refers to the
+                  owner of the website. The term 'you' refers to the user or viewer of
+                  our website.
+                </p>
+                <h5>
+                  The use of this website is subject to the following terms of use:
+                </h5>
+                <div class="vTermsConditionpoints">
+                  <ul>
+                    <li>
+                      The content of the pages of this website is for your general
+                      information and use only. It is subject to change without
+                      notice.
+                    </li>
+                    <li>
+                      This website uses cookies to monitor browsing preferences. If
+                      you do allow cookies to be used, the purpose of usage by us
+                      includes, but is not limited to, the following:
+                      <ul>
+                        <li>to recognise your computer when you visit the website</li>
+                        <li>
+                          to track you as you navigate the website and to enable the
+                          use of any e- commerce facilities
+                        </li>
+                        <li>to improve the website's usability</li>
+                        <li>to analyse the use of the website</li>
+                        <li>in the administration of the website</li>
+                        <li>
+                          to personalise the website for you, including targeting
+                          advertisements that may be of particular interest to you
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      Neither we nor any third parties provide any warranty or
+                      guarantee as to the accuracy, timeliness, performance,
+                      completeness or suitability of the information and materials
+                      found or offered on this website for any particular purpose. You
+                      acknowledge that such information and materials may contain
+                      inaccuracies or errors, and we expressly exclude liability for
+                      any such inaccuracies or errors to the fullest extent permitted
+                      by law.
+                    </li>
+                    <li>
+                      Your use of any information or materials on this website is
+                      entirely at your own risk, for which we shall not be liable. It
+                      shall be your responsibility to ensure that any products,
+                      services or information available through this website meet your
+                      specific requirements.
+                    </li>
+                    <li>
+                      This website contains material that is owned by or licensed to
+                      us. This material includes, but is not limited to, the design,
+                      layout, look, appearance, and graphics, but is not limited to.
+                      Reproduction is prohibited other than following the copyright
+                      notice, which forms part of these terms and conditions.
+                    </li>
+                    <li>
+                      All trademarks reproduced on this website which is not the
+                      property of or licensed to; the operators are acknowledged on
+                      the website.
+                    </li>
+                    <li>
+                      Unauthorised use of this website may give rise to a claim for
+                      damages and/or be a criminal offence.
+                    </li>
+                    <li>
+                      From time to time, this website may also include links to other
+                      websites. These links are provided for your convenience to
+                      provide further information. They do not signify that we endorse
+                      the website(s). We have no responsibility for the content of the
+                      linked website(s).
+                    </li>
+                    <li>
+                      Your use of this website and any dispute arising out of such use
+                      of the website is subject to the laws of Hyderabad, Telangana
+                      State.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+</div>
+
+<div  *ngIf="showPrivacy">
+    <section class="pt-140 pb-80">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div>
+                <h2>Privacy Policy</h2>
+                <p>
+                  Johnson Grammar School is committed to maintaining personal
+                  information accuracy, security, and privacy following applicable
+                  legislation. This Johnson Grammar School Privacy Policy is a
+                  statement of principles and guidelines concerning the protection of
+                  personal information of our users ("customers"), service providers
+                  and other individuals (i.e. members of the public) ("you"). This
+                  Privacy Policy has been prepared to affirm Johnson Grammar School's
+                  commitment to maintaining high standards of confidentiality,
+                  providing information on Johnson Grammar School's practices
+                  concerning the collection, use, and disclosure of your personal
+                  information, and complying with applicable statutory requirements.
+                </p>
+                <h5>Consent Statement</h5>
+                <p>
+                  <strong>
+                    BY SUBMITTING PERSONAL INFORMATION TO JOHNSON GRAMMAR SCHOOL OR
+                    ITS SERVICE PROVIDERS AND AGENTS, YOU AGREE THAT WE MAY COLLECT,
+                    USE AND DISCLOSE SUCH PERSONAL INFORMATION following THIS PRIVACY
+                    POLICY AND AS PERMITTED OR REQUIRED BY LAW.
+                  </strong>
+                  Subject to legal and contractual requirements, you may refuse or
+                  withdraw your consent to certain of the identified purposes at any
+                  time by choosing not to browse this website.
+                </p>
+                <h5>What Personal Information do we collect?</h5>
+                <p>
+                  For the purposes of this policy, personal information means
+                  information about an identifiable individual as defined from time to
+                  time in applicable privacy legislation. Generally speaking, personal
+                  information does not include what is considered business contact
+                  information: your name, title or position, business address,
+                  telephone number, or information prepared by persons as part of
+                  their employment. By using this website, you accept the Policy and
+                  the Terms &amp; Conditions prescribed on this website. Please note
+                  that the types of personal information that Johnson Grammar School
+                  may collect about you include, but is not limited to, your name,
+                  home address, telephone number, personal e-mail address, billing and
+                  account information, information about your business, and other
+                  information incidental to providing services to you and/or on behalf
+                  of our Partners.
+                </p>
+                <p>
+                  Johnson Grammar School may receive personal information from members
+                  or dealers to provide services to them and their customers. In these
+                  cases, Johnson Grammar School relies on the members or dealer
+                  members to ensure that such personal information is disclosed to
+                  Johnson Grammar School following applicable privacy legislation.
+                  Such personal information is used only to provide the services in
+                  question.
+                </p>
+                <p>
+                  We have a physical presence in India (in multiple cities). In the
+                  usual course of operations, we may collect personal information
+                  through visits from the public, the capture of video images on
+                  security cameras, telephone inquiries, or employment inquiries. This
+                  personal data, incidental to routine business administration, is not
+                  collected for business purposes or shared with trusted third parties
+                  except under exceptional circumstances as required by law.
+                </p>
+                <h5>Why do we collect your Personal Information?</h5>
+                <p>
+                  In general, Johnson Grammar School collects, uses and discloses
+                  personal information about our customers / Users. More specifically,
+                  we collect, use and disclose personal information for the following
+                  purposes:
+                </p>
+                <div class="vTermsConditionpoints">
+                  <ul>
+                    <li>
+                      to share Personal Information to and from third parties for
+                      marketing; better user experience;
+                    </li>
+                    <li>
+                      to develop, enhance or otherwise provide Johnson Grammar School
+                      products and services;
+                    </li>
+                    <li>
+                      to sell or otherwise provide products and services of third
+                      parties with whom Johnson Grammar School has an association;
+                    </li>
+                    <li>
+                      to distribute our newsletter and other materials to
+                      individuals/customers/users on our mail and e-mail lists,
+                      including via third parties mailing houses and e-mail service
+                      providers;
+                    </li>
+                  </ul>
+                </div>
+                <h5>To whom do we disclose your Personal Information?</h5>
+                <p>
+                  Johnson Grammar School collects only the information that is
+                  necessary for the purposes outlined in this Privacy Policy. We do
+                  not sell, share or divulge client information to unrelated third
+                  parties. From time to time, Johnson Grammar School may disclose your
+                  Personal Information to:
+                </p>
+                <p>
+                  Service providers, including an organisation or individual retained
+                  by Johnson Grammar School to perform functions on its behalfs such
+                  as marketing, surveying, data processing, document management, and
+                  office services;
+                </p>
+                <div class="vTermsConditionpoints">
+                  <ul>
+                    <li>
+                      to our insurers and regulatory agencies, insurers or others in
+                      connection with regulatory or other obligations of Johnson
+                      Grammar School in its capacity;
+                    </li>
+                    <li>
+                      to our members for their business of marketing various relative
+                      products and services;
+                    </li>
+                    <li>
+                      any related third party or parties, where you consent to such
+                      disclosure or where disclosure is required or permitted by law.
+                    </li>
+                  </ul>
+                </div>
+                <h5>Accuracy of Personal Information</h5>
+                <p>
+                  Personal information is kept as accurate, complete and up-to-date as
+                  necessary for the purposes for which it is to be used.
+                  Individuals/users are encouraged to provide updates to their
+                  personal information as changes occur to enable us to continue to
+                  provide services to them.
+                </p>
+                <h5>Where do we store and protect your Personal Information?</h5>
+                <p>
+                  Johnson Grammar School has in place standard security measures and
+                  procedures to ensure that your personal information is protected
+                  from misuse and unauthorised access. However, no data transmission
+                  over the Internet can be guaranteed to be 100% secure.
+                </p>
+                <p>
+                  Personal information, whatever its form, will be protected by
+                  security safeguards appropriate to the sensitivity of the
+                  information. The safeguards will protect personal information
+                  against loss or theft and unauthorised access, disclosure, copying,
+                  use or modification. Your Personal Information is stored in secured
+                  locations and on servers controlled by Johnson Grammar School,
+                  located either at our offices or at the offices of our service
+                  providers or on the cloud.
+                </p>
+                <h5>How do we protect your Personal Information?</h5>
+                <p>
+                  To help protect the confidentiality of your Personal Information,
+                  Johnson Grammar School employs administrative and technological
+                  safeguards appropriate to the sensitivity of your Personal
+                  Information. Where Personal Information is sent to a third party for
+                  processing, we ensure that all Personal Information is kept secure
+                  through our contracts with them. We operate secure data networks
+                  protected by industry-standard firewalls and password protection
+                  systems.
+                </p>
+                <h5>Privacy and our Website</h5>
+                <div class="vNumberList">
+                  <ul>
+                    <li>
+                      <strong>Website Use -</strong> By using this website, you
+                      consent to our Privacy Policy’s terms and allow Johnson Grammar
+                      School to process your personal information for the purpose
+                      stated above. This website might contain links to other sites.
+                      Please be aware that Johnson Grammar School is not responsible
+                      for the privacy practices of such other sites. We encourage our
+                      users to be aware when they leave our site and to read the
+                      privacy statements of these third-party sites. This privacy
+                      statement applies solely to information collected by this
+                      website. By using this site, you signify your assent to the
+                      Johnson Grammar School Privacy Policy.
+                    </li>
+                    <li>
+                      <strong>Cookies -</strong> When an individual visitor accesses
+                      the Johnson Grammar School website, we may use a browser feature
+                      called a 'cookie' to collect information such as the type of
+                      Internet browser and operating system the visitor uses, the
+                      domain name of the website from which the visitor came, date and
+                      duration of the visit, number of visits, average time spent on
+                      our website, pages viewed and number of cookies accumulated. A
+                      cookie is a small text file containing a unique identification
+                      number that identifies the visitor's browser, but not
+                      necessarily the visitor, to our computers each time our website
+                      is visited. Unless a visitor specifically informs us (e.g. by
+                      registering for an event or sending us correspondence from the
+                      website), we will delete any personal information which may be
+                      received without the use and delivery to third parties. In
+                      addition to the identified purposes described in our Privacy
+                      Policy, we may use this website information and share it with
+                      other organisations with whom we have a commercial relationship
+                      to measure the use of our website, to improve the functionality
+                      and content of the website and to facilitate usage by a visitor.
+                      Visitors can reset their browsers either to notify them when
+                      they have received a cookie or refuse to accept cookies.
+                      However, if a visitor refuses to accept cookies, he or she may
+                      not be able to use some of the features available on our
+                      website.
+                    </li>
+                    <li>
+                      <strong>Online Communications -</strong> To provide our website
+                      visitors with a service or information, visitors may voluntarily
+                      submit Personal Information to us for purposes such as asking a
+                      question, obtaining information, reviewing or downloading a
+                      publication, participating in a seminar or other event, and
+                      participating in contests and surveys. Suppose you are known to
+                      Johnson Grammar School as a registered user of online service.
+                      In that case, we may combine and store Personal Information
+                      about your use of our website and the online information you
+                      have provided with certain other online and offline information
+                      we may have collected.
+                    </li>
+                    <li>
+                      <strong>E-Mail Communications -</strong> Occasionally, we may
+                      send e-mail communications to you with information that may be
+                      useful, including information about Johnson Grammar School and
+                      its members and other third parties with whom we have a
+                      relationship. We will include simple instructions on how to
+                      unsubscribe and inform us of preferences if you decide you do
+                      not want to receive any future e-mails from Johnson Grammar
+                      School.
+                    </li>
+                    <li>
+                      <strong>Links -</strong> Our website may contain links to other
+                      websites which are provided as a convenience only. Visitors are
+                      advised that other third-party websites may have different
+                      privacy policies and practices than Johnson Grammar School, and
+                      Johnson Grammar School has no responsibility for such
+                      third-party websites.
+                    </li>
+                  </ul>
+                </div>
+                <p>
+                  There are also legal exceptions in which we will not need to obtain
+                  your consent or explain the purpose for the collection, use or
+                  disclosure of your personal information.
+                </p>
+                <h5>Opt-in and Opt-out Options</h5>
+                <p>
+                  We take the issue of unwanted commercial electronic communications
+                  seriously and therefore provide the options to help assure and
+                  enforce the opt-in and opt-out nature of the service. Consent to
+                  opt-in is implied when a member requests information on specific
+                  Johnson Grammar School opportunities or by subscribing to the
+                  e-newsletter. Each e- newsletter message we send has a simple and
+                  clear "unsubscribe" link. It gives the customer the option to be
+                  removed from the subscriber database so that they do not receive
+                  future mailings.
+                </p>
+                <h5>How may you obtain access to your Personal Information?</h5>
+                <p>
+                  Upon your written request, subject to certain exceptions, Johnson
+                  Grammar School will inform you of the existence, use, and disclosure
+                  of your Personal Information. They will give you access to that
+                  information. Access requests should be sent to our Corporate Office
+                  using the contact information below. There are a few instances where
+                  we may not be able to provide some of the personal information we
+                  hold, including:
+                </p>
+                <div class="vNumberList">
+                  <ul>
+                    <li>
+                      if it is subject to solicitor-client or litigation privilege;
+                    </li>
+                    <li>if it contains references to other individuals;</li>
+                    <li>
+                      if it cannot be disclosed for legal, security, or commercial
+                      proprietary reasons, or
+                    </li>
+                    <li>if it is prohibitively costly to provide</li>
+                  </ul>
+                </div>
+                <h5>Changes to the Privacy Policy</h5>
+                <p>
+                  Johnson Grammar School reserves the right to modify or supplement
+                  this Privacy Policy at any time. If we make a change to this Privacy
+                  Policy, we will post such changes on our website and make such
+                  revised policy.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+</div>
+
+<section class="vFooterLanding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="vFooterLandingBottom">
+                    <div>Copyright Johnson Grammar School, 2023</div>
+                    <div class="vFooterLandingMenu">
+                        <ul>
+                            <li>
+                                <a (click)="terms()">Terms and Conditions</a>
+                            </li>
+                            <li>|</li>
+                            <li>
+                                <a (click)="privacy()">Privacy Policy</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="vAdmissionBtn">
+  <a href="admissions/#form1"><img src="assets/img/whatsinaname/AdmissionButton.png" alt="admission button"/></a>
+</div>
+<!--<div class="vContactMode">
+  <a href="tel:+91 8977006304"><img src="assets/img/whatsinaname/PhoneIcon.png" alt="phone" /></a>
+  <a href="https://wa.me/918977006304?text=Hello.%20I%20would%20like%20to%20know%20more%20about%20the%20admission%20process" target="_blank"><img src="assets/img/whatsinaname/WhatsappIcon.png" alt="whatsup" /></a>
+</div>-->
+<!--<app-footerlanding></app-footerlanding>-->

@@ -1,0 +1,15 @@
+// singup style
+@import '../../../../../custom-palettes.scss';
+
+.header-logo img{
+    width: 220px;
+    padding:0.2rem;
+    // height: 60px;
+    // object-fit: contain;
+}
+.header-transparent{
+    top:0;
+}
+.active {
+    color: #eb0008 !important;
+}

@@ -1,0 +1,29 @@
+.newseducationsection {
+    padding: 60px 0;
+}
+.blogsection {
+    padding: 30px;
+    flex: 1;
+}
+.blogsection p {
+    min-height: 140px;
+}
+.course-btn {
+    height: 40px;
+    background: #2467EC;
+    padding: 0 25px;
+    display: inline-block;
+    line-height: 40px;
+    border-radius: 3px;
+    font-weight: 600;
+    color: #fff;
+}
+.course-btn:hover {
+    background:#EB0008;
+    color: #FFF;
+}
+@media screen and (max-width:767px){
+    .blogsection{
+        margin-bottom: 15px;
+    }
+}

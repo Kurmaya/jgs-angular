@@ -1,0 +1,159 @@
+// .browser-course-style
+@import '../../../../custom-palettes.scss';
+
+.browser-course-bg {
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: 0.6s;
+		object-position: center;
+	}
+}
+.browser-course-wrapper:hover .browser-course-bg img {
+	transform: scale(1.05);
+}
+.browser-course-wrapper {
+	position: relative;
+	border-radius: 5px;
+	overflow: hidden;
+}
+.browser-course-bg {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+}
+.course-height {
+	min-height: 270px;
+	padding: 50px 40px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-radius: 4px;
+	@media #{$xs} {
+		padding: 50px 25px;
+	}
+}
+.browser-course-content {
+	position: relative;
+	width: 310px;
+	z-index: 1;
+	@media #{$xs} {
+		width: 260px;
+	}
+	span {
+		margin-bottom: 10px;
+		display: block;
+		color: $theme-color;
+		font-weight: 700;
+		@media #{$xs} {
+			left: 0;
+		}
+	}
+}
+.browser-course-tittle {
+	a {
+		font-size: 24px;
+		color: $heading-color;
+		font-weight: 700;
+		line-height: 1.3;
+		margin-bottom: 30px;
+		display: block;
+	}
+}
+.vBrowserNew {
+    margin-top: 60px;
+}
+.course-height {
+    min-height: 270px;
+    padding: 50px 40px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 4px;
+}
+.browser-course-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: none;
+    transition: .6s;
+    object-position: center;
+}
+.browser-course-content {
+    position: relative;
+    width: 320px;
+    z-index: 1;
+}
+.vBCC p {
+    min-height: 100px;
+}
+.vMobPic{
+	display:none;
+}
+.vDiscPic{
+	display: block;
+}
+
+.vMobOnly{
+	display: none;
+}
+.vDeskOnly{
+	display: block;
+}
+
+@media screen and (max-width:767px){
+	.vMobPic{
+		display:block;
+	}
+	.vDiscPic{
+		display: none;
+	}
+	.course-height{
+		min-height:500px;
+	}
+	.browser-course-content {
+		width: 300px !important;
+		padding: 0 10px;
+		text-align: center;
+	}
+	.browser-course-bg img{
+		object-fit: contain;
+	}
+	.vMobHeight{
+		width: 100%;
+		height: 600px;
+	}
+	.vNewBannerMob{
+		background:url('/assets/img/whatsinaname/IBPYP-Banner-01-Mob.jpg') no-repeat;
+		background-size: contain;
+       height: 530px;
+       padding: 0;
+       width: 270px !important;
+       margin: 0 auto;
+	    padding: 20px;
+	}
+	.vNewBannerMob h3{
+		margin-top: 40px;
+	}
+	.vNewBannerMob1{
+		background:url('/assets/img/whatsinaname/IBPYP-Banner-02Mob.jpg') no-repeat;
+		background-size: contain;
+       height: 530px;
+       padding: 0;
+       width: 270px !important;
+       margin: 0 auto;
+	    padding: 20px;
+	}
+	.vNewBannerMob1 h3{
+		margin-top: 40px;
+	}
+	.vMobOnly{
+		display: block;
+		padding:0;
+	}
+	.vDeskOnly{
+		display: none;
+	}
+}

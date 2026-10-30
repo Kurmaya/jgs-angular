@@ -1,0 +1,42 @@
+.vAdmissionSection {
+    background: #1429A9;
+    padding: 20px 40px;
+    position: relative;
+}
+.vAdmissionSection .vAdmissionblock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+.vAdmissionSection .vAdmissionPic {
+    position: absolute;
+    top: -16px;
+    left: 0%;
+}
+.vAdmissionSection .vAdmissionPic img {
+    width: 300px;
+}
+.vAdmissionSection .vAdmissionblock h3, .vAdmissionSection .vAdmissionblock h4, .vAdmissionSection .vAdmissionblock p {
+    color: #fff;
+}
+.vAdmissionSection .vAdmissionblock .vApplyNow {
+    background: #EB0008;
+    padding: 8px 18px;
+    border-radius: 5px;
+    color: #fff;
+}
+@media screen and (max-width: 767px){
+    .vAdmissionSection{
+        padding: 25px 10px;
+    }
+    .vAdmissionSection .vAdmissionblock {
+        text-align: center;
+    }
+    .vAdmissionSection .vAdmissionPic {
+        position: relative;
+    }
+    .vAdmissionSection .vAdmissionPic img {
+        width: 200px;
+    }
+}

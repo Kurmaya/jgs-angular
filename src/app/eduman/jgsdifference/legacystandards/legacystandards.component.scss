@@ -1,0 +1,26 @@
+.vLegacyBlock img {
+    height: 100px;
+}
+.vLegacyBlock h2 {
+    font-size: 30px;
+}
+.vLegacyBlock h4 {
+    font-size: 17px;
+    margin: 0;
+    padding: 0 0 10px;
+}
+.vLegacyBlock .border-bottom-blue {
+    display: inline-block;
+    width: 70px;
+    height: 3px;
+    background: #00afef;
+    margin-bottom: 10px;
+}
+.vLegacyBlock p{
+    padding: 0 60px;
+}
+@media screen and (max-width:767px){
+    .vLegacyBlock p{
+        padding: 0 0;
+    }
+}

@@ -1,0 +1,39 @@
+.vFooterLanding{
+    background: #1429A9;
+    padding: 10px 0;
+}
+.vFooterLandingBottom{
+    display: flex;
+    justify-content: space-between;
+    color: #FFF;
+}
+.vFooterLandingMenu ul{
+    margin: 0;
+    padding: 0;
+}
+.vFooterLandingMenu ul li{
+    display: inline-block;
+    margin: 0 10px 0 0;
+    color: #FFF;
+}
+.vFooterLandingMenu ul li a{
+    color: #FFF;
+}
+.vContactMode{
+	position:fixed;
+	right:0;
+	top: 100px;
+	z-index: 2;
+	img{
+		width: 50px;
+		display:block;
+		margin: 10px 0 10px 0;
+	}
+}
+@media screen and (max-width:767px){
+    .vFooterLandingBottom{
+        display: block;
+        font-size: 13px;
+        text-align: center;
+    }
+}

@@ -1,0 +1,48 @@
+// homepage-2
+@import '../../../../custom-palettes.scss';
+
+.count-number {
+	span {
+		font-size: 36px;
+		font-weight: 700;
+		margin-bottom: 10px;
+		display: inline-block;
+		color: $heading-color;
+	}
+	p {
+		font-size: 18px;
+		font-weight: 600;
+		margin-bottom: 0px;
+	}
+}
+.counter-icon svg {
+	margin-bottom: 30px;
+}
+.vCounterPic {
+    height: 100px;
+    margin: 0 0 30px;
+}
+.count-number span {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: inline-block;
+    color: #141517;
+    color: #00afef;
+}
+.vJgsTitle1 {
+    color: #000;
+}
+@media screen and (max-width:767px){
+	.count-number p{
+		font-size: 14px;
+	}
+	.vCounterPic{
+		height: 80px;
+		margin: 0 0 20px;
+	}
+	.count-number span{
+		font-size: 30px;
+		margin-bottom: 5px;
+	}
+}

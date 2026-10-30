@@ -1,0 +1,49 @@
+<!-- hero-area-start -->
+<div class="vPostive">
+   <div class="hero-arera course-item-height mt-100 vBgSetting vDesktop" [style.background-image]="'url(assets/img/whatsinaname/'+imgName+'.jpg)'">
+      <div class="container vMobBread">
+         <div class="row">
+            <div class="col-xl-12 vHeadTextAlignment">
+               <div class="hero-course-1-text vBreadHead">
+                  <h2>{{breadcrumbTitle ? breadcrumbTitle : lineOne}} <br/>{{lineTwo}}</h2>
+               </div>
+               <div class="course-title-breadcrumb">
+                  <nav>
+                     <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+                        <li class="breadcrumb-item"><span>{{breadcrumbSubTitle ? breadcrumbSubTitle : "Courses"}}</span></li>
+                     </ol>
+                  </nav>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- hero-area-end -->
+  
+   <!-- Mobile hero-area-start -->
+  <div class="hero-arera course-item-height mt-100 vBgSetting vMob" [style.background-image]="'url(assets/img/whatsinaname/'+imgMobName+'.jpg)'">
+     <div class="container">
+        <div class="row">
+           <div class="col-xl-12">
+              <div class="hero-course-1-text vBreadHead">
+                 <h2>{{breadcrumbTitle ? breadcrumbTitle : lineOne}} <br/>{{lineTwo}}</h2>
+              </div>
+              <div class="course-title-breadcrumb">
+                 <nav>
+                    <ol class="breadcrumb">
+                       <li class="breadcrumb-item"><a [routerLink]="['/']">Home</a></li>
+                       <li class="breadcrumb-item"><span>{{breadcrumbSubTitle ? breadcrumbSubTitle : "Courses"}}</span></li>
+                    </ol>
+                 </nav>
+              </div>
+           </div>
+        </div>
+     </div>
+  </div>
+  <div class="vScrollDown">
+     <a  (click)="element.scrollIntoView({ behavior: 'smooth', block: 'center' })" class="ca3-scroll-down-link ca3-scroll-down-arrow" data-ca3_iconfont="ETmodules" data-ca3_icon=""></a>
+   </div>
+   <div  id="content" #element class="vDummyDiv"></div>
+</div>
+<!-- hero-area-end -->

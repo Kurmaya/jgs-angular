@@ -1,0 +1,113 @@
+.vWrapper{
+    box-shadow: 0px 20px 40px rgb(24 44 74 / 5%);
+    border-radius: 10px;
+    position: relative;
+    cursor:pointer;
+}
+.vImageList{
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+.vWrapper:hover .vImageList img {
+    transform: scale3d(1.05, 1.05, 1.05);
+}
+.lightbox{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    position:fixed;
+    top:0;
+    left: 0;
+    width:100%;
+    height:100%;
+    background-color:rgba(0,0,0, .85);
+    z-index: 999;
+}
+.count{
+    position:absolute;
+    top:0;
+    left:0;
+    width: 7%;
+    height:10%;
+    color:#FFF;
+    opacity:0.7;
+    font-size:18px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 5px;
+}
+.close-btn{
+    position:absolute;
+    top:0;
+    right:0;
+    cursor:pointer;
+    color:#FFF;
+    width: 7%;
+    height:10%;
+    z-index: 2;
+}
+.pre-btn{
+    position:absolute;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    width: 5%;
+    height:5%;
+    padding:0;
+    color:#FFF;
+    text-align: center;
+    left:0;
+    background: #000;
+}
+.next-btn{
+    position:absolute;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    width: 5%;
+    height:5%;
+    padding:0;
+    color:#FFF;
+    text-align: center;
+    right:0;
+    background: #000;
+}
+.lightbox-img img{
+    width:100%;
+    border-radius: .35rem;
+}
+.vLearnMoreNew {
+    background: #EB0008;
+    padding: 8px 18px;
+    border-radius: 5px;
+    color: #fff;
+    text-align: center;
+    margin: 30px 0 0;
+    display: inline-block;
+}
+.vLearnMoreNew:hover {
+    background: #2467EC;
+    color: #fff;
+}
+.vBackBtn{
+    background: #1429A9;
+    padding: 3px 15px;
+    color:#FFF;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width:767px){
+    .next-btn{
+        width: 10%;
+        height:5%;
+    }
+    .pre-btn{
+        width: 10%;
+        height:5%;
+    }
+}

@@ -1,0 +1,10 @@
+.accordion{
+    --bs-accordion-border-width:0;
+}
+.accordion-button{
+    background-color: #DBF3FF;
+    margin-bottom: 5px;
+}
+.accordion-button:not(.collapsed){
+    background-color: #DBF3FF;
+}

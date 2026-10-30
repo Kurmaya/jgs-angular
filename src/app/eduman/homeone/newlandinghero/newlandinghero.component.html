@@ -1,0 +1,47 @@
+<!-- hero-area-sart Main-Banner.jpg-->
+<section class="slider-area hero-height position-relative fix vHeroBg" [style.background-image]="'url(assets/img/whatsinaname/Artboard-1-1.png)'">
+    
+    <div class="container mobi">
+       <div class="row">
+          <div class="col-xl-6 col-lg-6 col-md-6">
+             <div class="hero-text vPt-95">
+                <h2>A World of <span class="down-mark-line-3">Learning.</span><br/>
+                  A Life of <span class="down-mark-line-3">Possiblities.</span>
+               </h2>
+                <!-- <p>A balanced approach to nurture the mind, body & soul.</p> -->
+                <div class="vAdmissionUnit vNoMobNew">
+                  <!-- <img src="assets/img/whatsinaname/AdmissionNewwIcon.png" alt="Admission Unit"> -->
+                </div>
+                <div class="hero-btn">
+                   <!-- <a class="edu-btn" [routerLink]="['/about']">Know More</a> -->
+                   <a
+  class="edu-btn vAdbtm ml-20"
+  href="javascript:void(0)"
+  (click)="admissionForm.openAdmissionModal()">
+  Admissions
+</a>
+                </div>
+                
+                
+             </div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6">
+             <div class="hero-right position-relative">
+                <img data-depth="0.2" class="shape shape-1" src="assets/img/shape/shape-01.png" alt="shape">
+                <img data-depth="0.2" class="shape-2" src="assets/img/shape/shape-02.png" alt="shape">
+             </div>
+          </div>
+       </div>
+    </div>
+    <!-- <div class="vGirl">
+      <img src="assets/img/whatsinaname/Girl.png" class="img-fluid" alt="Admission Unit">
+    </div> -->
+   
+    <div class="vScrollDown1">
+      <a  (click)="element.scrollIntoView({ behavior: 'smooth', block: 'center' })" class="ca3-scroll-down-link ca3-scroll-down-arrow" data-ca3_iconfont="ETmodules" data-ca3_icon=""></a>
+    </div>
+    
+ </section>
+ <div  id="content" #element class="vDummyDiv1"></div>
+ <app-enquiry-form #admissionForm></app-enquiry-form>
+ <!-- slider-area-end -->

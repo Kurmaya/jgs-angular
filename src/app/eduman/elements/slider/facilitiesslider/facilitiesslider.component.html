@@ -1,0 +1,196 @@
+<!-- testimonial-area-start -->
+<div class="testimonial-area">
+    <div class="container">
+       <div class="row">
+          <div class="col-lg-6 offset-lg-3">
+             <div class="section-title text-center mb-55">
+                <h2><span class="down-mark-line">Facilities</span></h2>
+                <!--<p>Here’s what the parents say about us</p>-->
+             </div>
+          </div>
+       </div>
+       <!-- Slider main container -->
+       <div class="testimonial-active">
+          <div class="swiper-wrapper">
+            <swiper class="mySwiper"
+            [slidesPerView]="1"
+            [spaceBetween]="30"
+            [loop]="true"
+            [autoplay]="{
+                delay: 2500,
+                disableOnInteraction: false
+            }"
+            [pagination]="{
+              clickable: true,
+              el: '.testimonial-pagination'
+            }"
+            
+            [breakpoints]="{
+                '320': {
+                  slidesPerView: 1,
+                  spaceBetween: 20
+                },
+                '480': {
+                    slidesPerView: 1,
+                    spaceBetween: 30
+                  },
+                '640': {
+                  slidesPerView: 1,
+                  spaceBetween: 30
+                },
+                '991': {
+                  slidesPerView: 2,
+                  spaceBetween: 30
+                },
+                '1200': {
+                  slidesPerView: 3,
+                  spaceBetween: 30
+                },
+                '1400': {
+                  slidesPerView: 3,
+                  spaceBetween: 30
+                }
+              }"
+            >
+
+            <ng-template swiperSlide>
+                <div class="testimonial-items position-relative vTestimonialItems">
+                   <div class="testimonial-header  vTestimonialHeader">
+                      <div class="testimonial-img vFacImag">
+                         <img src="assets/img/whatsinaname/facilities-landing/01.png" width="100" alt="image not found">
+                      </div>
+                      <div class="testimonial-title">
+                         <h4>24 x 7 CCTV-Secured Campus</h4>
+                         <!--<span>Student</span>-->
+                      </div>
+                   </div>
+                   <!-- <div class="testimoni-quotes">
+                      <img src="assets/img/testimonial/quotes.png" alt="image not found">
+
+                   </div> -->
+                  
+                   
+                </div>
+            </ng-template>
+             <ng-template swiperSlide>
+                <div class="testimonial-items position-relative vTestimonialItems">
+                   <div class="testimonial-header  vTestimonialHeader">
+                      <div class="testimonial-img vFacImag">
+                         <img src="assets/img/whatsinaname/facilities-landing/02.png" width="100" alt="image not found">
+                      </div>
+                      <div class="testimonial-title">
+                         <h4>24 x 7 Security Guards</h4>
+                      </div>
+                   </div>
+                   
+                </div>
+            </ng-template>
+             <ng-template swiperSlide>
+                <div class="testimonial-items position-relative vTestimonialItems">
+                   <div class="testimonial-header vTestimonialHeader">
+                      <div class="testimonial-img vFacImag">
+                         <img src="assets/img/whatsinaname/facilities-landing/03.png" width="100" alt="image not found">
+                      </div>
+                      <div class="testimonial-title">
+                         <h4>Annual Health Checkups</h4>
+                      </div>
+                   </div>
+                  
+                </div>
+            </ng-template>
+            <ng-template swiperSlide>
+               <div class="testimonial-items position-relative vTestimonialItems">
+                  <div class="testimonial-header vTestimonialHeader">
+                     <div class="testimonial-img vFacImag">
+                        <img src="assets/img/whatsinaname/facilities-landing/OnCallDocIcon.png" width="100" alt="image not found">
+                     </div>
+                     <div class="testimonial-title">
+                        <h4>On-Call Doctor</h4>
+                     </div>
+                  </div>
+                 
+               </div>
+           </ng-template>
+           <ng-template swiperSlide>
+            <div class="testimonial-items position-relative vTestimonialItems">
+               <div class="testimonial-header vTestimonialHeader">
+                  <div class="testimonial-img vFacImag">
+                     <img src="assets/img/whatsinaname/facilities-landing/FullTimeIcon.png" width="100" alt="image not found">
+                  </div>
+                  <div class="testimonial-title">
+                     <h4>Full-Time Nurse</h4>
+                  </div>
+               </div>
+               
+            </div>
+        </ng-template>
+        <ng-template swiperSlide>
+         <div class="testimonial-items position-relative vTestimonialItems">
+            <div class="testimonial-header vTestimonialHeader">
+               <div class="testimonial-img vFacImag">
+                  <img src="assets/img/whatsinaname/facilities-landing/04.png" width="100" alt="image not found">
+               </div>
+               <div class="testimonial-title">
+                  <h4>Safe & Comfortable Transportation</h4>
+               </div>
+            </div>
+            
+         </div>
+     </ng-template>
+     <ng-template swiperSlide>
+      <div class="testimonial-items position-relative vTestimonialItems">
+         <div class="testimonial-header vTestimonialHeader">
+            <div class="testimonial-img vFacImag">
+               <img src="assets/img/whatsinaname/facilities-landing/05.png" width="100" alt="image not found">
+            </div>
+            <div class="testimonial-title">
+               <h4>Central Amphitheatre</h4>
+            </div>
+         </div>
+         
+      </div>
+  </ng-template>
+  <ng-template swiperSlide>
+   <div class="testimonial-items position-relative vTestimonialItems">
+      <div class="testimonial-header vTestimonialHeader">
+         <div class="testimonial-img vFacImag">
+            <img src="assets/img/whatsinaname/facilities-landing/06.png" width="100" alt="image not found">
+         </div>
+         <div class="testimonial-title">
+            <h4>World-Class Library</h4>
+         </div>
+      </div>
+   </div>
+</ng-template>
+<ng-template swiperSlide>
+   <div class="testimonial-items position-relative vTestimonialItems">
+      <div class="testimonial-header vTestimonialHeader">
+         <div class="testimonial-img vFacImag">
+            <img src="assets/img/whatsinaname/facilities-landing/07.png" width="100" alt="image not found">
+         </div>
+         <div class="testimonial-title">
+            <h4>Safe Kids Playzone </h4>
+         </div>
+      </div>
+   </div>
+</ng-template>
+<ng-template swiperSlide>
+   <div class="testimonial-items vTestimonialItems position-relative">
+      <div class="testimonial-header vTestimonialHeader">
+         <div class="testimonial-img vFacImag">
+            <img src="assets/img/whatsinaname/facilities-landing/08.png" width="100" alt="image not found">
+         </div>
+         <div class="testimonial-title">
+            <h4>Digital Classrooms</h4>
+         </div>
+      </div>
+   </div>
+</ng-template>
+
+            </swiper>
+          </div>
+          <div class="testimonial-pagination text-center"></div>
+       </div>
+    </div>
+ </div>
+ <!-- testimonial-area-end -->

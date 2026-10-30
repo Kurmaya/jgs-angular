@@ -1,0 +1,116 @@
+.hero-arera.course-item-height{
+   min-height: 265px;
+   height: 0;
+   padding-top: 20%;
+}
+.vDesktop {
+    display: flex!important;
+}
+.vBgSetting {
+    background-repeat: no-repeat!important;
+    //background-size: cover!important;
+    background-size: 100% auto !important;
+    background-position: center top;
+    width: 100%;
+}
+.hero-arera.course-item-height::before{
+    background: transparent;
+}
+.facilities-page .vBreadHead h2,.facilities-page .breadcrumb-item a,.facilities-page .breadcrumb-item span{
+    // font-size: 40px;
+    color: #fff!important;
+}
+.vBreadHead h2 {
+    font-size: 40px;
+    color: #000;
+}
+.breadcrumb-item a{
+    color: #000;
+}
+.breadcrumb-item span{
+    color: #000;
+}
+.breadcrumb-item + .breadcrumb-item::before{
+    color: #000;
+}
+.vMob {
+    display: none!important;
+}
+.vPostive{
+    position:relative;
+}
+.vScrollDown{
+	position:absolute;
+    bottom:60px;
+    right:30px;
+    z-index:999;
+}
+.vDummyDiv{
+    width: 100%;
+    position:absolute;
+    bottom: -35vh;
+}
+.vHeadTextAlignment{
+    position: absolute;
+    top: 15%;
+    width: auto;
+}
+@media screen and (max-width: 767px){
+    .hero-arera.course-item-height {
+        height: 480px;
+        align-items: baseline;
+        padding-top: 10%;
+    }
+    .vMob {
+        display: flex!important;
+    }
+    .vDesktop {
+        display: none!important;
+    }
+    .vBreadHead h2 {
+        font-size: 25px;
+        margin: 15px 0 0 0;
+    }
+    .course-title-breadcrumb .breadcrumb-item{
+        font-size: 15px;
+    }
+    .vDummyDiv{
+        bottom: -43vh;
+    }
+    .vMobBread{
+        position: absolute;
+        bottom: 30px;
+    }
+}
+@media (min-width:768px) and (max-width:860px){
+    .vBreadHead h2{
+        font-size: 28px;
+    }
+    .hero-arera.course-item-height{
+        min-height: 145px;
+    }
+}
+@media (min-width:861px) and (max-width:930px){
+    .vBreadHead h2{
+        font-size: 28px;
+    }
+    .hero-arera.course-item-height{
+        min-height: 165px;
+    }
+}
+@media (min-width:931px) and (max-width:1090px){
+    .vBreadHead h2{
+        font-size: 28px;
+    }
+    .hero-arera.course-item-height{
+        min-height: 195px;
+    }
+}
+@media (min-width:1091px) and (max-width:1399px){
+    .vBreadHead h2{
+        font-size: 28px;
+    }
+    .hero-arera.course-item-height{
+        min-height: 195px;
+    }
+}

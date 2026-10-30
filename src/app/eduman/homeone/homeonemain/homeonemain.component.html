@@ -1,0 +1,29 @@
+<main>
+    <div class="classA {{loader ? 'vSpinner' : ''}}">
+        <div class="spinner-border" role="status"  *ngIf="loader">
+            <span class="sr-only">Loading...</span>
+          </div>
+    </div>
+    <div *ngIf="!loader">
+        <app-headerone></app-headerone>
+        <app-hero></app-hero>
+        <app-fourdecades></app-fourdecades>
+        <app-customslider></app-customslider>
+        <app-educationsection></app-educationsection>
+        <app-aboutcounter></app-aboutcounter>
+        <app-whyibpyp></app-whyibpyp>
+        <app-bannersection></app-bannersection>
+        <!--<app-coursetab></app-coursetab>-->
+        <app-facilitiesslider></app-facilitiesslider>
+        <app-galleryhome></app-galleryhome>
+        <!-- <app-admissionopen></app-admissionopen> -->
+        <!--<app-categories></app-categories>-->
+        <!--<app-featuresection></app-featuresection>-->
+        <!--<app-studentsection></app-studentsection>-->
+        <app-testimonialslider></app-testimonialslider>
+        <!--<app-brandslider></app-brandslider>-->
+        <!-- hidden replace with blog <app-newseducation></app-newseducation>-->
+        <app-bloghome></app-bloghome>     
+        <app-footerone></app-footerone>
+    </div>
+</main>

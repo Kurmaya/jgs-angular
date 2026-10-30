@@ -1,0 +1,480 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="https://cdnimages.myclassboard.com/material-assets/css/sweetalert.css" media="screen" />
+<link href="https://cdndatastatic.myclassboard.com/font-awesome/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js"></script>
+<script type="text/javascript" src="https://cdnimages.myclassboard.com/material-assets/js/sweetalert.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+<style>
+    .well{
+        background:transparent;
+        border:none;
+        border-radius:0;
+        box-shadow:none;
+    }
+    .form-control{
+        height:44px;
+    }
+    .vBtn{
+        background:#1429A9;
+        padding: 10px 0;
+        border:none;
+    }
+    .vBtn:hover{
+        background:#eb0008;
+    }
+</style>
+
+
+
+<div class="well ad_home_form col-md-12">
+    <!--<img id="images" style="display:none;" />
+    <h5 id="organisationname" style="display:none;"> </h5>-->
+
+    <input type="hidden" id="DBName" />
+
+    <input type="hidden" id="OrgID" />
+
+    <form id="myfrom">
+
+
+        <div class="containter">
+
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="row" style="text-align:left;">
+
+                        <div class="col-md-12">
+        
+                            <div class="input-field col-md-12">
+                                <div class="form-group">
+                                    <select class="form-control" id="acdyr" name="acdyr">
+                                        <option value="0">-Select Academic Years--</option>
+        
+                                    </select>
+        
+                                </div>
+                            </div>
+        
+                            <div class="input-field col-md-12">
+                                <div class="form-group">
+                                    <select class="form-control" id="ddlBranch" name="ddlBranch" required="">
+                                        <option value="0">-Select Branch-</option>
+                                    </select>
+        
+                                </div>
+                            </div>
+        
+        
+        
+                            <div class="input-field col-md-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control validate" id="s_name" placeholder="Name of the Student" required="">
+        
+        
+                                </div>
+                            </div>
+        
+                        </div>
+        
+        
+                        <div class="col-md-12">
+                            <div class="input-field col-md-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control validate" id="f_name" placeholder="Enter Parent Name" required="">
+        
+                                </div>
+                            </div>
+        
+                            <div class="input-field col-md-12">
+                                <div class="form-group">
+        
+                                    <input type="text" class="form-control validate" id="email" placeholder="Enter Parent Email ID" required="">
+        
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="col-md-12">
+                            <div class="input-field col-md-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control validate" id="f_number" name="mobile" pattern="[0-9]{10}" maxlength="10" placeholder="Parent Mobile Number" required="">
+        
+                                </div>
+                            </div>
+        
+        
+                            <div class="input-field col-md-12">
+                                <div class="form-group">
+                                    <div class='input-group date'>
+                                        <input placeholder="Date of Birth" id="datetimepicker" type="text" class="form-control" required="" style="margin-bottom: 0px !important;">
+                                        <span class="input-group-addon">
+                                            <span><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+        
+        
+                        </div>
+        
+                        <div class="col-md-12">
+                            <div class="input-field col-md-12">
+                                <div class="form-group">
+                                    <select class="form-control" id="classlevel" name="classlevel" required="">
+                                        <option value="0">-Select Class-</option>
+                                    </select>
+                                </div>
+                            </div>
+        
+                            <div class="input-field col-md-12">
+                                <div class="form-group">
+                                    <select class="form-control" id="source" name="source"> </select>
+                                </div>
+                            </div>
+                        </div>
+        
+        
+        
+                    </div>
+        
+        
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="input-field col-md-12">
+                                <div class="form-group">
+                                    <p><button id="submitform" type="button" class="waves-effect waves-light btn-large vBtn" style="width:100%; color:#fff; font-size:14px;">Submit</button></p>
+                                </div>
+                            </div>
+        
+                        </div>
+        
+        
+        
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+
+</div>
+
+
+<script type="text/javascript">
+
+    function onlyNos(e, t) {
+        try {
+            if (window.event) {
+                var charCode = window.event.keyCode;
+            }
+            else if (e) {
+                var charCode = e.which;
+            }
+            else { return true; }
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+        catch (err) {
+            alert(err.Description);
+        }
+    }
+
+    function store() {
+        var OrganisationID = $('#OrgID').val();
+        var AcademicYearID = $('#acdyr').val();
+        var Class = $('#classlevel :selected').text();
+        var ClassID = $('#classlevel :selected').val();
+        var BranchID = $('#ddlBranch :selected').val();
+        var AssignedBranchID = $('#ddlBranch :selected').val();
+        var BranchName = $('#ddlBranch :selected').text();
+        var StudentName = $('#s_name').val();
+        var FatherName = $('#f_name').val();
+        var FatherEmailID = $('#email').val();
+        var FatherMobile = $('#f_number').val();
+        var DOB = $('#datetimepicker').val();
+        var QueryContactSourceID = $('#source :selected').val();
+        var QueryContactSource = $('#source :selected').text();
+        var emailhtml = $('#email_temp').html();
+        var postdata = {
+            "OrganisationID": 8, "BranchID": BranchID, "AcademicYearID": AcademicYearID, "DOB": DOB,
+            "StudentName": StudentName, "FatherName": FatherName, "FatherMobile": FatherMobile, "FatherEmailID": FatherEmailID,
+            "Class": Class, "ClassID": ClassID, "QueryContactSource": QueryContactSource, "EmailBody": emailhtml
+
+        };
+
+
+        $.ajax({
+            url: 'https://api.myclassboard.com/api/EnquiryService/SaveEnquiryDetails',
+            type: 'POST',
+            data: postdata,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", "H16h30jrM9v4gacv3P8PsnQMTOOBcVBos50cTUBWHo0=");
+                xhr.setRequestHeader("api_key", "msl786-0189-ias-gm19-marmoavis");
+            },
+            dataType: 'json',
+            success: function (result) {
+                swal({ title: result, type: "success" },
+                    function (isConfirm) {
+                        //window.location.href = document.referrer;
+                        location.reload();
+                    });
+
+
+            },
+            complete: function () {
+
+            },
+            failure: function (errMsg) {
+                swal({ title: errMsg, type: "warning" });
+            }
+
+        });
+
+
+    }
+
+    jQuery(document).ready(function ($) {
+
+        PopulateOrgLogo();
+
+        $("#datetimepicker").change(function () {
+            populateClasses();
+        });
+
+        $('#submitform').click(function () {
+
+            $('form#metalret-form :input[required]').each(function () {
+                if ($(this).val().trim() == "") {
+
+                }
+            });
+
+
+            var Class = $('#classlevel :selected').val();
+            var BranchID = $('#ddlBranch').val();
+            var FatherMobile = $('#f_number').val();
+            var FatherName = $('#f_name').val();
+            var StudentName = $('#s_name').val();
+            var FatherEmailID = $('#email').val();
+            var AcademicYearID = $('#acdyr :selected').val();
+            var QueryContactSource = $('#source :selected').val();
+            if (
+                FatherMobile != "" && FatherMobile != null
+                && FatherName != "" && FatherName != null
+                && StudentName != "" && StudentName != null
+                && FatherEmailID != "" && FatherEmailID != null
+                && AcademicYearID > 0
+                && BranchID > 0
+                && QueryContactSource > 0
+                && Class > 0) {
+                store();
+            }
+            else {
+                swal({
+                    title: "Please fill the details",
+
+                    type: "warning",
+                });
+            }
+
+        });
+
+
+
+    });
+
+    function reset() {
+        $('#f_name').val('');
+
+    }
+
+    function PopulateOrgLogo() {
+
+        urlref = document.referrer.split('/')[2];
+
+        $.ajax({
+            url: 'https://api.myclassboard.com/api/EnquiryService/GetOrgInfoByWebURL',
+            type: 'GET',
+            data: { UrlReferrer: "www.jgsibpyp.org" || urlref == "jgsibpyp.org" },
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", "H16h30jrM9v4gacv3P8PsnQMTOOBcVBos50cTUBWHo0=");
+                xhr.setRequestHeader("api_key", "msl786-0189-ias-gm19-marmoavis");
+            },
+            success: function (result) {
+                var DBName = result.DBName;
+                var OrgID = result.OrganisationID;
+
+
+                $('#DBName').val(DBName);
+                $('#OrgID').val(OrgID);
+
+                var OrganisationName = result.OrganisationName;
+                var ImageURL = result.ImageURL;
+
+                $('#images').attr('src', ImageURL);
+                $('#organisationname').text(OrganisationName);
+
+                fnmastersacd(DBName, OrgID);
+
+            }
+
+        });
+    }
+
+    function fnmastersacd(DBName, OrgID) {
+        var OrgID = 8;
+        var DB = $('#DBName').val();
+        $.ajax({
+            url: 'https://api.myclassboard.com/api/EnquiryService/GetMastersForEnquiry',
+            type: 'GET',
+            data: { OrganisationID: OrgID },
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", "H16h30jrM9v4gacv3P8PsnQMTOOBcVBos50cTUBWHo0=");
+                xhr.setRequestHeader("api_key", "msl786-0189-ias-gm19-marmoavis");
+            },
+            success: function (result) {
+                var Academic = $('#acdyr'); Academic.empty();
+                var markup = "";
+                for (var b = 0; b < result.AdmissionAcademicYear.length; b++) {
+                    markup += "<option value=" + result.AdmissionAcademicYear[b].AcademicYearID + ">" + result.AdmissionAcademicYear[b].AcademicYear1 + "</option>";
+                    $("#acdyrlabel").html(result.AdmissionAcademicYear[b].AcademicYear1);
+                }
+                $('#acdyr').html(markup).show();
+                $('#acdyr').change();
+
+                //Branches
+                var Branch = $('#ddlBranch'); Branch.empty();
+                var markup = "";
+                markup += "<option value=''>-Select Branch-</option>"
+                for (var a = 0; a < result.Branches.length; a++) {
+                    markup += "<option value=" + result.Branches[a].BranchID + ">" + result.Branches[a].BranchName + "</option>";
+                }
+                $('#ddlBranch').html(markup).show();
+
+                //source
+                var source = $('#source'); source.empty();
+                var markup = "";
+                markup += "<option value=''>-Select Source-</option>"
+                for (var x = 0; x < result.QueryContactSources.length; x++) {
+                    markup += "<option value=" + result.QueryContactSources[x].QueryContactSourceID + ">" + result.QueryContactSources[x].SourceOfInformation + "</option>";
+                }
+                $('#source').html(markup).show();
+            },
+            complete: function () {
+
+            }
+        });
+
+    }
+
+
+
+
+    function populateClasses(branchID) {
+        var DBName = $('#DBName').val();
+        var OrganisationID = 8;
+        var AcdYrID = $('#acdyr :selected').val();
+        var branchID = $('#ddlBranch :selected').val();
+        $.ajax({
+            url: 'https://api.myclassboard.com/api/EnquiryService/GetBranchAcademicYearClassesForEnquiry',
+            type: 'GET',
+            data: {
+                BranchID: branchID, AcademicYearID: AcdYrID
+            },
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", "H16h30jrM9v4gacv3P8PsnQMTOOBcVBos50cTUBWHo0=");
+                xhr.setRequestHeader("api_key", "msl786-0189-ias-gm19-marmoavis");
+            },
+            success: function (result) {
+                var Branch = $('#classlevel'); Branch.empty();
+                var markup = "";
+                markup += "<option value='' selected>-Select Class-</option>"
+                for (var c = 0; c < result.Classes.length; c++) {
+                    markup += "<option value=" + result.Classes[c].ClassID + ">" + result.Classes[c].ClassName + "</option>";
+                }
+                $('#classlevel').html(markup).show();
+
+
+            },
+
+        });
+    }
+
+
+    function DateFormat(date) {
+        var today = new Date(date);
+        var dd = today.getDate();
+
+        var mm = today.getMonth() + 1;
+        var yyyy = today.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+        today = mm + '-' + dd + '-' + yyyy;
+        return today;
+    }
+
+</script>
+
+<script type="text/javascript">
+    $('#datetimepicker').datepicker({
+        format: 'dd M yyyy'
+    });
+
+</script>
+
+<script type="text/javascript">
+    $("#email").change(function () {
+
+        var id = $("#email").val();
+        var res = id.split('@');
+        if (res.length > 1) {
+            if (res[1] == "") {
+                alert("Please Enter Valid Email");
+            }
+        } else {
+            swal({
+                title: "Please Enter Valid Email",
+
+                type: "warning",
+            });
+            $("#email").val('');
+        }
+
+    })
+    $("#f_number").change(function () {
+        var id = $("#f_number").val();
+        if (id.length < 10) {
+            swal({
+                title: "Please enter valid mobile number",
+
+                type: "warning",
+            });
+            $("#f_number").val('');
+
+        }
+
+    })
+    $('input[name=mobile]').keydown(function (e) {
+        if (e.shiftKey || e.ctrlKey || e.altKey) {
+            e.preventDefault();
+        } else {
+            var key = e.keyCode;
+            if (!((key == 8) || (key == 46) || (key == 9) || (key >= 35 && key <= 40) || (key >= 48 && key <= 57) || (key >= 96 && key <= 105))) {
+                e.preventDefault();
+            }
+        }
+    });
+</script>
+
+

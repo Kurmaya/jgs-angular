@@ -1,0 +1,326 @@
+
+<div
+  class="admission-modal-backdrop"
+  *ngIf="showAdmissionModal"
+  (click)="onBackdropClick()">
+
+  <div
+    class="admission-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="admissionModalTitle"
+    (click)="$event.stopPropagation()">
+
+    <!-- Close button -->
+    <button
+      type="button"
+      class="modal-close"
+      aria-label="Close admission enquiry"
+      [disabled]="submitting"
+      (click)="closeAdmissionModal()">
+      &times;
+    </button>
+
+    <!-- Header -->
+    <div class="admission-heading">
+      <span class="eyebrow">JOHNSON GRAMMAR SCHOOL</span>
+
+      <h2 id="admissionModalTitle">
+        Admission Enquiry
+      </h2>
+
+      <p>
+        Begin your child's journey with us.
+      </p>
+    </div>
+
+    <!-- Success status -->
+    <div
+      *ngIf="submitted"
+      class="success-message"
+      role="status">
+
+      <div class="status-icon">&#10003;</div>
+
+      <h3>Thank you for your enquiry!</h3>
+
+      <p>
+        Your enquiry has been submitted.
+        Please contact the school to confirm receipt.
+      </p>
+
+      <button
+        type="button"
+        class="submit-btn"
+        (click)="startAnotherEnquiry()">
+
+        Submit Another Enquiry
+      </button>
+    </div>
+
+    <!-- Error status -->
+    <div
+      *ngIf="errorMessage"
+      class="error-message"
+      role="alert">
+
+      {{ errorMessage }}
+    </div>
+
+    <!-- Admission form -->
+    <form
+      *ngIf="!submitted"
+      [formGroup]="form"
+      (ngSubmit)="submitForm()"
+      novalidate>
+
+      <div class="form-grid">
+
+        <!-- Student Name -->
+        <div class="form-group">
+          <label for="studentName">
+            Student Name <span>*</span>
+          </label>
+
+          <input
+            id="studentName"
+            type="text"
+            formControlName="studentName"
+            placeholder="Enter student's full name"
+            autocomplete="off"
+            [class.invalid-field]="
+              form.controls.studentName.touched &&
+              form.controls.studentName.invalid
+            ">
+
+          <small
+            *ngIf="
+              form.controls.studentName.touched &&
+              form.controls.studentName.invalid
+            ">
+
+            Student name is required.
+          </small>
+        </div>
+
+        <!-- Student Grade -->
+        <div class="form-group">
+          <label for="studentGrade">
+            Student Grade <span>*</span>
+          </label>
+
+          <select
+            id="studentGrade"
+            formControlName="studentGrade"
+            [class.invalid-field]="
+              form.controls.studentGrade.touched &&
+              form.controls.studentGrade.invalid
+            ">
+
+            <option value="">Select grade</option>
+
+            <option
+              *ngFor="let grade of grades"
+              [value]="grade">
+
+              {{ grade }}
+            </option>
+          </select>
+
+          <small
+            *ngIf="
+              form.controls.studentGrade.touched &&
+              form.controls.studentGrade.invalid
+            ">
+
+            Please select a student grade.
+          </small>
+        </div>
+
+        <!-- Mother's Name -->
+        <div class="form-group">
+          <label for="motherName">
+            Mother's Name <span>*</span>
+          </label>
+
+          <input
+            id="motherName"
+            type="text"
+            formControlName="motherName"
+            placeholder="Enter mother's full name"
+            autocomplete="off"
+            [class.invalid-field]="
+              form.controls.motherName.touched &&
+              form.controls.motherName.invalid
+            ">
+
+          <small
+            *ngIf="
+              form.controls.motherName.touched &&
+              form.controls.motherName.invalid
+            ">
+
+            Mother's name is required.
+          </small>
+        </div>
+
+        <!-- Father's Name -->
+        <div class="form-group">
+          <label for="fatherName">
+            Father's Name <span>*</span>
+          </label>
+
+          <input
+            id="fatherName"
+            type="text"
+            formControlName="fatherName"
+            placeholder="Enter father's full name"
+            autocomplete="off"
+            [class.invalid-field]="
+              form.controls.fatherName.touched &&
+              form.controls.fatherName.invalid
+            ">
+
+          <small
+            *ngIf="
+              form.controls.fatherName.touched &&
+              form.controls.fatherName.invalid
+            ">
+
+            Father's name is required.
+          </small>
+        </div>
+
+<!-- Phone Number -->
+<div class="form-group">
+  <label for="phoneNumber">
+    Phone Number <span>*</span>
+  </label>
+
+  <input
+    id="phoneNumber"
+    type="tel"
+    formControlName="phoneNumber"
+    placeholder="Enter 10-digit mobile number"
+    autocomplete="tel"
+    inputmode="numeric"
+    maxlength="10"
+    [class.invalid-field]="
+      form.controls.phoneNumber.touched &&
+      form.controls.phoneNumber.invalid
+    ">
+
+  <small
+    *ngIf="
+      form.controls.phoneNumber.touched &&
+      form.controls.phoneNumber.invalid
+    ">
+    Enter a valid 10-digit Indian mobile number.
+  </small>
+</div>
+
+<!-- Email Address -->
+<div class="form-group">
+  <label for="emailAddress">
+    Email Address <span>*</span>
+  </label>
+
+  <input
+    id="emailAddress"
+    type="email"
+    formControlName="emailAddress"
+    placeholder="Enter email address"
+    autocomplete="email"
+    [class.invalid-field]="
+      form.controls.emailAddress.touched &&
+      form.controls.emailAddress.invalid
+    ">
+
+  <small
+    *ngIf="
+      form.controls.emailAddress.touched &&
+      form.controls.emailAddress.invalid
+    ">
+    Enter a valid email address.
+  </small>
+</div>
+
+        <!-- Academic Year -->
+        <div class="form-group">
+          <label for="academicYear">
+            Academic Year
+          </label>
+
+          <input
+            id="academicYear"
+            type="text"
+            formControlName="academicYear"
+            readonly>
+        </div>
+
+        <!-- School Location -->
+        <div class="form-group">
+          <label for="location">
+            School Location <span>*</span>
+          </label>
+
+          <select
+            id="location"
+            formControlName="location"
+            [class.invalid-field]="
+              form.controls.location.touched &&
+              form.controls.location.invalid
+            ">
+
+            <option value="">Select location</option>
+            <option value="Kokapet">Kokapet</option>
+            <option value="Mokila">Mokila</option>
+          </select>
+
+          <small
+            *ngIf="
+              form.controls.location.touched &&
+              form.controls.location.invalid
+            ">
+
+            Please select a school location.
+          </small>
+        </div>
+
+      </div>
+<!-- reCAPTCHA -->
+ 
+<!-- Google reCAPTCHA -->
+<div class="recaptcha-container">
+  <div id="admission-recaptcha"></div>
+</div>
+
+<p
+  class="captcha-error"
+  *ngIf="captchaAttempted && !recaptchaToken">
+  Please complete the reCAPTCHA verification.
+</p>
+
+      <!-- Submit button -->
+      <button
+        type="submit"
+        class="submit-btn"
+        [disabled]="submitting">
+
+        <span *ngIf="!submitting">
+          Submit Enquiry
+        </span>
+
+        <span *ngIf="submitting">
+          Submitting...
+        </span>
+      </button>
+
+      <p class="required-note">
+        * All marked fields are required.
+      </p>
+
+    </form>
+
+  </div>
+</div>

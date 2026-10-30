@@ -1,0 +1,40 @@
+.vNew{
+    position: relative;
+    z-index: 3;
+}
+.vNewsTitle{
+    margin: 0 0 20px 0;
+    padding: 14px;
+}
+.vNewsList{
+    ul{
+        margin: 0;
+        padding: 0;
+        li{
+            word-wrap: break-word;
+            text-align: center;
+            margin-bottom: 30px;
+            .vPos{
+                position: relative;
+                -webkit-box-shadow: -1px 2px 5px 0px rgba(148,143,148,1);
+-moz-box-shadow: -1px 2px 5px 0px rgba(148,143,148,1);
+box-shadow: -1px 2px 5px 0px rgba(148,143,148,1);
+            }
+            span{
+                position: absolute;
+                left: 0;
+                bottom: 0px;
+                font-size: 12px;
+                display: none;
+                background: #000;
+                width: 100%;
+                color: #FFF;
+            }
+        }:hover{
+            span{
+                display: inline-block;
+            }
+        }
+    }
+    
+}

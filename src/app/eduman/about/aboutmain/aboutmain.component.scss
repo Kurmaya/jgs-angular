@@ -1,0 +1,47 @@
+.vMissionBlock {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 50px 0;
+}
+.vMissionBlock .vMissionImg img {
+    width: 80px;
+    margin: 0 0 10px;
+}
+.vMissionBlock .vMissionImg {
+    width: 60%;
+    text-align: center;
+}
+.vMissionBlock .vMissionDescRight {
+    margin: 0 15px 0 0;
+}
+.vMissionBlock .vMissionDescLeft {
+    margin: 0 0 0 15px;
+}
+.vCharminPic {
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+@media screen and (max-width: 767px){
+    .vMissionBlock {
+        display: block;
+        margin: 30px 0;
+    }
+    .vMissionBlock .vMissionImg {
+        width: auto;
+        margin: 0 0 15px;
+    }
+    .vMissionBlock .vMissionDescRight, .vMissionBlock .vMissionDescLeft {
+        text-align: center;
+        margin: 0;
+    }
+    .vMsgFounder {
+        margin-top: 30px;
+        text-align: center;
+    }
+}
+

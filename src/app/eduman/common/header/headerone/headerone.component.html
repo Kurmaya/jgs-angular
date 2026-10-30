@@ -1,0 +1,111 @@
+
+ <!-- side toggle start -->
+ <div class="fix">
+    <div class="side-info" [class.opened]="sidebarInfoActive">
+       <div class="side-info-content">
+          <div class="offset-widget offset-logo mb-40">
+             <div class="row align-items-center">
+                <div class="col-9">
+                   <a [routerLink]="['/home']">
+                      <!--<img src="assets/img/whatsinaname/JGS-New-Logo-1.png" alt="Logo" class="img-fluid">-->
+                      <img src="assets/img/whatsinaname/JGSNewwLogo.png" alt="Logo" class="img-fluid">
+                   </a>
+                </div>
+                <div class="col-3 text-end"><button class="side-info-close" (click)="infoclick()"><i class="fal fa-times"></i></button>
+                </div>
+             </div>
+          </div>
+
+          <app-mobilemenu></app-mobilemenu>
+       </div>
+    </div>
+ </div>
+ <div class="offcanvas-overlay" [class.open-signin]="signInActive" (click)="signinclick()"></div>
+ <div class="offcanvas-overlay" [class.open-signup]="signUpActive"  (click)="signupclick()"></div>
+ <div class="offcanvas-overlay-white"></div>
+ <!-- side toggle end -->
+
+
+
+
+ <!-- header-area-start  -->
+ <header>
+    <div class="header-area header-transparent sticky-header" [ngClass]="{'mat-elevation-z5' : true, 'sticky' : isSticky}">
+       <div class="container-fluid">
+          <div class="header-main-wrapper">
+             <div class="row align-items-center">
+                <div class="col-xl-12 col-lg-9 col-md-9 col-sm-9 col-9">
+                   <div class="header-left d-flex align-items-center justify-content-between">
+                      <div class="header-logo">
+                         <a [routerLink]="['/home']"><img src="assets/img/whatsinaname/mokila logo.png" alt="logo"></a>
+                      </div>
+                      
+                      <div class="main-menu d-none d-xl-block">
+                        <nav id="mobile-menu">
+                           <ul>
+                              <li><a [routerLink]="['/about']" routerLinkActive="active">About Us</a></li>
+                              <li class="menu-item-has-children"><a>Why JGS</a>
+                                 <ul class="sub-menu">
+                                    <li><a [routerLink]="['/jgsdifference']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">JGS Difference</a></li>
+                                    <li><a [routerLink]="['/facilities']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Facilities</a></li>
+                                 </ul>
+                              </li>
+                              <li class="menu-item-has-children"><a>Curriculum</a>
+                                 <ul class="sub-menu">
+                                    <li><a [routerLink]="['/curriculum']"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">IB PYP</a></li>
+                                    <li><a [routerLink]="['/icse']" fragment="ICSE" >ICSE</a></li>
+                                    <li><a [routerLink]="['/icse']" fragment="IBDP" >IBDP</a></li>
+                                 </ul>
+                              </li>
+                              <li class="menu-item-has-children">
+                                 <a>Admissions</a>
+                                 <ul class="sub-menu">
+                                    <li><a [routerLink]="['/enquiry-form']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Enquiry Form</a></li>
+                                    <!--<li><a href="http://flowpaper.com/flipbook/https://jgsibpyp.org/brochures/JGSIBPYPBrochure.pdf" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" target="_blank">View Brochure</a></li>-->
+                                    <!--<li><a href="" data-bs-toggle="modal" data-bs-target="#myModal">View Brochure</a></li>-->
+                                    <li><a href="assets/pdfs/JGS brochure.pdf" target="_blank">View Brochure</a></li>
+                                    <li><a href="assets/pdfs/Fee Structure.pdf" target="_blank">Fee Structure</a></li>
+                                 </ul>
+                              </li>
+                                <li class="menu-item-has-children">
+                                 <a>School Policies</a>
+                                 <ul class="sub-menu">
+                                    <li><a href="assets/pdfs/Admission-Policy.pdf" target="_blank">Admission Policy</a></li>
+                                    <!--<li><a href="http://flowpaper.com/flipbook/https://jgsibpyp.org/brochures/JGSIBPYPBrochure.pdf" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" target="_blank">View Brochure</a></li>-->
+                                    <!--<li><a href="" data-bs-toggle="modal" data-bs-target="#myModal">View Brochure</a></li>-->
+                                    <li><a href="assets/pdfs/JGS-Academic-Integrity-policy.pdf" target="_blank">JGS Academic Integrity Policy</a></li>
+                                    <li><a href="assets/pdfs/Assesment-Policy.pdf" target="_blank">JGS Assessment Policy</a></li>
+                                    <li><a href="assets/pdfs/Language-Policy.pdf" target="_blank">JGS Language Policy</a></li>
+                                 </ul>
+                              </li>
+                              <li><a href="https://jgschool.in/gallery/">Gallery</a></li>
+                              <!--<li><a href="https://sohamshilmkar.smugmug.com/Events" target="_blank">Gallery</a></li>-->
+                              <li><a href="https://jgschool.in/blog/">Blog</a></li>
+                              <li><a [routerLink]="['/contact']" routerLinkActive="active">Contact us</a></li>
+                           </ul>
+                        </nav>
+                     </div>
+                   </div>
+                </div>
+                <div class="col-xl-5 col-lg-3 col-md-3 col-sm-3 col-3">
+                   <div class="header-right d-flex align-items-center justify-content-end">
+                      <div class="menu-bar d-xl-none ml-20">
+                         <a class="side-toggle" href="javascript:void(0)" (click)="infoclick()">
+                            <div class="bar-icon">
+                               <span></span>
+                               <span></span>
+                               <span></span>
+                            </div>
+                         </a>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </header>
+ <!-- header-area-end -->
+
+
+ 

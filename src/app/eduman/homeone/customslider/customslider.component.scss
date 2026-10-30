@@ -1,0 +1,51 @@
+.vCustomSlider {
+    padding: 70px;
+}
+.carousel-indicators {
+    position: absolute;
+    top: -68px;
+    text-align: center;
+    margin-left: 0%;
+    margin-right: 0%;
+}
+.carousel-indicators [data-bs-target] {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border-bottom: 0;
+    border-top: 0;
+    opacity: 1;
+    background: #00AFEF;
+    text-indent: inherit;
+    color: #fff;
+    font-size: 10.5px;
+}
+.carousel-indicators .active {
+    background-color: #eb0008;
+    color: #FFF !important;
+}
+.carousel-indicators span {
+    margin-top: 3px;
+    display: inline-block;
+}
+.vLineSlider {
+    position: absolute;
+    top: -50px;
+    width: 100%;
+    height: 5px;
+    background: #1429A9;
+}
+.inNeerr {
+    display: flex;
+}
+.vhidden {
+    width: 50px;
+}
+@media screen and (max-width: 767px){
+    .vCustomSlider {
+        padding: 0;
+    }
+    .inNeerr {
+        display: block;
+    }
+}
