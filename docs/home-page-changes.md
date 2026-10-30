@@ -89,6 +89,7 @@ Output: `dist/eduman/browser/`. It contains `index.html` (the prerendered home p
 
 - `curl -s https://www.jgschool.in/ | grep "Nursery to Grade 5"` returns a match (S1).
 - `curl -s https://www.jgschool.in/about | grep -c "Which grades does JGS Kokapet offer"` returns 0 (the fallback is correct).
+- https://www.jgschool.in/blog/ and a blog post still open normally (the WordPress exception works).
 - Google Tag Assistant: no Google Ads conversion on page load; exactly one after a test enquiry marked TEST.
 - Meta Pixel Helper: one PageView on load, one Lead after the test enquiry, one Contact per call/WhatsApp click.
 - Google Rich Results Test and validator.schema.org on https://www.jgschool.in/: no errors.
@@ -114,6 +115,22 @@ Output: `dist/eduman/browser/`. It contains `index.html` (the prerendered home p
 
 **Later items in the brief:** T3 Conversions API, T6 click IDs (needs new columns in the Google Sheet and Apps Script), S8 page speed, S9 PDF renames, S10 menu changes (with the new curriculum pages), S12 sitemap, L1/L2 landing pages, A2–A9 for /home.
 
-## 6. Security note
+## 6. WordPress blog (/blog/) and gallery (/gallery/)
+
+These sections are not part of the Angular app, so they need their own changes.
+
+- **Server config:** `deploy/htaccess-example` now passes `/blog/` and `/gallery/` straight through. Without this, WordPress post URLs (which are not real files) would be sent to the Angular app.
+- **Tracking (T4, T5):** the blog and gallery load no Google Tag Manager, GA4 or Meta Pixel, so their visits and any enquiries that start there are not measured. Add the same GTM container (GTM-T57VRH2) and the same GA4 and Meta Pixel set-up as the main site (for WordPress, via a header-code or GTM plugin). Do **not** add a Google Ads conversion that fires on page load.
+- **Blog titles:** every post's `<title>` is "My WordPress Site". In WordPress, set Settings > General > Site Title to "Johnson Grammar School" (the site name in the structured data currently reads "https://jgschool.in/"), and make sure the theme lets Yoast SEO control the title (theme support for `title-tag`, or Yoast's title settings), so each post shows its own SEO title.
+- **Blog footer email:** check that it links to hello@jgschool.in.
+- **Gallery:** /gallery/ is served as a plain HTML page (no WordPress files were found in its source). It has no meta description, canonical link or social tags, and all 24 photos have empty alt text. Add a description, `<link rel="canonical" href="https://www.jgschool.in/gallery/">`, Open Graph tags, and descriptive alt text (e.g. "Children in the library at JGS Kokapet, Hyderabad").
+- **Sitemaps (S12):** `robots.txt` lists `https://jgschool.in/sitemap.xml` (without www). List the sitemaps on the www host, including the blog's Yoast sitemap:
+  ```
+  Sitemap: https://www.jgschool.in/sitemap.xml
+  Sitemap: https://www.jgschool.in/blog/sitemap_index.xml
+  ```
+  Make sure the main `sitemap.xml` includes `/gallery/` and excludes `/home`.
+
+## 7. Security note
 
 `src/assets/JGS-Kokapet-enquiry-form _1_.html` (no longer linked from the site, but still deployed as a public file) contains a MyClassboard `api_key` for its enquiry API. Because this repository is public and the file is served publicly, check with MyClassboard whether the key is meant to be public; if not, ask them to rotate it and delete the file.

@@ -8,13 +8,17 @@ RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} !^www\. [NC]
 RewriteRule ^ https://www.jgschool.in%{REQUEST_URI} [L,R=301]
 
+# Leave the WordPress blog and the gallery alone: they have their own pages
+# (and the blog has its own .htaccess for WordPress permalinks).
+RewriteRule ^(blog|gallery)(/|$) - [L]
+
 # Serve real files and folders as they are. "/" is a folder, so it gets index.html,
 # which is now the prerendered home page with all its text.
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
 
-# Every other page (/about, /contact, /home, ...) gets the plain app shell.
+# Every other page (/about, /contact, /home, ...) gets the plain Angular app shell.
 # IMPORTANT: point this at index.original.html, NOT index.html. If other URLs received
 # index.html, search engines would see the home page's text and canonical link on every page.
 RewriteRule ^ /index.original.html [L]
