@@ -1,6 +1,6 @@
 # Enquiry page, brochure downloads and brochure menu
 
-Two commits on top of the curriculum changes (`665e700`).
+Three commits on top of the curriculum changes (`665e700`).
 
 ## /enquiry-form
 - Uses the same Admission Enquiry 2027–28 form as the home page: Google Sheet, reCAPTCHA, and Google Ads / GA4 / Meta tracking. The MyClassboard "Registration Form" button is removed.
@@ -15,7 +15,7 @@ Two commits on top of the curriculum changes (`665e700`).
 - The page is now prerendered: `angular.json` prerender routes include `/enquiry-form`.
 
 ## Enquiry form (all pages)
-- The success message now reads: **"Thank you! Our admissions team will contact you shortly."**
+- The success message now reads: **"Thank you! Our admissions team will contact you shortly. If you would like to reach us sooner, please WhatsApp +91 89770 06304."** The number links to WhatsApp, and a tap is tracked as `whatsapp_click`.
 - After a successful enquiry, the form offers the brochure download on /enquiry-form, the home page and /home (`[showBrochures]="true"`). Brochures are listed in `enquiry-form/brochures.ts`. Downloads send a `brochure_download` event (GA4 and the dataLayer).
 
 ## Admissions menu

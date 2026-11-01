@@ -384,3 +384,11 @@
     }
   }
 }
+
+// "Reach us sooner" WhatsApp line in the thank-you message
+.success-message .whatsapp-line a {
+  color: #128c4b;
+  font-weight: 700;
+  text-decoration: underline;
+  white-space: nowrap;
+}
