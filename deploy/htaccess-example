@@ -3,7 +3,9 @@
 # The blog's own .htaccess (public_html/blog/.htaccess, standard WordPress) needs no changes.
 
 # NEW: "/" must serve index.html (the prerendered home page), even if an index.php is ever added here.
-DirectoryIndex index.html
+# FIXED (1 Nov 2026): this setting also applies to every sub-folder, so it must list index.php too.
+# With index.html alone, /blog/ (WordPress) and /gallery/ (PHP) returned "403 Forbidden".
+DirectoryIndex index.html index.php
 
 # NEW (JGS Difference release): prerendered pages live in folders (jgsdifference/index.html).
 # Without this, Apache would redirect /jgsdifference to /jgsdifference/ before serving it.
@@ -34,6 +36,9 @@ DirectorySlash Off
     # CHANGED: 302 -> 301
     RewriteCond %{HTTPS} !=on
     RewriteRule ^ https://www.jgschool.in%{REQUEST_URI} [R=301,L]
+
+    # FIXED (1 Nov 2026): with DirectorySlash Off, /blog and /gallery need their trailing slash added here.
+    RewriteRule ^(blog|gallery)$ https://www.jgschool.in/$1/ [R=301,L,NC]
 
     # Preserve PHP gallery
     RewriteRule ^gallery(/|$) - [L,NC]
