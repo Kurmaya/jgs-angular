@@ -79,11 +79,13 @@
   padding: 0 25px;
   text-align: center;
 
+  // "JOHNSON GRAMMAR SCHOOL" above the form title (L6: bigger and bold)
   .eyebrow {
+    display: block;
     color: #aa854b;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 2px;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
   }
 
   h2 {
@@ -290,8 +292,8 @@
     padding: 0 18px;
 
     .eyebrow {
-      font-size: 10px;
-      letter-spacing: 1.5px;
+      font-size: 13px;
+      letter-spacing: 2px;
     }
 
     h2 {
@@ -328,7 +330,11 @@
   margin: 0 auto;
   padding: 32px;
 
-  background: #ffffff;
+  // L6: a light warm tint (matching the gold accent) so the form stands out from the page,
+  // while the white input boxes stay easy to see.
+  background: #fbf5ea;
+  border: 1px solid #ead9b8;
+  border-top: 5px solid #aa854b;
   border-radius: 16px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
 
