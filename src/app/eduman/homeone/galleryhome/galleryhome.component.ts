@@ -6,6 +6,16 @@ interface Item {
   imageAlt: string;
 }
 
+/** L8: the home page gallery shows only the planned JGS Mokila campus (architect's renders). */
+const MOKILA_ITEMS: Item[] = [
+  { imageSrc: 'assets/img/whatsinaname/GalleryNew/Mokila2.jpeg', imageAlt: 'JGS Mokila campus from above (artist’s impression)' },
+  { imageSrc: 'assets/img/whatsinaname/GalleryNew/Mokila.jpeg', imageAlt: 'JGS Mokila campus entrance (artist’s impression)' },
+  { imageSrc: 'assets/img/whatsinaname/GalleryNew/Mokila3.jpeg', imageAlt: 'JGS Mokila school buildings and playing field (artist’s impression)' },
+  { imageSrc: 'assets/img/whatsinaname/GalleryNew/mokila/mokila-atrium.jpg', imageAlt: 'JGS Mokila central atrium (artist’s impression)' },
+  { imageSrc: 'assets/img/whatsinaname/GalleryNew/mokila/mokila-library.jpg', imageAlt: 'JGS Mokila library (artist’s impression)' },
+  { imageSrc: 'assets/img/whatsinaname/GalleryNew/mokila/mokila-early-years.jpg', imageAlt: 'JGS Mokila Early Years classroom (artist’s impression)' }
+];
+
 @Component({
   selector: 'app-galleryhome',
   templateUrl: './galleryhome.component.html',
@@ -36,6 +46,8 @@ interface Item {
 })
 export class GalleryHomeComponent implements OnInit {
   @Input() showCount = false;
+  /** true: show only the JGS Mokila campus renders (home page). */
+  @Input() mokilaOnly = false;
   data: Item[] = [
     {
       imageSrc: 'assets/img/whatsinaname/GalleryNew/Mokila.jpeg',
@@ -97,6 +109,11 @@ totalImageCount = 0;
   constructor() { }
 
   ngOnInit(): void {
+   if (this.mokilaOnly) {
+     this.data = MOKILA_ITEMS;
+     this.dataPreview = MOKILA_ITEMS;
+     this.currentLightBoxImage = this.data[0];
+   }
    this.totalImageCount = this.data.length;
   }
   onPreviewImage(index: number): void {

@@ -6,10 +6,12 @@
 <main>
     <app-headerone></app-headerone>
     <app-hero></app-hero>                         <!-- C1 hero -->
-    <app-homeintro></app-homeintro>               <!-- C2 facts, C3 about, C4 campuses, C5 curriculum, C6 why JGS -->
+    <!-- L8 order: About, Chairman's message, Why families choose JGS, Facilities, Gallery (Mokila) -->
+    <app-homeintro></app-homeintro>               <!-- C2 facts, C3 about -->
     <app-educationsection></app-educationsection> <!-- C7 Chairman's message -->
+    <app-homewhy></app-homewhy>                   <!-- C6 why families choose JGS -->
     <app-facilitiesslider></app-facilitiesslider> <!-- C8 facilities -->
-    <app-galleryhome></app-galleryhome>
+    <app-galleryhome [mokilaOnly]="true"></app-galleryhome> <!-- Mokila campus renders -->
     <app-homeadmissions></app-homeadmissions>     <!-- C9 admissions and on-page enquiry form -->
     <app-testimonialslider></app-testimonialslider> <!-- C10 testimonials -->
     <app-homefaq></app-homefaq>                   <!-- C11 FAQ -->
