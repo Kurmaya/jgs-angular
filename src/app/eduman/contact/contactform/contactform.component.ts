@@ -1,15 +1,19 @@
-
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { TrackingService } from '../../tracking.service';
 
+/**
+ * Contact Us page body (/contact): contact details, campuses, and a general message form.
+ * Messages are emailed to hello@jgschool.in through FormSubmit (https://formsubmit.co).
+ * Admission enquiries are sent to /enquiry-form instead.
+ */
 @Component({
   selector: 'app-contactform',
   templateUrl: './contactform.component.html',
   styleUrls: ['./contactform.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class ContactformComponent implements OnInit {
-
+export class ContactformComponent {
   isSubmitting = false;
   successMessage = '';
   errorMessage = '';
@@ -19,85 +23,59 @@ export class ContactformComponent implements OnInit {
     phone: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
+    honey: ''
   };
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  constructor(public tracking: TrackingService) {}
 
   async submitForm(form: NgForm): Promise<void> {
+    this.successMessage = '';
+    this.errorMessage = '';
 
-    // Check required fields
     if (form.invalid) {
       form.control.markAllAsTouched();
+      this.errorMessage = 'Please fill in your name, a valid 10-digit phone number, a valid email address and your message.';
+      return;
+    }
+
+    // Spam trap filled in: pretend it worked and send nothing.
+    if (this.formData.honey) {
+      this.successMessage = 'Thank you! Your message has been sent.';
+      form.resetForm();
       return;
     }
 
     this.isSubmitting = true;
-    this.successMessage = '';
-    this.errorMessage = '';
 
     try {
+      const response = await fetch('https://formsubmit.co/ajax/hello@jgschool.in', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          name: this.formData.name.trim(),
+          phone: this.formData.phone.trim(),
+          email: this.formData.email.trim(),
+          subject: this.formData.subject.trim(),
+          message: this.formData.message.trim(),
+          _subject: 'New website message - Johnson Grammar School',
+          _template: 'table',
+          _honey: this.formData.honey
+        })
+      });
+      const result = await response.json().catch(() => ({}));
 
-      const response = await fetch(
-        'https://formsubmit.co/ajax/hello@jgschool.in',
-        {
-          method: 'POST',
-
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-
-          body: JSON.stringify({
-
-            name: this.formData.name,
-            phone: this.formData.phone,
-            email: this.formData.email,
-            subject: this.formData.subject,
-            message: this.formData.message,
-
-            _subject: 'New Contact Form Submission - JG School',
-            _captcha: 'true'
-
-          })
-        }
-      );
-
-      const result = await response.json();
-
-      console.log('FormSubmit response:', result);
-
-      if (response.ok && result.success) {
-
-        this.successMessage =
-          'Thank you! Your message has been sent successfully.';
-
-        // Clear the form
+      if (response.ok && (result.success === true || result.success === 'true')) {
+        this.successMessage = 'Thank you! Your message has been sent. We will get back to you soon.';
+        this.tracking.contactMessageSent();
         form.resetForm();
-
       } else {
-
-        this.errorMessage =
-          'Unable to send your message. Please try again.';
-
-        console.error('FormSubmit error:', result);
+        this.errorMessage = 'Sorry, your message could not be sent. Please try again, or email hello@jgschool.in.';
       }
-
-    } catch (error) {
-
-      console.error('FormSubmit request failed:', error);
-
-      this.errorMessage =
-        'Something went wrong. Please try again later.';
-
+    } catch {
+      this.errorMessage = 'Sorry, your message could not be sent. Please check your connection, or email hello@jgschool.in.';
     } finally {
-
       this.isSubmitting = false;
     }
   }
-
 }
-
