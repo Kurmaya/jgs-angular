@@ -18,8 +18,8 @@ export const ENQUIRY_FAQ: FaqItem[] = [
     answer: 'JGS Kokapet is an IB World School for the Primary Years Programme (PYP), authorised on 10 April 2025. JGS Mokila plans to offer the IB PYP and MYP, and the ICSE for Grades 1 to 7, subject to IB approval and CISCE affiliation.'
   },
   {
-    question: 'Can I download the school brochure?',
-    answer: 'Yes. After you submit the enquiry form on this page, a link to download the brochure appears straight away.'
+    question: 'Can I download the school prospectus?',
+    answer: 'Yes. After you submit the enquiry form on this page, links to download the JGS Kokapet and JGS Mokila prospectuses appear straight away.'
   },
   {
     question: 'What happens after I send an enquiry?',
@@ -39,10 +39,10 @@ const PAGE_URL = `${SITE_ORIGIN}/enquiry-form`;
 
 export const ENQUIRY_SEO: PageSeo = {
   title: 'Admission Enquiry 2027–28 | JGS Kokapet & Mokila, Hyderabad | Johnson Grammar School',
-  description: 'Enquire about admissions for 2027–28 at Johnson Grammar School: JGS Kokapet (IB PYP, Nursery to Grade 2) and our new JGS Mokila campus (Nursery to Grade 7). Download the brochure.',
+  description: 'Enquire about admissions for 2027–28 at Johnson Grammar School: JGS Kokapet (IB PYP, Nursery to Grade 2) and our new JGS Mokila campus (Nursery to Grade 7). Download the prospectus.',
   path: '/enquiry-form',
   shareTitle: 'Admission Enquiry 2027–28 | Johnson Grammar School, Hyderabad',
-  shareDescription: 'Send an admission enquiry for JGS Kokapet or JGS Mokila and download our brochure.',
+  shareDescription: 'Send an admission enquiry for JGS Kokapet or JGS Mokila and download our prospectus.',
   jsonLd: {
     '@context': 'https://schema.org',
     '@graph': [
