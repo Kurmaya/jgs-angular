@@ -70,7 +70,10 @@
     </div>
 
     <!-- Admission form -->
+    <!-- L13: (focusin) records that the parent started the form; data-clarity-mask hides typed details from Microsoft Clarity. -->
     <form
+      data-clarity-mask="true"
+      (focusin)="onFormFocus()"
       *ngIf="!submitted"
       [formGroup]="form"
       (ngSubmit)="submitForm()"

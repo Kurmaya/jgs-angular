@@ -53,6 +53,9 @@ export class EnquiryFormComponent implements AfterViewInit, OnDestroy {
    */
   @Input() showProspectus = false;
 
+  /** L13: "enquiry_form_start" is sent once per page load. */
+  private formStarted = false;
+
   readonly academicYearLabel = '2027\u201328';
 
   private readonly isBrowser: boolean;
@@ -133,6 +136,15 @@ private captchaRenderTimer: ReturnType<typeof setTimeout> | null = null;
 
   onWhatsAppClick(): void {
     this.tracking.contactClicked('whatsapp');
+  }
+
+  /** L13: first time the parent touches the form on this page. */
+  onFormFocus(): void {
+    if (this.formStarted || !this.isBrowser) {
+      return;
+    }
+    this.formStarted = true;
+    this.tracking.enquiryFormStarted(window.location.pathname);
   }
 
   onProspectusClick(prospectus: Prospectus): void {
@@ -384,7 +396,11 @@ private renderRecaptcha(): void {
           emailAddress: values.emailAddress.trim(),
           academicYear: '2027-2028',
           location: values.location,
-          recaptchaToken: this.recaptchaToken
+          recaptchaToken: this.recaptchaToken,
+          // L13: where the parent came from (ad campaign, search, social...) and where they sent the form.
+          // Extra fields: the Google Sheet script stores them once its new columns are added.
+          ...this.tracking.getAttribution(),
+          form_page: window.location.pathname
         })
       });
 
