@@ -1,0 +1,36 @@
+# public_html/blog/.htaccess (WordPress). Only change: the first line below.
+# Keep everything else in the file exactly as it is.
+
+# NEW (1 Nov 2026): the main public_html/.htaccess has "DirectorySlash Off" (needed for the
+# prerendered pages). This folder has its own .htaccess, so the main file's /blog -> /blog/
+# redirect does not run here. Turning DirectorySlash back on for this folder makes Apache send
+# /blog to /blog/ again (without it, /blog returns 403). Put it OUTSIDE the
+# "BEGIN WordPress ... END WordPress" markers, because WordPress rewrites that section.
+DirectorySlash On
+
+# Block the include-only files.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /blog/
+RewriteRule ^wp-admin/includes/ - [F,L]
+RewriteRule !^wp-includes/ - [S=3]
+RewriteRule ^wp-includes/[^/]+\.php$ - [F,L]
+RewriteRule ^wp-includes/js/tinymce/langs/.+\.php - [F,L]
+RewriteRule ^wp-includes/theme-compat/ - [F,L]
+</IfModule>
+
+# BEGIN WordPress
+# The directives (lines) between "BEGIN WordPress" and "END WordPress" are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /blog/
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /blog/index.php [L]
+</IfModule>
+
+# END WordPress
