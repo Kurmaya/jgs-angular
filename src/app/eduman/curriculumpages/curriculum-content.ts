@@ -111,7 +111,8 @@ const KOKAPET = {
 
 const MOKILA_ADDRESS = {
   '@type': 'PostalAddress',
-  streetAddress: 'Behind Vijetha Supermarket, SARC Garden Villas Road, Mokila, Shankarpally',
+  postalCode: '501203',
+  streetAddress: 'Behind Vijetha Supermarket, SARK Garden Villas Road, Mokila, Shankarpally',
   addressLocality: 'Hyderabad',
   addressRegion: 'Telangana',
   addressCountry: 'IN'
@@ -132,6 +133,7 @@ export const IB_SEO: PageSeo = {
         '@id': `${SITE_ORIGIN}/#mokila`,
         name: 'JGS Mokila',
         description: 'New Johnson Grammar School campus in Mokila, Hyderabad. JGS plans for JGS Mokila to offer the IB PYP, MYP and DP; JGS intends to apply for PYP and MYP candidacy in 2027. JGS Mokila is not yet an IB World School or IB candidate school.',
+        telephone: '+91-9000287940',
         parentOrganization: { '@id': ORG_ID },
         address: MOKILA_ADDRESS
       },
@@ -179,6 +181,7 @@ export const ICSE_SEO: PageSeo = {
         '@id': `${SITE_ORIGIN}/#mokila`,
         name: 'JGS Mokila',
         description: 'New Johnson Grammar School campus in Mokila, Hyderabad, planned to offer the ICSE curriculum from Grade 1 to Grade 7 from 2027–28, subject to CISCE affiliation.',
+        telephone: '+91-9000287940',
         parentOrganization: { '@id': ORG_ID },
         address: MOKILA_ADDRESS
       },

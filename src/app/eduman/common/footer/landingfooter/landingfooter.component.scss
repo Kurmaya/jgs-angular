@@ -392,3 +392,85 @@ html body [data-ca3_iconfont="ETmodules"]::before {
     display: none !important;
   }
 }
+
+/* =========================================
+   L11 /home footer (same as the main footer, L8): #0f3460, four even columns, compact
+========================================= */
+.vFooterArea.jgs-footer {
+  background: #0f3460;
+  padding: 50px 0 26px;
+
+  .footer-main > .row > [class*='col'] {
+    margin-bottom: 26px;
+  }
+
+  .footer-img img {
+    width: 180px;
+    margin-bottom: 16px;
+  }
+
+  .footer-widget {
+    text-align: left;
+
+    h3 {
+      font-size: 18px;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+
+    p {
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 0;
+      color: #d7e1ee;
+    }
+
+    ul li {
+      margin-bottom: 8px;
+      font-size: 15px;
+      line-height: 1.55;
+      color: #d7e1ee;
+    }
+
+    ul li a {
+      color: #d7e1ee;
+    }
+
+    ul li a:hover {
+      color: #fff;
+    }
+  }
+
+  .vWidgetFooter,
+  .vWidgetFooter li {
+    color: #d7e1ee;
+  }
+
+  .footer-icon a {
+    width: 40px;
+    height: 40px;
+    line-height: 38px;
+    margin-right: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 50%;
+    color: #fff;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .footer-icon a:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: #fff;
+  }
+
+  @media (max-width: 767px) {
+    padding: 36px 0 90px;              // room for the floating call / WhatsApp buttons
+
+    .footer-widget {
+      text-align: center;
+    }
+
+    .footer-img img {
+      width: 160px;
+    }
+  }
+}
