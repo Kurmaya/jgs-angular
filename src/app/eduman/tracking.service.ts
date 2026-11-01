@@ -52,6 +52,18 @@ export class TrackingService {
     }
   }
 
+  /** Call after a message is sent from the Contact Us form (not an admission enquiry, so no Ads conversion). */
+  contactMessageSent(): void {
+    const w = this.win();
+    if (!w) {
+      return;
+    }
+    this.pushDataLayer({ event: 'contact_message' });
+    if (typeof w.gtag === 'function') {
+      w.gtag('event', 'contact_message');
+    }
+  }
+
   /** Call when a parent taps a phone or WhatsApp link. */
   contactClicked(method: 'call' | 'whatsapp'): void {
     const w = this.win();

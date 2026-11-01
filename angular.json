@@ -169,7 +169,8 @@
               "/curriculum",
               "/curriculum/ib",
               "/curriculum/icse",
-              "/enquiry-form"
+              "/enquiry-form",
+              "/contact"
             ],
             "guessRoutes": false
           },
