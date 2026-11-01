@@ -5,7 +5,8 @@
          <div class="row">
             <div class="col-xl-12 vHeadTextAlignment">
                <div class="hero-course-1-text vBreadHead">
-                  <h2>{{breadcrumbTitle ? breadcrumbTitle : lineOne}} <br/>{{lineTwo}}</h2>
+                  <h2 *ngIf="taglineAsHeading">{{breadcrumbTitle ? breadcrumbTitle : lineOne}} <br/>{{lineTwo}}</h2>
+                  <p *ngIf="!taglineAsHeading" class="breadcrumb-tagline">{{breadcrumbTitle ? breadcrumbTitle : lineOne}} <br/>{{lineTwo}}</p>
                </div>
                <div class="course-title-breadcrumb">
                   <nav>
@@ -27,7 +28,8 @@
         <div class="row">
            <div class="col-xl-12">
               <div class="hero-course-1-text vBreadHead">
-                 <h2>{{breadcrumbTitle ? breadcrumbTitle : lineOne}} <br/>{{lineTwo}}</h2>
+                 <h2 *ngIf="taglineAsHeading">{{breadcrumbTitle ? breadcrumbTitle : lineOne}} <br/>{{lineTwo}}</h2>
+                  <p *ngIf="!taglineAsHeading" class="breadcrumb-tagline">{{breadcrumbTitle ? breadcrumbTitle : lineOne}} <br/>{{lineTwo}}</p>
               </div>
               <div class="course-title-breadcrumb">
                  <nav>
