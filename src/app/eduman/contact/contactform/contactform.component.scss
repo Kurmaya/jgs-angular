@@ -348,7 +348,8 @@
   .jc-consent { margin: 12px 0 0; font-size: 13px; color: #777; }
   .jc-consent a { color: #2467ec; text-decoration: underline; }
 
-  .jc-map { margin-top: 10px; border-radius: 14px; overflow: hidden; box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08); }
+  .jc-map-title { font-size: 19px; margin: 0 0 10px; }
+  .jc-map { margin-top: 0; border-radius: 14px; overflow: hidden; box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08); }
   .jc-map iframe { display: block; }
 
   @media (max-width: 767px) {
