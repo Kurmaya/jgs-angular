@@ -168,7 +168,8 @@
               "/jgsdifference",
               "/curriculum",
               "/curriculum/ib",
-              "/curriculum/icse"
+              "/curriculum/icse",
+              "/enquiry-form"
             ],
             "guessRoutes": false
           },
