@@ -165,7 +165,10 @@
           "options": {
             "routes": [
               "/",
-              "/jgsdifference"
+              "/jgsdifference",
+              "/curriculum",
+              "/curriculum/ib",
+              "/curriculum/icse"
             ],
             "guessRoutes": false
           },

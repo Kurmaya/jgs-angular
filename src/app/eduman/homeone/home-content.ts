@@ -14,7 +14,7 @@ export interface FaqItem {
 export const HOME_FAQ: FaqItem[] = [
   {
     question: 'Which grades does JGS Kokapet offer?',
-    answer: 'JGS Kokapet admits children from Nursery to Grade 5 and follows the International Baccalaureate Primary Years Programme (IB PYP).'
+    answer: 'From the 2027\u201328 academic year, JGS Kokapet admits children from Nursery (EY1) to Grade 2 and follows the International Baccalaureate Primary Years Programme (IB PYP).'
   },
   {
     question: 'Is JGS Kokapet an IB school?',
@@ -50,10 +50,10 @@ const ORG_ID = `${SITE_ORIGIN}/#organization`;
 
 export const HOME_SEO: PageSeo = {
   title: 'JGS Kokapet & Mokila | IB PYP School in Hyderabad | Admissions 2027–28',
-  description: 'Johnson Grammar School, Hyderabad since 1979. IB World School for the Primary Years Programme (Nursery to Grade 5) at Kokapet, and our new Mokila campus. Enquire now.',
+  description: 'Johnson Grammar School, Hyderabad since 1979. IB World School for the Primary Years Programme at Kokapet (Nursery to Grade 2 from 2027\u201328), and our new Mokila campus. Enquire now.',
   path: '/',
   shareTitle: 'JGS Kokapet & Mokila | Johnson Grammar School, Hyderabad',
-  shareDescription: 'IB PYP school, Nursery to Grade 5, at Kokapet. Part of Johnson Grammar School, Hyderabad, since 1979.',
+  shareDescription: 'IB PYP school at Kokapet, Nursery to Grade 2 from 2027\u201328. Part of Johnson Grammar School, Hyderabad, since 1979.',
   jsonLd: {
     '@context': 'https://schema.org',
     '@graph': [
@@ -78,7 +78,7 @@ export const HOME_SEO: PageSeo = {
         '@type': 'ElementarySchool',
         '@id': `${SITE_ORIGIN}/#kokapet`,
         name: 'Johnson Grammar School Kokapet',
-        description: 'IB World School offering the International Baccalaureate Primary Years Programme from Nursery to Grade 5, authorised on 10 April 2025. IB school code 063066.',
+        description: 'IB World School offering the International Baccalaureate Primary Years Programme, authorised on 10 April 2025 (IB school code 063066). From 2027\u201328, admits Nursery (EY1) to Grade 2.',
         url: `${SITE_ORIGIN}/`,
         telephone: '+91-9513251488',
         email: 'hello@jgschool.in',

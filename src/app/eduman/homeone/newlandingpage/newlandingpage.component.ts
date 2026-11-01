@@ -31,7 +31,7 @@ export class NewlandingpageComponent implements OnInit {
     // the main home page (/) is the page to rank.
     this.seo.apply({
       title: 'Admissions 2027\u201328 | JGS Kokapet, IB PYP School, Hyderabad',
-      description: 'Admissions open at JGS Kokapet, an IB World School for the Primary Years Programme, Nursery to Grade 5, in Hyderabad. Part of Johnson Grammar School since 1979. Enquire today.',
+      description: 'Admissions open at JGS Kokapet, an IB World School for the Primary Years Programme in Hyderabad, admitting Nursery to Grade 2 from 2027\u201328. Part of Johnson Grammar School since 1979. Enquire today.',
       path: '/home',
       robots: 'noindex, follow'
     });
