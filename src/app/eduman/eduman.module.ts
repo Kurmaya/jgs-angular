@@ -169,6 +169,9 @@ import { EnquiryFormComponent } from './enquiry-form/enquiry-form.component';
 import { HomeintroComponent } from './homeone/homeintro/homeintro.component';
 import { HomeadmissionsComponent } from './homeone/homeadmissions/homeadmissions.component';
 import { HomefaqComponent } from './homeone/homefaq/homefaq.component';
+import { HomewhyComponent } from './homeone/homewhy/homewhy.component';
+import { StickyctaComponent } from './homeone/stickycta/stickycta.component';
+import { HomesafetyComponent } from './homeone/homesafety/homesafety.component';
 
 
 
@@ -347,6 +350,9 @@ import { HomefaqComponent } from './homeone/homefaq/homefaq.component';
     HomeintroComponent,
     HomeadmissionsComponent,
     HomefaqComponent,
+    HomewhyComponent,
+    StickyctaComponent,
+    HomesafetyComponent,
     
     
   ]

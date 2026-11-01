@@ -1,25 +1,32 @@
-<!-- id="enquire" is the target of the "Enquire" and "Book a campus visit" buttons. -->
-<section id="enquire" class="home-admissions pt-60 pb-60">
+<!-- When the form is shown here, id="enquire" is the target of the "Enquire" and "Book a campus visit" buttons. -->
+<section [attr.id]="showForm ? 'enquire' : null" class="home-admissions pt-60 pb-60">
   <div class="container">
     <div class="section-title text-center mb-30">
       <h2>Admissions <span class="down-mark-line">2027&ndash;28</span></h2>
     </div>
     <div class="row">
-      <div class="col-lg-4 mb-30">
-        <h3>How to apply</h3>
-        <ol class="home-steps">
-          <li>Send an enquiry using this form, or call us on <a href="tel:+919513251488">+91 95132 51488</a>.</li>
-          <li>Visit the campus and meet our team.</li>
-          <li>Complete the admission process with our admissions team.</li>
-        </ol>
-        <h3>Useful documents</h3>
-        <ul class="home-docs">
-          <li><a href="assets/pdfs/Fee%20Structure.pdf" target="_blank" rel="noopener">Fee structure (PDF)</a></li>
-          <li><a href="assets/pdfs/JGS%20brochure.pdf" target="_blank" rel="noopener">School brochure (PDF)</a></li>
-          <li><a href="assets/pdfs/Admission-Policy.pdf" target="_blank" rel="noopener">Admission policy (PDF)</a></li>
-        </ul>
+      <div [ngClass]="showForm ? 'col-lg-4' : 'col-lg-10 offset-lg-1'">
+        <div class="row">
+          <div [ngClass]="showForm ? 'col-12 mb-30' : 'col-md-6 mb-30'">
+            <h3>How to apply</h3>
+            <ol class="home-steps">
+              <li>Send an enquiry using {{ showForm ? 'this form' : 'the form at the top of this page' }}, or call us on <a href="tel:+919513251488">+91 95132 51488</a>.</li>
+              <li>Visit the campus and meet our team.</li>
+              <li>Complete the admission process with our admissions team.</li>
+            </ol>
+            <a *ngIf="!showForm" class="edu-btn" [routerLink]="[]" fragment="enquire">Enquire now</a>
+          </div>
+          <div [ngClass]="showForm ? 'col-12 mb-30' : 'col-md-6 mb-30'">
+            <h3>Useful documents</h3>
+            <ul class="home-docs">
+              <li><a href="assets/pdfs/Fee%20Structure.pdf" target="_blank" rel="noopener">Fee structure (PDF)</a></li>
+              <li><a href="assets/pdfs/JGS%20brochure.pdf" target="_blank" rel="noopener">School brochure (PDF)</a></li>
+              <li><a href="assets/pdfs/Admission-Policy.pdf" target="_blank" rel="noopener">Admission policy (PDF)</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="col-lg-8">
+      <div class="col-lg-8" *ngIf="showForm">
         <app-enquiry-form [inline]="true"></app-enquiry-form>
       </div>
     </div>

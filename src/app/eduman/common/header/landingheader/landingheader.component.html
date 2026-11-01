@@ -37,14 +37,14 @@
                 <div class="col-xl-12 col-lg-9 col-md-9 col-sm-9 col-9">
                    <div class="header-left d-flex align-items-center justify-content-between">
                       <div class="header-logo">
-                         <a [routerLink]="['/']"><img src="assets/img/whatsinaname/mokila logo.png" alt="logo"></a>
+                         <a [routerLink]="['/']"><img src="assets/img/whatsinaname/mokila logo.png" alt="Johnson Grammar School Kokapet and Mokila"></a>
                       </div>
                       
                       <div class="main-menu d-none d-xl-block">
                         <nav id="mobile-menu">
                            <ul>
                              
-                              <li><a href="tel:+91 9513251488" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="cta-btn">Call Now</a></li>
+                              <li><a href="tel:+919513251488" class="cta-btn" (click)="tracking.contactClicked('call')">Call Now</a></li>
                              
                            </ul>
                         </nav>
@@ -52,7 +52,8 @@
                    </div>
                 </div>
                 <div class="col-xl-5 col-lg-3 col-md-3 col-sm-3 col-3">
-                  <a href="tel:+91 9513251488" class="cta-btn mob">Call Now</a>
+                  <!-- Hidden on phones, where the sticky Call | WhatsApp | Enquire bar is shown instead. -->
+                  <a href="tel:+919513251488" class="cta-btn mob landing-header-call" (click)="tracking.contactClicked('call')">Call Now</a>
                   
                 </div>
              </div>

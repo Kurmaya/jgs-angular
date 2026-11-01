@@ -1,24 +1,43 @@
-# Example Apache rules for jgschool.in (GoDaddy hosting) after the prerendering change.
-# MERGE these with the .htaccess already on the server; do not overwrite rules you still need.
+# public_html/.htaccess for www.jgschool.in (Hostinger), updated for the prerendered home page.
+# Based on the file currently on the server. Changes are marked "CHANGED" or "NEW".
+# The blog's own .htaccess (public_html/blog/.htaccess, standard WordPress) needs no changes.
 
-RewriteEngine On
+# NEW: "/" must serve index.html (the prerendered home page), even if an index.php is ever added here.
+DirectoryIndex index.html
 
-# One host: https://www.jgschool.in (brief item S2)
-RewriteCond %{HTTPS} off [OR]
-RewriteCond %{HTTP_HOST} !^www\. [NC]
-RewriteRule ^ https://www.jgschool.in%{REQUEST_URI} [L,R=301]
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
 
-# Leave the WordPress blog and the gallery alone: they have their own pages
-# (and the blog has its own .htaccess for WordPress permalinks).
-RewriteRule ^(blog|gallery)(/|$) - [L]
+    # Redirect non-www to www
+    # CHANGED: 302 -> 301, so search engines treat www.jgschool.in as the one address (brief item S2).
+    RewriteCond %{HTTP_HOST} ^jgschool\.in$ [NC]
+    RewriteRule ^ https://www.jgschool.in%{REQUEST_URI} [R=301,L]
 
-# Serve real files and folders as they are. "/" is a folder, so it gets index.html,
-# which is now the prerendered home page with all its text.
-RewriteCond %{REQUEST_FILENAME} -f [OR]
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^ - [L]
+    # Redirect HTTP to HTTPS
+    # CHANGED: 302 -> 301
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^ https://www.jgschool.in%{REQUEST_URI} [R=301,L]
 
-# Every other page (/about, /contact, /home, ...) gets the plain Angular app shell.
-# IMPORTANT: point this at index.original.html, NOT index.html. If other URLs received
-# index.html, search engines would see the home page's text and canonical link on every page.
-RewriteRule ^ /index.original.html [L]
+    # Preserve PHP gallery
+    RewriteRule ^gallery(/|$) - [L,NC]
+
+    # Preserve WordPress blog
+    RewriteRule ^blog(/|$) - [L,NC]
+
+    # Explicitly handle Angular contact route
+    # CHANGED: index.html -> index.original.html (see the note on the fallback below)
+    RewriteRule ^contact/?$ /index.original.html [L,NC]
+
+    # Serve existing files and directories ("/" gets index.html, the prerendered home page)
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Angular fallback for every other page (/about, /home, /facilities, ...)
+    # CHANGED: index.html -> index.original.html.
+    # After `ng run eduman:prerender`, index.html contains the home page's text and canonical link.
+    # index.original.html is the plain app shell. Serving index.html here would show the home page's
+    # content and canonical to search engines on every other URL.
+    RewriteRule ^ /index.original.html [L]
+</IfModule>

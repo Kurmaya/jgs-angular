@@ -1,29 +1,19 @@
+<!--
+  /home: Google Ads landing page (website change brief, Section 7).
+  The school's choice: parents look through the page first, then reach the
+  enquiry form in the admissions section (#enquire). The sticky bar on phones
+  and the hero buttons jump straight to it.
+-->
 <main>
-    <div class="classA {{loader ? 'vSpinner' : ''}}">
-        <div class="spinner-border" role="status"  *ngIf="loader">
-            <span class="sr-only">Loading...</span>
-          </div>
-    </div>
-    <div *ngIf="!loader">
-        <app-landingheader></app-landingheader>
-        <app-newlandinghero></app-newlandinghero>
-        <app-fourdecades></app-fourdecades>
-        <app-customslider></app-customslider>
-        <app-educationsection></app-educationsection>
-        <app-aboutcounter></app-aboutcounter>
-        <app-whyibpyp></app-whyibpyp>
-        <app-bannersection></app-bannersection>
-        <!--<app-coursetab></app-coursetab>-->
-        <app-facilitiesslider></app-facilitiesslider>
-        <app-galleryhome></app-galleryhome>
-        <!-- <app-admissionopen></app-admissionopen> -->
-        <!--<app-categories></app-categories>-->
-        <!--<app-featuresection></app-featuresection>-->
-        <!--<app-studentsection></app-studentsection>-->
-        <app-testimonialslider></app-testimonialslider>
-        <!--<app-brandslider></app-brandslider>-->
-        <!-- hidden replace with blog <app-newseducation></app-newseducation>-->
-        <app-bloghome></app-bloghome>     
-        <app-landingfooter></app-landingfooter>
-    </div>
+    <app-landingheader></app-landingheader>
+    <app-newlandinghero></app-newlandinghero>       <!-- A6: admissions headline, proof points, Explore / Enquire -->
+    <app-homewhy></app-homewhy>                     <!-- #why: Why families choose JGS -->
+    <app-homesafety></app-homesafety>               <!-- #safety: child safety measures -->
+    <app-facilitiesslider></app-facilitiesslider>   <!-- Facilities -->
+    <app-testimonialslider></app-testimonialslider> <!-- Parent testimonials -->
+    <app-galleryhome></app-galleryhome>             <!-- Campus photos -->
+    <app-homeadmissions></app-homeadmissions>       <!-- #enquire: how to apply, documents and the enquiry form -->
+    <app-homefaq></app-homefaq>                     <!-- FAQ -->
+    <app-landingfooter></app-landingfooter>
+    <app-stickycta></app-stickycta>                 <!-- A3: Call | WhatsApp | Enquire bar on phones -->
 </main>

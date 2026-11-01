@@ -1,0 +1,13 @@
+@import '../home-shared.scss';
+
+#safety {
+  scroll-margin-top: 110px;
+}
+
+.home-safety-card {
+  border-top: 4px solid $theme-color;
+
+  h3 {
+    font-size: 20px;
+  }
+}

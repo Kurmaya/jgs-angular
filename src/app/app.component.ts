@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, ViewportScroller } from '@angular/common';
 import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private viewportScroller: ViewportScroller,
     @Inject(PLATFORM_ID) private platformId: object
   ) {}
 
@@ -20,6 +21,8 @@ export class AppComponent implements OnInit {
     if (!isPlatformBrowser(this.platformId)) {
       return;
     }
+    // Links to a section (e.g. /#enquire) stop below the sticky header instead of under it.
+    this.viewportScroller.setOffset([0, 110]);
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
         return;

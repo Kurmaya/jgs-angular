@@ -34,7 +34,7 @@ export const HOME_FAQ: FaqItem[] = [
   },
   {
     question: 'Does JGS provide school transport?',
-    answer: 'Yes. JGS Kokapet provides safe school transport. Please contact our admissions team to check the routes for your area.'
+    answer: 'Yes. JGS Kokapet provides safe school transport, and the school buses are GPS-tracked. Please contact our admissions team to check the routes for your area.'
   },
   {
     question: 'What is JGS Mokila?',

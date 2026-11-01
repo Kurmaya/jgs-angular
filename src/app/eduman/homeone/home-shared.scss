@@ -1,0 +1,50 @@
+// Card and section styles shared by the home page and /home landing page sections.
+@import '../../../custom-palettes.scss';
+
+.home-section {
+  p {
+    font-size: 17px;
+    line-height: 1.7;
+  }
+}
+
+.home-card {
+  display: block;
+  height: 100%;
+  padding: 28px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  color: inherit;
+
+  h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  p {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+}
+
+.home-card-link {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.home-card-more {
+  color: $theme-color;
+  font-weight: 600;
+}
+
+.home-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}

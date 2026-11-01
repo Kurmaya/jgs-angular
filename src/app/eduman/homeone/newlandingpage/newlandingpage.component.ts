@@ -3,11 +3,12 @@ import {
   Component,
   OnInit,
   Renderer2,
-  Inject
+  Inject,
+  PLATFORM_ID
 } from '@angular/core';
 
-import { Meta, Title } from '@angular/platform-browser';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
+import { SeoService } from '../../seo.service';
 
 @Component({
   selector: 'app-newlandingpage',
@@ -16,44 +17,36 @@ import { DOCUMENT } from '@angular/common';
 })
 export class NewlandingpageComponent implements OnInit {
 
-  loader = true;
-
   private readonly googleAdsId = 'AW-16775346810';
 
   constructor(
-    private title: Title,
-    private meta: Meta,
+    private seo: SeoService,
     private renderer: Renderer2,
-    @Inject(DOCUMENT) private document: Document
+    @Inject(DOCUMENT) private document: Document,
+    @Inject(PLATFORM_ID) private platformId: object
   ) {}
 
   ngOnInit(): void {
-
-    // SEO title
-    this.title.setTitle(
-      'Admissions 2027\u201328 | JGS Kokapet, IB PYP School, Hyderabad'
-    );
-
-    // SEO description
-    this.meta.updateTag({
-      name: 'description',
-      content: 'Admissions open at JGS Kokapet, an IB World School for the Primary Years Programme, Nursery to Grade 5, in Hyderabad. Part of Johnson Grammar School since 1979. Enquire today.'
+    // /home is the Google Ads landing page. Keep it out of search results (brief item A2):
+    // the main home page (/) is the page to rank.
+    this.seo.apply({
+      title: 'Admissions 2027\u201328 | JGS Kokapet, IB PYP School, Hyderabad',
+      description: 'Admissions open at JGS Kokapet, an IB World School for the Primary Years Programme, Nursery to Grade 5, in Hyderabad. Part of Johnson Grammar School since 1979. Enquire today.',
+      path: '/home',
+      robots: 'noindex, follow'
     });
 
-    // Load Google Ads tag
+    // Google Ads tag for the second account (brief item A8: the school is confirming
+    // which account runs the campaigns; remove this if AW-16775346810 is not in use).
     this.loadGoogleAds();
-
-    // Existing loader
-    setTimeout(() => {
-      this.loader = false;
-    }, 1000);
   }
 
   private loadGoogleAds(): void {
 
-    const win = this.document.defaultView as any;
-
     // Browser-only execution
+    if (!isPlatformBrowser(this.platformId)) return;
+
+    const win = this.document.defaultView as any;
     if (!win) return;
 
     // Initialize Google dataLayer

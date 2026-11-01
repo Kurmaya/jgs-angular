@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { HostListener } from '@angular/core';
+import { TrackingService } from '../../../tracking.service';
 
 @Component({
   selector: 'app-landingheader',
@@ -102,7 +103,7 @@ signinclick(){
     this.isSticky = window.pageYOffset >= 50;
   }
 
-  constructor() {}
+  constructor(public tracking: TrackingService) {}
 
   ngOnInit(): void {}
 
