@@ -36,18 +36,18 @@
            target="_blank" rel="noopener" (click)="onWhatsAppClick()">+91 89770 06304</a>.
       </p>
 
-      <!-- Brochure downloads, offered after the parent has entered their details -->
-      <div class="brochure-downloads" *ngIf="showBrochures && availableBrochures.length">
-        <h4>Download our brochure</h4>
+      <!-- Prospectus downloads, offered after the parent has entered their details -->
+      <div class="prospectus-downloads" *ngIf="showProspectus && availableProspectuses.length">
+        <h4>Download our prospectus</h4>
         <a
-          *ngFor="let brochure of availableBrochures"
-          class="brochure-link"
-          [href]="brochure.file"
+          *ngFor="let prospectus of availableProspectuses"
+          class="prospectus-link"
+          [href]="prospectus.file"
           target="_blank"
           rel="noopener"
           download
-          (click)="onBrochureClick(brochure)">
-          <span aria-hidden="true">&#8681;</span> {{ brochure.label }} (PDF)
+          (click)="onProspectusClick(prospectus)">
+          <span aria-hidden="true">&#8681;</span> {{ prospectus.label }} (PDF)
         </a>
       </div>
 

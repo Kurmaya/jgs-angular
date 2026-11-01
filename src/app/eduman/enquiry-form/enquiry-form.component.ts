@@ -14,7 +14,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 import { TrackingService } from '../tracking.service';
-import { Brochure, BROCHURES } from './brochures';
+import { Prospectus, PROSPECTUSES } from './prospectuses';
 
 /** Grades JGS Kokapet admits from 2027–28 (IB PYP, Nursery (EY1) to Grade 2). */
 const KOKAPET_GRADES = [
@@ -48,10 +48,10 @@ export class EnquiryFormComponent implements AfterViewInit, OnDestroy {
   @Input() inline = false;
 
   /**
-   * true: after a successful enquiry, offer the campus brochures for download
-   * (used on /enquiry-form). Brochures are listed in brochures.ts.
+   * true: after a successful enquiry, offer the campus prospectuses for download
+   * (used on /enquiry-form). Prospectuses are listed in prospectuses.ts.
    */
-  @Input() showBrochures = false;
+  @Input() showProspectus = false;
 
   readonly academicYearLabel = '2027\u201328';
 
@@ -123,11 +123,11 @@ private captchaRenderTimer: ReturnType<typeof setTimeout> | null = null;
     });
   }
 
-  /** Brochures with a file, the parent's chosen campus first. */
-  get availableBrochures(): Brochure[] {
+  /** Prospectuses with a file, the parent's chosen campus first. */
+  get availableProspectuses(): Prospectus[] {
     const chosen = this.form.controls.location.value;
-    return BROCHURES
-      .filter((b) => !!b.file)
+    return PROSPECTUSES
+      .filter((p) => !!p.file)
       .sort((a, b) => (a.campus === chosen ? -1 : b.campus === chosen ? 1 : 0));
   }
 
@@ -135,8 +135,8 @@ private captchaRenderTimer: ReturnType<typeof setTimeout> | null = null;
     this.tracking.contactClicked('whatsapp');
   }
 
-  onBrochureClick(brochure: Brochure): void {
-    this.tracking.brochureDownloaded(brochure.campus);
+  onProspectusClick(prospectus: Prospectus): void {
+    this.tracking.prospectusDownloaded(prospectus.campus);
   }
 
   /** Grades offered for the campus currently selected in the form. */

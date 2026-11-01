@@ -40,15 +40,15 @@ export class TrackingService {
     }
   }
 
-  /** Call when a parent downloads a brochure after submitting the enquiry form. */
-  brochureDownloaded(campus: string): void {
+  /** Call when a parent downloads a prospectus after submitting the enquiry form. */
+  prospectusDownloaded(campus: string): void {
     const w = this.win();
     if (!w) {
       return;
     }
-    this.pushDataLayer({ event: 'brochure_download', campus });
+    this.pushDataLayer({ event: 'prospectus_download', campus });
     if (typeof w.gtag === 'function') {
-      w.gtag('event', 'brochure_download', { campus });
+      w.gtag('event', 'prospectus_download', { campus });
     }
   }
 
