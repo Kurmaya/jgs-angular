@@ -1,0 +1,6 @@
+# jgschool.in: all search engines and AI assistants may read the whole site.
+User-agent: *
+Allow: /
+
+Sitemap: https://www.jgschool.in/sitemap.xml
+Sitemap: https://www.jgschool.in/blog/sitemap_index.xml
