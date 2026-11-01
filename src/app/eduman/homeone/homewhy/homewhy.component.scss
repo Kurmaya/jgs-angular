@@ -3,3 +3,55 @@
 #why {
   scroll-margin-top: 110px;
 }
+
+// L8: neutral, warm tints so each reason stands out (also used on /home).
+#why.home-section {
+  background: #ffffff;
+}
+
+#why .home-card {
+  position: relative;
+  background: #f6f1e8;               // sand
+  border: 1px solid #e7dcc8;
+  border-top: 5px solid #b8975e;     // muted gold
+  box-shadow: 0 8px 22px rgba(60, 45, 20, 0.07);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  h3 {
+    color: #1f2d3d;
+  }
+
+  p {
+    color: #4a4a4a;
+    margin-bottom: 0;
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px rgba(60, 45, 20, 0.12);
+  }
+}
+
+#why .row > div:nth-child(2) .home-card {
+  background: #eef0ee;               // stone
+  border-color: #d9ddd8;
+  border-top-color: #7f8f7c;         // sage
+}
+
+#why .row > div:nth-child(3) .home-card {
+  background: #f3ece6;               // clay
+  border-color: #e4d4c6;
+  border-top-color: #a9775a;
+}
+
+#why .row > div:nth-child(4) .home-card {
+  background: #edf0f3;               // mist
+  border-color: #d6dde4;
+  border-top-color: #6f8296;         // slate
+}
+
+#why .row > div:nth-child(5) .home-card {
+  background: #f5f2ea;               // linen
+  border-color: #e6dfcf;
+  border-top-color: #9c8a63;         // olive
+}

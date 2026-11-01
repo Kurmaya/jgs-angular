@@ -324,6 +324,22 @@
 	}
 }
 
+// L8: original hero heading (now the page's H1), same look as the original h2
+.hero-text h1.hero-classic {
+	line-height: 1.2;
+	margin-bottom: 30px;
+	font-size: 50px;
+	@media #{$xl} {
+		font-size: 44px;
+	}
+	@media #{$lg} {
+		font-size: 38px;
+	}
+	@media #{$xs,$sm,$md} {
+		font-size: 30px;
+	}
+}
+
 // Home page hero (brief item C1)
 .hero-text {
 	.hero-title {
