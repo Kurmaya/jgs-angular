@@ -38,7 +38,7 @@ export const HOME_FAQ: FaqItem[] = [
   },
   {
     question: 'What is JGS Mokila?',
-    answer: 'JGS Mokila is Johnson Grammar School’s new campus on SARK Garden Villas Road, Mokila, Shankarpally, Hyderabad. It is planned to offer the IB and ICSE curricula. JGS Mokila is not yet an IB World School or IB candidate school, and is not yet affiliated to the CISCE.'
+    answer: 'JGS Mokila is Johnson Grammar School’s new campus on SARK Garden Villas Road, Mokila, Shankarpally, Hyderabad. It is planned to offer the IB and ICSE curricula. JGS Mokila is not yet an IB World School, and is not yet affiliated to the CISCE.'
   },
   {
     question: 'How do I contact the admissions team?',

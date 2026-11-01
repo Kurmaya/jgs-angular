@@ -6,7 +6,7 @@ import { FaqItem } from '../homeone/home-content';
  * the structured data). Edit it here so the page and the JSON-LD always match.
  *
  * IB wording rules (from the IB's guidance for schools): JGS Mokila is NOT yet an
- * IB World School or IB candidate school. Describe it only as "planned", with
+ * IB World School. Describe it only as "planned", with
  * "intends to apply" and "subject to IB approval"; never "offers" or "will offer"
  * with a date, and never with an IB logo. The same applies to CISCE affiliation.
  */
@@ -24,7 +24,7 @@ export const IB_FAQ: FaqItem[] = [
   },
   {
     question: 'Will JGS Mokila offer the IB?',
-    answer: 'Johnson Grammar School plans for JGS Mokila to offer the IB Primary Years Programme (Nursery to Grade 5), the Middle Years Programme (starting with Grades 6 and 7 and adding a grade each year up to Grade 10) and the Diploma Programme (Grades 11 and 12). JGS intends to apply to the IB for PYP and MYP candidacy in 2027. JGS Mokila is not yet an IB World School or an IB candidate school, and only schools authorised by the IB can offer its programmes.'
+    answer: 'Johnson Grammar School plans for JGS Mokila to offer the IB Primary Years Programme (Nursery to Grade 5), the Middle Years Programme (starting with Grades 6 and 7 and adding a grade each year up to Grade 10) and the Diploma Programme (Grades 11 and 12). JGS intends to apply to the IB for PYP and MYP candidacy in 2027. JGS Mokila is not yet an IB World School, and only schools authorised by the IB can offer its programmes.'
   },
   {
     question: 'What is the IB Middle Years Programme (MYP)?',
@@ -132,7 +132,7 @@ export const IB_SEO: PageSeo = {
         '@type': 'School',
         '@id': `${SITE_ORIGIN}/#mokila`,
         name: 'JGS Mokila',
-        description: 'New Johnson Grammar School campus in Mokila, Hyderabad. JGS plans for JGS Mokila to offer the IB PYP, MYP and DP; JGS intends to apply for PYP and MYP candidacy in 2027. JGS Mokila is not yet an IB World School or IB candidate school.',
+        description: 'New Johnson Grammar School campus in Mokila, Hyderabad. JGS plans for JGS Mokila to offer the IB PYP, MYP and DP; JGS intends to apply for PYP and MYP candidacy in 2027. JGS Mokila is not yet an IB World School.',
         telephone: '+91-9000287940',
         parentOrganization: { '@id': ORG_ID },
         address: MOKILA_ADDRESS
