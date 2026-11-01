@@ -20,7 +20,13 @@
              <a href="javascript:void(0)">Admissions</a>
             <ul class="sub-menu">
                <li><a [routerLink]="['/enquiry-form']">Enquiry Form</a></li>
-                  <li><a href="assets/pdfs/JGS brochure.pdf" target="_blank">View Brochure</a></li>
+                  <li class="has-arrow"><a href="javascript:void(0)">View Brochure</a>
+                     <!-- The Mokila PDF is a "coming soon" page until the designer's brochure is uploaded with the same file name. -->
+                     <ul class="sub-menu">
+                        <li><a href="assets/pdfs/JGS%20brochure.pdf" target="_blank" rel="noopener">JGS Kokapet</a></li>
+                        <li><a href="assets/pdfs/JGS-Mokila-brochure.pdf" target="_blank" rel="noopener">JGS Mokila</a></li>
+                     </ul>
+                  </li>
                                     <li><a href="assets/pdfs/Fee Structure.pdf" target="_blank">Fee Structure</a></li>
             </ul>
          </li>
