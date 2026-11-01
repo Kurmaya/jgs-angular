@@ -5,6 +5,10 @@
 # NEW: "/" must serve index.html (the prerendered home page), even if an index.php is ever added here.
 DirectoryIndex index.html
 
+# NEW (JGS Difference release): prerendered pages live in folders (jgsdifference/index.html).
+# Without this, Apache would redirect /jgsdifference to /jgsdifference/ before serving it.
+DirectorySlash Off
+
 # NEW: make browsers check for a new version of the HTML pages on every visit, so parents
 # see a new release straight away instead of a cached old page. The JS/CSS files have
 # version hashes in their names (main.<hash>.js), so they can still be cached for a long time.
@@ -40,6 +44,12 @@ DirectoryIndex index.html
     # Explicitly handle Angular contact route
     # CHANGED: index.html -> index.original.html (see the note on the fallback below)
     RewriteRule ^contact/?$ /index.original.html [L,NC]
+
+    # NEW (JGS Difference release): serve prerendered pages, e.g. /jgsdifference -> /jgsdifference/index.html,
+    # so search engines and AI assistants get the page's full text. Add more pages to the
+    # "prerender" routes in angular.json and they are picked up here automatically.
+    RewriteCond %{REQUEST_FILENAME}/index.html -f
+    RewriteRule ^(.+?)/?$ /$1/index.html [L]
 
     # Serve existing files and directories ("/" gets index.html, the prerendered home page)
     RewriteCond %{REQUEST_FILENAME} -f [OR]

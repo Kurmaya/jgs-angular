@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
+import { SeoService } from '../seo.service';
 
 @Component({
   selector: 'app-jgsdifferencemain',
@@ -9,11 +9,17 @@ import { Meta, Title } from '@angular/platform-browser';
 })
 export class JgsdifferencemainComponent implements OnInit {
 
-  constructor(private title:Title, private meta: Meta) { }
+  constructor(private seo: SeoService) {}
 
   ngOnInit(): void {
-    this.title.setTitle('Best School in Mokila and Kokapet | Nursery Schools in Gachibowli Hyderabad');
-    this.meta.addTag({name: 'decription', content: 'JGS is one of the best international schools in Mokila and Kokapet, HYD which offers programs based on a project-based learning approach. Best schools in Kokapet.'})
+    // Title, description, canonical link and social sharing tags.
+    // (The old code set the description under a misspelt name, "decription", so Google never saw it.)
+    this.seo.apply({
+      title: 'The JGS Difference | Small Classes, Safety & Care | JGS Kokapet & Mokila',
+      description: 'Why parents choose Johnson Grammar School in Hyderabad: a maximum of 24 students per class, background-verified staff, CCTV, a POCSO policy, GPS-tracked buses and 47 years of experience.',
+      path: '/jgsdifference',
+      shareTitle: 'The JGS Difference | Johnson Grammar School, Hyderabad',
+      shareDescription: 'Small classes of up to 24, child safety first, and 47 years of experience in Hyderabad.'
+    });
   }
-
 }

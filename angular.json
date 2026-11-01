@@ -164,7 +164,8 @@
           "builder": "@nguniversal/builders:prerender",
           "options": {
             "routes": [
-              "/"
+              "/",
+              "/jgsdifference"
             ],
             "guessRoutes": false
           },

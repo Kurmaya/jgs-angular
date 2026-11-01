@@ -24,3 +24,28 @@
         padding: 0 0;
     }
 }
+// Page title (one H1) and intro line (brief items 4)
+.vTopBlockTwo {
+  .jgsd-title {
+    font-size: 40px;
+    margin-bottom: 8px;
+  }
+
+  .jgsd-lead {
+    font-family: "Raleway", sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #141517;
+    margin-bottom: 12px;
+  }
+
+  @media (max-width: 767px) {
+    .jgsd-title {
+      font-size: 30px;
+    }
+
+    .jgsd-lead {
+      font-size: 20px;
+    }
+  }
+}
