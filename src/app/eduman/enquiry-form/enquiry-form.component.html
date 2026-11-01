@@ -31,6 +31,21 @@
         Please contact the school to confirm receipt.
       </p>
 
+      <!-- Brochure downloads, offered after the parent has entered their details -->
+      <div class="brochure-downloads" *ngIf="showBrochures && availableBrochures.length">
+        <h4>Download our brochure</h4>
+        <a
+          *ngFor="let brochure of availableBrochures"
+          class="brochure-link"
+          [href]="brochure.file"
+          target="_blank"
+          rel="noopener"
+          download
+          (click)="onBrochureClick(brochure)">
+          <span aria-hidden="true">&#8681;</span> {{ brochure.label }} (PDF)
+        </a>
+      </div>
+
       <button
         type="button"
         class="submit-btn"

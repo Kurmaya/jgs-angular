@@ -40,6 +40,18 @@ export class TrackingService {
     }
   }
 
+  /** Call when a parent downloads a brochure after submitting the enquiry form. */
+  brochureDownloaded(campus: string): void {
+    const w = this.win();
+    if (!w) {
+      return;
+    }
+    this.pushDataLayer({ event: 'brochure_download', campus });
+    if (typeof w.gtag === 'function') {
+      w.gtag('event', 'brochure_download', { campus });
+    }
+  }
+
   /** Call when a parent taps a phone or WhatsApp link. */
   contactClicked(method: 'call' | 'whatsapp'): void {
     const w = this.win();

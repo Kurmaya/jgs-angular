@@ -14,6 +14,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 import { TrackingService } from '../tracking.service';
+import { Brochure, BROCHURES } from './brochures';
 
 /** Grades JGS Kokapet admits from 2027–28 (IB PYP, Nursery (EY1) to Grade 2). */
 const KOKAPET_GRADES = [
@@ -45,6 +46,12 @@ export class EnquiryFormComponent implements AfterViewInit, OnDestroy {
    * Use only one instance per page, because the reCAPTCHA container has a fixed id.
    */
   @Input() inline = false;
+
+  /**
+   * true: after a successful enquiry, offer the campus brochures for download
+   * (used on /enquiry-form). Brochures are listed in brochures.ts.
+   */
+  @Input() showBrochures = false;
 
   readonly academicYearLabel = '2027\u201328';
 
@@ -114,6 +121,18 @@ private captchaRenderTimer: ReturnType<typeof setTimeout> | null = null;
         this.form.controls.studentGrade.setValue('');
       }
     });
+  }
+
+  /** Brochures with a file, the parent's chosen campus first. */
+  get availableBrochures(): Brochure[] {
+    const chosen = this.form.controls.location.value;
+    return BROCHURES
+      .filter((b) => !!b.file)
+      .sort((a, b) => (a.campus === chosen ? -1 : b.campus === chosen ? 1 : 0));
+  }
+
+  onBrochureClick(brochure: Brochure): void {
+    this.tracking.brochureDownloaded(brochure.campus);
   }
 
   /** Grades offered for the campus currently selected in the form. */
