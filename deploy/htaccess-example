@@ -46,6 +46,9 @@ DirectorySlash Off
     # Preserve WordPress blog
     RewriteRule ^blog(/|$) - [L,NC]
 
+    # NEW (Curriculum release): the old ICSE/IBDP page moved to /curriculum/icse.
+    RewriteRule ^icse/?$ https://www.jgschool.in/curriculum/icse [R=301,L,NC]
+
     # Explicitly handle Angular contact route
     # CHANGED: index.html -> index.original.html (see the note on the fallback below)
     RewriteRule ^contact/?$ /index.original.html [L,NC]

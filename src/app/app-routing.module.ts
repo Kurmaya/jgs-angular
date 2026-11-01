@@ -32,7 +32,6 @@ import { ZoomclassmainComponent } from './eduman/zoom/zoomclassmain/zoomclassmai
 import { GallerymainComponent } from './eduman/gallery/gallerymain.component';
 import { JgsdifferencemainComponent } from './eduman/jgsdifference/jgsdifferencemain.component';
 import { FacilitesComponent } from './eduman/facilities/facilities.component';
-import { CurriculumComponent } from './eduman/curriculum/curriculum.component';
 import { TermsconditionmainComponent } from './eduman/termscondition/termscondition.component';
 import { PrivacypolicyComponent } from './eduman/privacypolicy/privacypolicy.component';
 import { AdmissionsComponent } from './eduman/admissions/admissions.component';
@@ -41,8 +40,10 @@ import { ViewBrochuremainComponent } from './eduman/viewbrochure/viewbrochure.co
 import { BrochureFilpBookmainComponent } from './eduman/brochureflipbook/brochureflipbook.component';
 import { AdmissionsLandingComponent } from './eduman/admissionslanding/admissionslanding.component';
 import { NewsComponent } from './eduman/news/news.component';
-import { IcseComponent } from './eduman/icse/icse.component';
 import { NewlandingpageComponent } from './eduman/homeone/newlandingpage/newlandingpage.component';
+import { CurriculumhubComponent } from './eduman/curriculumpages/curriculumhub/curriculumhub.component';
+import { CurriculumibComponent } from './eduman/curriculumpages/curriculumib/curriculumib.component';
+import { CurriculumicseComponent } from './eduman/curriculumpages/curriculumicse/curriculumicse.component';
 
 const routes: Routes = [ 
   { path: '', component: HomeonemainComponent, pathMatch: 'full' },
@@ -79,14 +80,25 @@ const routes: Routes = [
       description: "Welcome to the product page of the application"
     }
   },
+  // Curriculum pages (menu: Curriculum > IB | ICSE). The old IB PYP page (CurriculumComponent)
+  // and ICSE/IBDP page (IcseComponent) are replaced; /icse redirects to /curriculum/icse.
   {
     path: 'curriculum',
-    component: CurriculumComponent
+    component: CurriculumhubComponent
   },
   {
-  path: 'icse',
-  component: IcseComponent
-},
+    path: 'curriculum/ib',
+    component: CurriculumibComponent
+  },
+  {
+    path: 'curriculum/icse',
+    component: CurriculumicseComponent
+  },
+  {
+    path: 'icse',
+    redirectTo: 'curriculum/icse',
+    pathMatch: 'full'
+  },
   {
     path: 'terms-and-conditions',
     component: TermsconditionmainComponent

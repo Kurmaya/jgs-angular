@@ -15,20 +15,17 @@ import { Subscription } from 'rxjs';
 
 import { TrackingService } from '../tracking.service';
 
-/** Grades JGS Kokapet admits (IB PYP, Nursery to Grade 5). */
+/** Grades JGS Kokapet admits from 2027–28 (IB PYP, Nursery (EY1) to Grade 2). */
 const KOKAPET_GRADES = [
   'Nursery',
   'PP1',
   'PP2',
   'Grade 1',
-  'Grade 2',
-  'Grade 3',
-  'Grade 4',
-  'Grade 5'
+  'Grade 2'
 ];
 
 /** Grades JGS Mokila admits for 2027–28 (Nursery to Grade 7). */
-const MOKILA_GRADES = [...KOKAPET_GRADES, 'Grade 6', 'Grade 7'];
+const MOKILA_GRADES = [...KOKAPET_GRADES, 'Grade 3', 'Grade 4', 'Grade 5', 'Grade 6', 'Grade 7'];
 
 /** reCAPTCHA is loaded only on pages that show this form (brief item A9). */
 const RECAPTCHA_SCRIPT_ID = 'jgs-recaptcha-script';
@@ -110,7 +107,7 @@ private captchaRenderTimer: ReturnType<typeof setTimeout> | null = null;
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
 
-    // Kokapet admits only up to Grade 5: clear a grade that does not apply to the chosen campus.
+    // Kokapet admits only up to Grade 2: clear a grade that does not apply to the chosen campus.
     this.locationSub = this.form.controls.location.valueChanges.subscribe(() => {
       const grade = this.form.controls.studentGrade.value;
       if (grade && !this.availableGrades.includes(grade)) {

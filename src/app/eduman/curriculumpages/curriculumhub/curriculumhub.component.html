@@ -1,0 +1,48 @@
+<!-- /curriculum: short landing page linking to the IB and ICSE pages (the menu links straight to those). -->
+<main class="cur-page">
+  <app-headerone></app-headerone>
+  <app-breadcrumb
+    lineOne="Being curious"
+    lineTwo="is a great place to be!"
+    breadcrumbSubTitle="Curriculum"
+    imgName="CurriculumNew"
+    imgMobName="CurriculumMob"
+    [taglineAsHeading]="false"
+  ></app-breadcrumb>
+  <section class="cur-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 offset-lg-1">
+          <h1>Curriculum at Johnson Grammar School Kokapet &amp; Mokila</h1>
+          <p class="cur-lead">
+            JGS Kokapet is an IB World School for the Primary Years Programme. Our new campus, JGS Mokila, is planned to
+            offer both the IB and the ICSE. Choose a curriculum to learn more.
+          </p>
+        </div>
+      </div>
+      <div class="row mt-20">
+        <div class="col-md-6 col-lg-5 offset-lg-1 mb-30">
+          <a class="cur-card d-block" [routerLink]="['/curriculum/ib']">
+            <h2>International Baccalaureate (IB)</h2>
+            <p>
+              The IB Primary Years Programme at JGS Kokapet, Nursery (EY1) to Grade 2 from 2027&ndash;28, and the PYP,
+              MYP and DP planned at JGS Mokila.
+            </p>
+            <span class="cur-link">Explore the IB &rarr;</span>
+          </a>
+        </div>
+        <div class="col-md-6 col-lg-5 mb-30">
+          <a class="cur-card cur-card-planned d-block" [routerLink]="['/curriculum/icse']">
+            <h2>ICSE</h2>
+            <p>
+              The ICSE, Grades 1 to 7, planned at JGS Mokila from 2027&ndash;28, from a school that has taught the ICSE
+              since 1979.
+            </p>
+            <span class="cur-link">Explore the ICSE &rarr;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <app-footerone></app-footerone>
+</main>
