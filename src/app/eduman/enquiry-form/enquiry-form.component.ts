@@ -131,6 +131,10 @@ private captchaRenderTimer: ReturnType<typeof setTimeout> | null = null;
       .sort((a, b) => (a.campus === chosen ? -1 : b.campus === chosen ? 1 : 0));
   }
 
+  onWhatsAppClick(): void {
+    this.tracking.contactClicked('whatsapp');
+  }
+
   onBrochureClick(brochure: Brochure): void {
     this.tracking.brochureDownloaded(brochure.campus);
   }
