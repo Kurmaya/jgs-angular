@@ -1,25 +1,20 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Meta, MetaDefinition, Title } from '@angular/platform-browser';
+import { Component, OnInit } from '@angular/core';
+import { SeoService } from '../seo.service';
+import { TrackingService } from '../tracking.service';
+import { ENQUIRY_FAQ, ENQUIRY_SEO } from './admissions-content';
 
+/** Admission Enquiry page (/enquiry-form). */
 @Component({
   selector: 'app-admissions',
   templateUrl: './admissions.component.html',
-  styleUrls: ['./admissions.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['../curriculumpages/curriculum-pages.scss', './admissions.component.scss']
 })
-
 export class AdmissionsComponent implements OnInit {
-  
-  constructor(private title: Title, private meta: Meta) { 
-    //this.addTag();
-    this.title.setTitle('Top Schools in Narsingi | Kokapte | Enquiry - JGS');
-    this.meta.addTag({property:'og:title', content: 'Looking for the best schools in Hyderabad. Our school inquiry page provides information on the top school in HYD, including admission procedures, fees, and facilities for your childs education today.'},true)
-  //let metaE1: HTMLMetaElement | null = this.meta.getTag('name = "description');
-  //console.log(metaE1)
-  }
+  readonly faq = ENQUIRY_FAQ;
+
+  constructor(private seo: SeoService, public tracking: TrackingService) {}
 
   ngOnInit(): void {
-    
+    this.seo.apply(ENQUIRY_SEO);
   }
-
 }

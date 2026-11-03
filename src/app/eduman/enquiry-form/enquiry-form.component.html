@@ -24,12 +24,32 @@
 
       <div class="status-icon">&#10003;</div>
 
-      <h3>Thank you for your enquiry!</h3>
+      <h3>Thank you!</h3>
 
       <p>
-        Your enquiry has been submitted.
-        Please contact the school to confirm receipt.
+        Our admissions team will contact you shortly.
       </p>
+
+      <p class="whatsapp-line">
+        If you would like to reach us sooner, please WhatsApp
+        <a href="https://wa.me/918977006304?text=Hello.%20I%20have%20just%20sent%20an%20admission%20enquiry%20on%20your%20website."
+           target="_blank" rel="noopener" (click)="onWhatsAppClick()">+91 89770 06304</a>.
+      </p>
+
+      <!-- Prospectus downloads, offered after the parent has entered their details -->
+      <div class="prospectus-downloads" *ngIf="showProspectus && availableProspectuses.length">
+        <h4>Download our prospectus</h4>
+        <a
+          *ngFor="let prospectus of availableProspectuses"
+          class="prospectus-link"
+          [href]="prospectus.file"
+          target="_blank"
+          rel="noopener"
+          download
+          (click)="onProspectusClick(prospectus)">
+          <span aria-hidden="true">&#8681;</span> {{ prospectus.label }} (PDF)
+        </a>
+      </div>
 
       <button
         type="button"
@@ -50,7 +70,10 @@
     </div>
 
     <!-- Admission form -->
+    <!-- L13: (focusin) records that the parent started the form; data-clarity-mask hides typed details from Microsoft Clarity. -->
     <form
+      data-clarity-mask="true"
+      (focusin)="onFormFocus()"
       *ngIf="!submitted"
       [formGroup]="form"
       (ngSubmit)="submitForm()"

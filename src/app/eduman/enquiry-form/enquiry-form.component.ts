@@ -14,6 +14,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 import { TrackingService } from '../tracking.service';
+import { Prospectus, PROSPECTUSES } from './prospectuses';
 
 /** Grades JGS Kokapet admits from 2027–28 (IB PYP, Nursery (EY1) to Grade 2). */
 const KOKAPET_GRADES = [
@@ -45,6 +46,15 @@ export class EnquiryFormComponent implements AfterViewInit, OnDestroy {
    * Use only one instance per page, because the reCAPTCHA container has a fixed id.
    */
   @Input() inline = false;
+
+  /**
+   * true: after a successful enquiry, offer the campus prospectuses for download
+   * (used on /enquiry-form). Prospectuses are listed in prospectuses.ts.
+   */
+  @Input() showProspectus = false;
+
+  /** L13: "enquiry_form_start" is sent once per page load. */
+  private formStarted = false;
 
   readonly academicYearLabel = '2027\u201328';
 
@@ -114,6 +124,31 @@ private captchaRenderTimer: ReturnType<typeof setTimeout> | null = null;
         this.form.controls.studentGrade.setValue('');
       }
     });
+  }
+
+  /** Prospectuses with a file, the parent's chosen campus first. */
+  get availableProspectuses(): Prospectus[] {
+    const chosen = this.form.controls.location.value;
+    return PROSPECTUSES
+      .filter((p) => !!p.file)
+      .sort((a, b) => (a.campus === chosen ? -1 : b.campus === chosen ? 1 : 0));
+  }
+
+  onWhatsAppClick(): void {
+    this.tracking.contactClicked('whatsapp');
+  }
+
+  /** L13: first time the parent touches the form on this page. */
+  onFormFocus(): void {
+    if (this.formStarted || !this.isBrowser) {
+      return;
+    }
+    this.formStarted = true;
+    this.tracking.enquiryFormStarted(window.location.pathname);
+  }
+
+  onProspectusClick(prospectus: Prospectus): void {
+    this.tracking.prospectusDownloaded(prospectus.campus);
   }
 
   /** Grades offered for the campus currently selected in the form. */
@@ -361,7 +396,11 @@ private renderRecaptcha(): void {
           emailAddress: values.emailAddress.trim(),
           academicYear: '2027-2028',
           location: values.location,
-          recaptchaToken: this.recaptchaToken
+          recaptchaToken: this.recaptchaToken,
+          // L13: where the parent came from (ad campaign, search, social...) and where they sent the form.
+          // Extra fields: the Google Sheet script stores them once its new columns are added.
+          ...this.tracking.getAttribution(),
+          form_page: window.location.pathname
         })
       });
 

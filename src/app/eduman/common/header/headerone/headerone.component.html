@@ -6,7 +6,7 @@
           <div class="offset-widget offset-logo mb-40">
              <div class="row align-items-center">
                 <div class="col-9">
-                   <a [routerLink]="['/']">
+                   <a href="/" title="Johnson Grammar School home">
                       <!--<img src="assets/img/whatsinaname/JGS-New-Logo-1.png" alt="Logo" class="img-fluid">-->
                       <img src="assets/img/whatsinaname/JGSNewwLogo.png" alt="Logo" class="img-fluid">
                    </a>
@@ -37,7 +37,7 @@
                 <div class="col-xl-12 col-lg-9 col-md-9 col-sm-9 col-9">
                    <div class="header-left d-flex align-items-center justify-content-between">
                       <div class="header-logo">
-                         <a [routerLink]="['/']"><img src="assets/img/whatsinaname/mokila logo.png" alt="Johnson Grammar School Kokapet and Mokila"></a>
+                         <a href="/" title="Johnson Grammar School home"><img src="assets/img/whatsinaname/mokila logo.png" alt="Johnson Grammar School Kokapet and Mokila"></a>
                       </div>
                       
                       <div class="main-menu d-none d-xl-block">
@@ -62,7 +62,12 @@
                                     <li><a [routerLink]="['/enquiry-form']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Enquiry Form</a></li>
                                     <!--<li><a href="http://flowpaper.com/flipbook/https://jgsibpyp.org/brochures/JGSIBPYPBrochure.pdf" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" target="_blank">View Brochure</a></li>-->
                                     <!--<li><a href="" data-bs-toggle="modal" data-bs-target="#myModal">View Brochure</a></li>-->
-                                    <li><a href="assets/pdfs/JGS brochure.pdf" target="_blank">View Brochure</a></li>
+                                    <li class="menu-item-has-children jgs-prospectus-menu"><a href="javascript:void(0)">View Prospectus</a>
+                                       <ul class="sub-menu">
+                                          <li><a href="assets/pdfs/JGS%20brochure.pdf" target="_blank" rel="noopener">JGS Kokapet</a></li>
+                                          <li><a href="assets/pdfs/JGS-Mokila-Prospectus.pdf" target="_blank" rel="noopener">JGS Mokila</a></li>
+                                       </ul>
+                                    </li>
                                     <li><a href="assets/pdfs/Fee Structure.pdf" target="_blank">Fee Structure</a></li>
                                  </ul>
                               </li>
@@ -79,7 +84,7 @@
                               </li>
                               <li><a href="https://jgschool.in/gallery/">Gallery</a></li>
                               <!--<li><a href="https://sohamshilmkar.smugmug.com/Events" target="_blank">Gallery</a></li>-->
-                              <li><a href="https://jgschool.in/blog/">Blog</a></li>
+                              <li><a href="https://www.jgschool.in/blog/">Blog</a></li>
                               <li><a [routerLink]="['/contact']" routerLinkActive="active">Contact us</a></li>
                            </ul>
                         </nav>
