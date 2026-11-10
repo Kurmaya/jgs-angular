@@ -63,7 +63,7 @@ export const HOME_SEO: PageSeo = {
         name: 'Johnson Grammar School',
         alternateName: 'JGS',
         url: `${SITE_ORIGIN}/`,
-        logo: `${SITE_ORIGIN}/assets/img/whatsinaname/JGSNewwLogo.png`,
+        logo: `${SITE_ORIGIN}/assets/img/whatsinaname/jgs-logo.png`,
         foundingDate: '1979',
         email: 'hello@jgschool.in',
         telephone: '+91-9513251488',
