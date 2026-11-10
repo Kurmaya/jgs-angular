@@ -3,10 +3,11 @@ import { isPlatformBrowser } from '@angular/common';
 
 /**
  * Google Ads conversion action fired when an admission enquiry is submitted
- * successfully. This is the same conversion that used to fire on every page
- * load from index.html (brief item T1).
+ * successfully (L15: JGS's own Google Ads account, conversion action
+ * "Unbounce LP Enquiry"). The old ID AW-11049467860 belonged to an account JGS
+ * no longer uses and has been removed.
  */
-const GOOGLE_ADS_ENQUIRY_CONVERSION = 'AW-11049467860/buKACKmD7IUYENT_5ZQp';
+const GOOGLE_ADS_ENQUIRY_CONVERSION = 'AW-16775346810/mZE8CO2QyOkZEPr0jb8-';
 
 /** The site's Google Analytics 4 property (configured in src/index.html). */
 const GA4_ID = 'G-QEZM6GNZ4W';

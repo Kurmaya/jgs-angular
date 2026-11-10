@@ -15,7 +15,7 @@ export const ENQUIRY_FAQ: FaqItem[] = [
   },
   {
     question: 'Which curriculum does each campus follow?',
-    answer: 'JGS Kokapet is an IB World School for the Primary Years Programme (PYP), authorised on 10 April 2025. JGS Mokila plans to offer the IB PYP and MYP, and the ICSE for Grades 1 to 7, subject to IB approval and CISCE affiliation.'
+    answer: 'JGS Kokapet is an IB World School for the Primary Years Programme (PYP), authorised on 10 April 2025. JGS Mokila plans to offer the IB PYP and MYP, and the ICSE for Grades 1 to 6, subject to IB approval and CISCE affiliation.'
   },
   {
     question: 'Can I download the school prospectus?',
