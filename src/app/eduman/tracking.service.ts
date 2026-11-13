@@ -49,18 +49,32 @@ export class TrackingService {
   }
 
   /** Call once, after an admission enquiry has been submitted successfully. */
-  enquirySubmitted(campus: string, grade: string): void {
+  enquirySubmitted(campus: string, grade: string, curriculum?: string): void {
     const w = this.win();
     if (!w) {
       return;
     }
-    this.pushDataLayer({ event: 'enquiry_submitted', campus, grade });
+    // L17: curriculum is sent from the full form (/enquiry-form) only.
+    const extra = curriculum ? { curriculum } : {};
+    this.pushDataLayer({ event: 'enquiry_submitted', campus, grade, ...extra });
     if (typeof w.gtag === 'function') {
       w.gtag('event', 'conversion', { send_to: GOOGLE_ADS_ENQUIRY_CONVERSION });
-      w.gtag('event', 'generate_lead', { campus, grade });
+      w.gtag('event', 'generate_lead', { campus, grade, ...extra });
     }
     if (typeof w.fbq === 'function') {
       w.fbq('track', 'Lead', { content_name: `Admission enquiry - ${campus}` });
+    }
+  }
+
+  /** L17: call when a parent downloads their enquiry form PDF on /enquiry-form. */
+  enquiryPdfDownloaded(campus: string): void {
+    const w = this.win();
+    if (!w) {
+      return;
+    }
+    this.pushDataLayer({ event: 'enquiry_pdf_download', campus });
+    if (typeof w.gtag === 'function') {
+      w.gtag('event', 'enquiry_pdf_download', { campus });
     }
   }
 

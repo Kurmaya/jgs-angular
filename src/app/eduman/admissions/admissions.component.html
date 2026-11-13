@@ -23,57 +23,66 @@
           <p class="cur-lead">
             Thank you for considering Johnson Grammar School for your child. Share a few details and our admissions team
             will get in touch to help you choose the right campus and curriculum. As soon as you submit, you can
-            download our prospectus.
+            download your enquiry form and our prospectus.
           </p>
         </div>
       </div>
 
+      <!-- L17 (layout B): the full enquiry form across the page, the information boxes below it -->
       <div class="row mt-20">
-        <!-- The form -->
-        <div class="col-lg-7 mb-30" id="enquire">
-          <app-enquiry-form [inline]="true" [showProspectus]="true"></app-enquiry-form>
+        <div class="col-lg-10 offset-lg-1 mb-30" id="enquire">
+          <app-enquiry-form [inline]="true" [showProspectus]="true" [fullForm]="true"></app-enquiry-form>
         </div>
+      </div>
 
-        <!-- Side panel -->
-        <div class="col-lg-5">
-          <div class="cur-card cur-card-stacked mb-30">
-            <h2 class="enq-h2">Admissions 2027&ndash;28 at a glance</h2>
-            <dl class="cur-facts">
-              <dt>JGS Kokapet</dt>
-              <dd>IB World School for the Primary Years Programme. Admitting Nursery (EY1) to Grade 2.</dd>
-              <dt>JGS Mokila (new campus)</dt>
-              <dd>
-                Admissions enquiries open for Nursery to Grade 7. Planned curricula: the IB PYP and MYP, and the ICSE
-                for Grades 1 to 6.
-              </dd>
-            </dl>
-            <p class="cur-footnote mt-15 mb-0">
-              JGS Mokila is not yet an IB World School, and is awaiting CISCE affiliation.
-              <a class="cur-link" [routerLink]="['/curriculum/ib']">About the IB</a> &middot;
-              <a class="cur-link" [routerLink]="['/curriculum/icse']">About the ICSE</a>
-            </p>
-          </div>
+      <div class="row">
+        <div class="col-lg-10 offset-lg-1">
+          <div class="row">
+            <div class="col-md-4 mb-30">
+              <div class="cur-card cur-card-stacked h-100">
+                <h2 class="enq-h2">Admissions 2027&ndash;28 at a glance</h2>
+                <dl class="cur-facts">
+                  <dt>JGS Kokapet</dt>
+                  <dd>IB World School for the Primary Years Programme. Admitting Nursery (EY1) to Grade 2.</dd>
+                  <dt>JGS Mokila (new campus)</dt>
+                  <dd>
+                    Admissions enquiries open for Nursery to Grade 7. Planned curricula: the IB PYP and MYP, and the ICSE
+                    for Grades 1 to 6.
+                  </dd>
+                </dl>
+                <p class="cur-footnote mt-15 mb-0">
+                  JGS Mokila is not yet an IB World School, and is awaiting CISCE affiliation.
+                  <a class="cur-link" [routerLink]="['/curriculum/ib']">About the IB</a> &middot;
+                  <a class="cur-link" [routerLink]="['/curriculum/icse']">About the ICSE</a>
+                </p>
+              </div>
+            </div>
 
-          <div class="cur-card cur-card-stacked mb-30">
-            <h2 class="enq-h2">What happens next</h2>
-            <ol class="cur-steps mb-0">
-              <li>Send your enquiry using this form.</li>
-              <li>Our admissions team contacts you to answer your questions.</li>
-              <li>Visit the campus and meet our team.</li>
-              <li>Complete the admission process with our admissions team.</li>
-            </ol>
-          </div>
+            <div class="col-md-4 mb-30">
+              <div class="cur-card cur-card-stacked h-100">
+                <h2 class="enq-h2">What happens next</h2>
+                <ol class="cur-steps mb-0">
+                  <li>Send your enquiry using this form.</li>
+                  <li>Our admissions team contacts you to answer your questions.</li>
+                  <li>Visit the campus and meet our team.</li>
+                  <li>Complete the admission process with our admissions team.</li>
+                </ol>
+              </div>
+            </div>
 
-          <div class="cur-card cur-card-stacked mb-30">
-            <h2 class="enq-h2">Prefer to talk?</h2>
-            <ul class="enq-contact">
-              <li><a href="tel:+919513251488" (click)="tracking.contactClicked('call')">Call +91 95132 51488</a></li>
-              <li>
-                <a href="https://wa.me/918977006304?text=Hello.%20I%20would%20like%20to%20know%20more%20about%20the%20admission%20process"
-                   target="_blank" rel="noopener" (click)="tracking.contactClicked('whatsapp')">WhatsApp +91 89770 06304</a>
-              </li>
-              <li><a href="mailto:hello@jgschool.in">hello@jgschool.in</a></li>
-            </ul>
+            <div class="col-md-4 mb-30">
+              <div class="cur-card cur-card-stacked h-100">
+                <h2 class="enq-h2">Prefer to talk?</h2>
+                <ul class="enq-contact">
+                  <li><a href="tel:+919513251488" (click)="tracking.contactClicked('call')">Call +91 95132 51488</a></li>
+                  <li>
+                    <a href="https://wa.me/918977006304?text=Hello.%20I%20would%20like%20to%20know%20more%20about%20the%20admission%20process"
+                       target="_blank" rel="noopener" (click)="tracking.contactClicked('whatsapp')">WhatsApp +91 89770 06304</a>
+                  </li>
+                  <li><a href="mailto:hello@jgschool.in">hello@jgschool.in</a></li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>

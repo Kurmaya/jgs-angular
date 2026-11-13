@@ -1,0 +1,9 @@
+Files in this folder (L17: enquiry form PDF on /enquiry-form)
+
+enquiry-pdf.js        Johnson Grammar School. Builds the enquiry form PDF.
+header-*.png          Johnson Grammar School enquiry form artwork (header only).
+pdf-lib.min.js        pdf-lib 1.17.1, https://github.com/Hopding/pdf-lib, MIT licence.
+fontkit.min.js        @pdf-lib/fontkit 1.1.1, https://github.com/Hopding/fontkit, MIT licence.
+Poppins-*.ttf         Poppins by Indian Type Foundry, SIL Open Font Licence 1.1 (trimmed to Latin characters).
+
+These files load only when a parent taps "Download your enquiry form (PDF)".
