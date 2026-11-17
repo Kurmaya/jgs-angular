@@ -683,7 +683,7 @@ private renderRecaptcha(): void {
     }
 
     if (!['Kokapet', 'Mokila'].includes(values.location)) {
-      this.errorMessage = 'Please select a valid school location.';
+      this.errorMessage = 'Please select a valid campus.';
       return;
     }
 

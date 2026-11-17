@@ -92,7 +92,7 @@
 
       <!--
         L17: two layouts of the same fields.
-        - Short form (default): every page except /enquiry-form (home page, /home, the popup), unchanged.
+        - Short form (default): every page except /enquiry-form (home page, /home, the popup). L19: campus first.
         - Full form ([fullForm]="true"): /enquiry-form only. Campus first, then curriculum,
           then the child's details (name, gender, date of birth, grade), then the parents' details.
         Each field is written once below and placed in either layout.
@@ -294,10 +294,10 @@
       </ng-template>
 
       <ng-template #fLocation>
-        <!-- School Location -->
+        <!-- Campus (sent as "location", the same Sheet column as before) -->
         <div class="form-group">
           <label for="location">
-            {{ fullForm ? 'Campus' : 'School Location' }} <span>*</span>
+            Campus <span>*</span>
           </label>
 
           <select
@@ -308,7 +308,7 @@
               form.controls.location.invalid
             ">
 
-            <option value="">{{ fullForm ? 'Select campus' : 'Select location' }}</option>
+            <option value="">Select campus</option>
             <option value="Kokapet">Kokapet</option>
             <option value="Mokila">Mokila</option>
           </select>
@@ -319,7 +319,7 @@
               form.controls.location.invalid
             ">
 
-            Please select a {{ fullForm ? 'campus' : 'school location' }}.
+            Please select a campus.
           </small>
         </div>
       </ng-template>
@@ -460,8 +460,9 @@
         </div>
       </ng-template>
 
-      <!-- Short form: the original order -->
+      <!-- Short form (home page, /home, popup). L19: campus first, so the grade list only shows that campus's grades. -->
       <div class="form-grid" *ngIf="!fullForm">
+        <ng-container *ngTemplateOutlet="fLocation"></ng-container>
         <ng-container *ngTemplateOutlet="fStudentName"></ng-container>
         <ng-container *ngTemplateOutlet="fGrade"></ng-container>
         <ng-container *ngTemplateOutlet="fMother"></ng-container>
@@ -469,7 +470,6 @@
         <ng-container *ngTemplateOutlet="fPhone"></ng-container>
         <ng-container *ngTemplateOutlet="fEmail"></ng-container>
         <ng-container *ngTemplateOutlet="fYear"></ng-container>
-        <ng-container *ngTemplateOutlet="fLocation"></ng-container>
       </div>
 
       <!-- Full form (L17, /enquiry-form only): every field of the school's printed enquiry form -->
