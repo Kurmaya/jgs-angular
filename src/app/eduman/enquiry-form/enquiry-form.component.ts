@@ -2,6 +2,7 @@
 import {
   AfterViewInit,
   Component,
+  ElementRef,
   HostListener,
   Inject,
   Input,
@@ -251,12 +252,17 @@ private captchaRenderTimer: ReturnType<typeof setTimeout> | null = null;
 
   private fullFormSubs: Subscription[] = [];
 
+  /** L20: reCAPTCHA loads when the on-page form comes near the screen. */
+  private formObserver?: IntersectionObserver;
+  private captchaStarted = false;
+
   private curriculumSub?: Subscription;
 
   constructor(
     private fb: FormBuilder,
     private tracking: TrackingService,
     private enquiryPdf: EnquiryPdfService,
+    private host: ElementRef<HTMLElement>,
     @Inject(PLATFORM_ID) platformId: object
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
@@ -429,6 +435,8 @@ private captchaRenderTimer: ReturnType<typeof setTimeout> | null = null;
     }
     this.formStarted = true;
     this.tracking.enquiryFormStarted(window.location.pathname);
+    // L20: if the form was reached without scrolling (e.g. a link to #enquire), start reCAPTCHA now.
+    this.startRecaptcha();
     // L17: start loading the PDF tools in the background, so they are ready when the form is sent.
     if (this.fullForm) {
       this.enquiryPdf.preload();
@@ -466,10 +474,38 @@ private captchaRenderTimer: ReturnType<typeof setTimeout> | null = null;
   }
 
   ngAfterViewInit(): void {
-    if (this.inline && this.isBrowser) {
-      this.captchaRenderAttempts = 0;
-      this.waitForRecaptcha();
+    if (!this.inline || !this.isBrowser) {
+      return;
     }
+    // L20 (GADS Patch): reCAPTCHA is about 350 KB. It now loads only when the form comes near the
+    // screen (or the parent starts typing), so parents who only browse the page never download it.
+    if (typeof IntersectionObserver === 'undefined') {
+      this.startRecaptcha();
+      return;
+    }
+    this.formObserver = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          this.startRecaptcha();
+        }
+      },
+      { rootMargin: '800px 0px' }
+    );
+    // Watch the visible form box: the component's own tag has no size of its own.
+    const target = (this.host.nativeElement.querySelector('.admission-inline') as HTMLElement | null) || this.host.nativeElement;
+    this.formObserver.observe(target);
+  }
+
+  /** L20: loads and shows reCAPTCHA for the on-page form, once. */
+  private startRecaptcha(): void {
+    if (!this.inline || !this.isBrowser || this.captchaStarted) {
+      return;
+    }
+    this.captchaStarted = true;
+    this.formObserver?.disconnect();
+    this.formObserver = undefined;
+    this.captchaRenderAttempts = 0;
+    this.waitForRecaptcha();
   }
 
   /** The form is visible either as the on-page form or as an open popup. */
@@ -843,6 +879,7 @@ startAnotherEnquiry(): void {
     this.locationSub?.unsubscribe();
     this.curriculumSub?.unsubscribe();
     this.fullFormSubs.forEach((sub) => sub.unsubscribe());
+    this.formObserver?.disconnect();
 
     if (!this.isBrowser) {
       return;

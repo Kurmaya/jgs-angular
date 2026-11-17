@@ -175,7 +175,8 @@
               "/enquiry-form",
               "/contact",
               "/about",
-              "/facilities"
+              "/facilities",
+              "/home"
             ],
             "guessRoutes": false
           },
