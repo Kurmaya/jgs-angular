@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID, ViewEncapsulation } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 declare var $: any; 
 @Component({
   selector: 'app-customslider',
@@ -8,9 +9,13 @@ declare var $: any;
 })
 export class CustomsliderComponent implements OnInit {
   //declare var $: any;
-  constructor() { }
+  constructor(@Inject(PLATFORM_ID) private platformId: object) { }
 
   ngOnInit(): void {
+    // L18: jQuery only exists in a real browser, so this is skipped while /about is prerendered.
+    if (!isPlatformBrowser(this.platformId) || typeof $ === 'undefined') {
+      return;
+    }
     $(document).ready(() => {  
       var attrValue = $(this).attr('data-bs-slide-to');
 
