@@ -49,7 +49,10 @@ const CURRICULUM_OPTIONS: Record<string, { value: string; label: string }[]> = {
 /** L17: Indian mobile number, 10 digits starting 6 to 9. */
 const MOBILE_PATTERN = /^[6-9]\d{9}$/;
 
-/** L17: enquiry number, e.g. MK-IB-482913: campus, curriculum and a random 6-digit number. */
+/**
+ * L17: enquiry number, e.g. MK-IB-482913: campus, curriculum and a random 6-digit number.
+ * L22: short-form (quick) enquiries use "Q" in place of the curriculum, e.g. KK-Q-305771.
+ */
 function makeEnquiryNumber(campus: string, curriculum: string): string {
   const prefix = campus === 'Kokapet' ? 'KK' : 'MK';
   let n = Math.floor(Math.random() * 900000);
@@ -806,13 +809,7 @@ private renderRecaptcha(): void {
     }
 
     try {
-      await fetch(targetUrl, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'text/plain;charset=utf-8'
-        },
-        body: JSON.stringify({
+      const payload = {
           studentName: values.studentName.trim(),
           studentGrade: values.studentGrade,
           motherName: t(values.motherName),
@@ -830,11 +827,33 @@ private renderRecaptcha(): void {
           // Extra fields: the Google Sheet script stores them once its new columns are added.
           ...this.tracking.getAttribution(),
           form_page: window.location.pathname
-        })
+      };
+      await fetch(targetUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8'
+        },
+        body: JSON.stringify(payload)
       });
 
       // With no-cors, this does not confirm that Apps Script saved the row.
       this.submitted = true;
+
+      // L22: short forms (home page, /home, popup) also send a copy to the "Quick enquiries" tab of the
+      // enquiry Sheet, which keeps where the parent came from (campaign, ad group, search term). The main
+      // "JGS - Website Leads" sheet above is unchanged. A failed copy never affects the parent.
+      if (!this.fullForm && isScriptUrl(this.fullFormScriptUrl)) {
+        const copy: Record<string, unknown> = { ...payload };
+        delete copy['recaptchaToken']; // already used by the main sheet; an answer can be checked only once
+        fetch(this.fullFormScriptUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          keepalive: true,
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({ ...copy, formType: 'quick', enquiryNo: makeEnquiryNumber(values.location, 'Q') })
+        }).catch((error) => console.error('Quick enquiry copy not sent:', error));
+      }
 
 
       // Google Ads conversion, GA4 generate_lead and Meta Lead (brief items T1 and T3).

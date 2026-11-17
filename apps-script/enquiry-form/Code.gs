@@ -8,6 +8,11 @@
  *      and puts a link to it in the row (the "PDF" column).
  *   4. Emails the admissions team, with the PDF attached.
  *
+ * L22: it also receives a copy of every enquiry from the short forms (the home page, /home and the
+ * "Enquire now" popup). Those go to their own tab, "Quick enquiries", with where the parent came from
+ * (campaign, ad group, search term, Google click ID). They are not emailed (school decision, 17 Nov 2026).
+ * The short forms still save to the "JGS - Website Leads" sheet as before; this tab is an extra copy.
+ *
  * One-time setup (full steps in docs/L17-enquiry-form-sheet.md):
  *   - Paste this file into the new Sheet (Extensions > Apps Script), save, choose "setup" and click Run.
  *   - Deploy > New deployment > Web app: Execute as "Me", Who has access "Anyone". Copy the web app URL.
@@ -18,9 +23,11 @@
  *   RECAPTCHA_SECRET  reCAPTCHA secret key (spam check)
  *   NOTIFY_TO         who gets the email (default below)
  *   NOTIFY_CC         copied on the email (default below)
+ *   QUICK_EMAIL       set to "on" to also email each quick enquiry (off unless set)
  */
 
 var SHEET_NAME = 'Enquiries';
+var QUICK_SHEET_NAME = 'Quick enquiries';
 var FOLDER_NAME = 'JGS Enquiry Forms 2027-28';
 var DEFAULT_TO = 'admissions@jgschool.in';
 var DEFAULT_CC = 'siddarth.k@jgschool.in';
@@ -72,9 +79,36 @@ var COLUMNS = [
   ['Form page', 'form_page']
 ];
 
-/** Run once after pasting: creates the tab, its headings and the Drive folder, and asks for permissions. */
+/** L22: columns of the "Quick enquiries" tab (short forms on the home page, /home and the popup). */
+var QUICK_COLUMNS = [
+  ['Submitted at', '_submittedAt'],
+  ['Enquiry No.', 'enquiryNo'],
+  ['Form page', 'form_page'],
+  ['Campus', 'location'],
+  ['Grade', 'studentGrade'],
+  ['Name of the child', 'studentName'],
+  ['Mother\'s name', 'motherName'],
+  ['Father\'s name', 'fatherName'],
+  ['Phone', 'phoneNumber'],
+  ['Email', 'emailAddress'],
+  ['Source', 'utm_source'],
+  ['Medium', 'utm_medium'],
+  ['Campaign', 'utm_campaign'],
+  ['Keyword', 'utm_term'],
+  ['Ad content', 'utm_content'],
+  ['Google click ID', '_gclid'],
+  ['Meta click ID', 'fbclid'],
+  ['Landing page', 'landing_page'],
+  ['Referrer', 'referrer'],
+  ['First visit', 'first_seen'],
+  ['Spam check', '_spamCheck'],
+  ['Email sent', '_emailSent']
+];
+
+/** Run once after pasting: creates the tabs, their headings and the Drive folder, and asks for permissions. */
 function setup() {
   var sheet = getSheet_();
+  getSheet_(QUICK_SHEET_NAME, QUICK_COLUMNS);
   var folder = getFolder_();
   // Ask for the permissions the script needs (Mail and web requests) during setup, not on the first enquiry.
   MailApp.getRemainingDailyQuota();
@@ -87,6 +121,9 @@ function doPost(e) {
   var lock = LockService.getScriptLock();
   try {
     var data = JSON.parse((e && e.postData && e.postData.contents) || '{}');
+    if (data.formType === 'quick') {
+      return handleQuick_(data, lock);
+    }
     var spam = checkRecaptcha_(data.recaptchaToken);
     if (spam === 'Failed') {
       return json_({ ok: false, error: 'recaptcha' });
@@ -131,6 +168,62 @@ function doPost(e) {
     return json_({ ok: false, error: String(err) });
   } finally {
     try { lock.releaseLock(); } catch (e) {}
+  }
+}
+
+/**
+ * L22: a copy of a short-form enquiry. Its reCAPTCHA answer has already been used by the main
+ * "JGS - Website Leads" sheet (an answer can be checked only once), so it is not checked again here;
+ * the row is marked accordingly. Only rows with a child's name, campus and a valid mobile are saved.
+ */
+function handleQuick_(data, lock) {
+  if (!clean_(data.studentName) || !/^(Kokapet|Mokila)$/.test(clean_(data.location)) ||
+      !/^[6-9]\d{9}$/.test(clean_(data.phoneNumber))) {
+    return json_({ ok: false, error: 'missing' });
+  }
+  var tz = Session.getScriptTimeZone() || 'Asia/Kolkata';
+  data._submittedAt = Utilities.formatDate(new Date(), tz, 'dd/MM/yyyy HH:mm:ss');
+  data._gclid = data.gclid || data.gbraid || data.wbraid || '';
+  data._spamCheck = 'Checked by the website form';
+  // No email for quick enquiries (school decision, 17 Nov 2026). Script property QUICK_EMAIL = on switches it on.
+  var emailOn = String(PropertiesService.getScriptProperties().getProperty('QUICK_EMAIL') || '').toLowerCase() === 'on';
+  data._emailSent = emailOn ? (sendQuickEmail_(data) ? 'Yes' : 'No') : 'Off';
+
+  lock.waitLock(20000);
+  var sheet = getSheet_(QUICK_SHEET_NAME, QUICK_COLUMNS);
+  sheet.appendRow(QUICK_COLUMNS.map(function (c) { return cell_(data[c[1]]); }));
+  return json_({ ok: true, enquiryNo: data.enquiryNo });
+}
+
+function sendQuickEmail_(d) {
+  var props = PropertiesService.getScriptProperties();
+  var to = props.getProperty('NOTIFY_TO') || DEFAULT_TO;
+  var cc = props.getProperty('NOTIFY_CC') || DEFAULT_CC;
+  var fromAd = clean_(d.utm_campaign) || (d._gclid ? 'Google Ads' : clean_(d.fbclid) ? 'Meta' : '');
+  var subject = 'New quick enquiry ' + clean_(d.enquiryNo) + ': ' + clean_(d.studentName) + ', ' +
+    clean_(d.studentGrade) + ', JGS ' + clean_(d.location) + (fromAd ? ' [' + fromAd + ']' : '');
+  var rows = [
+    ['Enquiry No.', d.enquiryNo], ['Submitted at', d._submittedAt], ['Form page', d.form_page],
+    ['Campus', 'JGS ' + clean_(d.location)], ['Grade', d.studentGrade], ['Name of the child', d.studentName],
+    ['Mother\'s name', d.motherName], ['Father\'s name', d.fatherName], ['Phone', d.phoneNumber], ['Email', d.emailAddress],
+    ['Campaign', d.utm_campaign], ['Search term', d.utm_term], ['Source / medium', [d.utm_source, d.utm_medium].filter(Boolean).join(' / ')],
+    ['Google click ID', d._gclid ? 'Yes' : ''], ['Landing page', d.landing_page]
+  ];
+  var html = '<p>A new admission enquiry was sent from the short form on www.jgschool.in' + esc_(d.form_page) + '.</p>' +
+    '<table cellpadding="6" cellspacing="0" style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:14px">' +
+    rows.filter(function (r) { return clean_(r[1]); }).map(function (r) {
+      return '<tr><td style="border:1px solid #dde3ea;background:#f5fafe;color:#2c3b9a;font-weight:bold">' + esc_(r[0]) +
+        '</td><td style="border:1px solid #dde3ea">' + esc_(r[1]) + '</td></tr>';
+    }).join('') + '</table>' +
+    '<p>This enquiry is also in the "JGS - Website Leads" sheet as usual.</p>';
+  try {
+    var options = { htmlBody: html, cc: cc, name: 'JGS Website Enquiries' };
+    if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(clean_(d.emailAddress))) options.replyTo = clean_(d.emailAddress);
+    MailApp.sendEmail(to, subject, 'A new admission enquiry was sent from www.jgschool.in.', options);
+    return true;
+  } catch (e) {
+    console.error('Quick enquiry email not sent: ' + e);
+    return false;
   }
 }
 
@@ -203,21 +296,23 @@ function parent_(d, p) {
     .map(clean_).filter(Boolean).join(', ');
 }
 
-function getSheet_() {
+function getSheet_(name, columns) {
+  name = name || SHEET_NAME;
+  columns = columns || COLUMNS;
   var ss = SpreadsheetApp.getActiveSpreadsheet();
-  var sheet = ss.getSheetByName(SHEET_NAME);
+  var sheet = ss.getSheetByName(name);
   if (!sheet) {
-    sheet = ss.getSheets().length === 1 && ss.getSheets()[0].getLastRow() === 0
-      ? ss.getSheets()[0].setName(SHEET_NAME)
-      : ss.insertSheet(SHEET_NAME);
+    sheet = name === SHEET_NAME && ss.getSheets().length === 1 && ss.getSheets()[0].getLastRow() === 0
+      ? ss.getSheets()[0].setName(name)
+      : ss.insertSheet(name);
   }
   if (sheet.getLastRow() === 0) {
-    sheet.appendRow(COLUMNS.map(function (c) { return c[0]; }));
-    sheet.getRange(1, 1, 1, COLUMNS.length).setFontWeight('bold').setBackground('#dbf0fb').setFontColor('#2c3b9a');
+    sheet.appendRow(columns.map(function (c) { return c[0]; }));
+    sheet.getRange(1, 1, 1, columns.length).setFontWeight('bold').setBackground('#dbf0fb').setFontColor('#2c3b9a');
     sheet.setFrozenRows(1);
     sheet.setFrozenColumns(2);
     // Plain text, so phone numbers and dates are kept exactly as typed (not the PDF column, which holds a link).
-    COLUMNS.forEach(function (c, i) {
+    columns.forEach(function (c, i) {
       if (c[1] !== '_pdf') sheet.getRange(2, i + 1, sheet.getMaxRows() - 1, 1).setNumberFormat('@');
     });
   }

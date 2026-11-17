@@ -61,10 +61,26 @@ If **Anyone** is not in the list, the jgschool.in Google Workspace administrator
 
 After that, repeat steps 1 to 3.
 
+## L22: the "Quick enquiries" tab
+From L22, the short enquiry forms send a **copy** of each enquiry to this Sheet. Those forms are on the home page, /home (the ad landing page) and the "Enquire now" pop-up.
+- **Where the copies go:** the copies land in their own tab, **Quick enquiries**. The script creates it the first time a copy arrives.
+- **What each row records:** the parent's details, the page the form was sent from, and where the parent came from: source, medium, **Campaign** ("jgs-direct-search" for the school's own Google Ads), Keyword (the search typed), Ad content, Google click ID, landing page and referrer.
+- **The usual sheet is unchanged:** the short forms still save to the "JGS - Website Leads" sheet as before.
+- **Enquiry numbers:** quick enquiries have numbers like `KK-Q-305771` or `MK-Q-208719`.
+- **No email** is sent for quick enquiries (school decision, 17 Nov 2026). To switch emails on, add the script property `QUICK_EMAIL` = `on`.
+- **Spam check:** an "I'm not a robot" answer can be checked only once, and the main sheet uses it, so these rows say "Checked by the website form". Rows without a valid mobile number are not saved.
+
+**After pasting the L22 version of `Code.gs`:**
+1. Go to **Deploy → Manage deployments**.
+2. Click the pencil icon, choose **Version: New version**, then **Deploy**.
+
+The web app URL stays the same.
+
 ## D. Optional settings
 Use Apps Script → Project Settings → Script properties:
 - `NOTIFY_TO`: who gets the email. The default is admissions@jgschool.in.
 - `NOTIFY_CC`: copied on the email. The default is siddarth.k@jgschool.in. Separate several addresses with commas.
+- `QUICK_EMAIL`: set it to `on` to also email each quick enquiry. It is off unless set.
 
 ## If the script is changed later
 After pasting a new version of `Code.gs`, go to **Deploy → Manage deployments → edit (pencil) → Version: New version → Deploy**. The Web app URL stays the same.
