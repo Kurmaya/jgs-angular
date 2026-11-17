@@ -1,18 +1,19 @@
 <!--
   /home: Google Ads landing page (website change brief, Section 7).
-  The school's choice: parents look through the page first, then reach the
-  enquiry form in the admissions section (#enquire). The sticky bar on phones
-  and the hero buttons jump straight to it.
+  L21 (17 Nov 2026): the enquiry section (#enquire) now comes straight after the banner, so parents who
+  arrive from an ad see the form within the first screen or two. It used to be near the end, about
+  9 screens down on a phone ("browse first, then enquire"). The rest of the page follows unchanged,
+  and the sticky bar on phones still jumps to the form.
 -->
 <main>
     <app-landingheader></app-landingheader>
     <app-newlandinghero></app-newlandinghero>       <!-- A6: admissions headline, proof points, Explore / Enquire -->
+    <app-homeadmissions [formFirst]="true"></app-homeadmissions>       <!-- #enquire: the enquiry form (L21: moved up from after the gallery) -->
     <app-homewhy></app-homewhy>                     <!-- #why: Why families choose JGS -->
     <app-homesafety></app-homesafety>               <!-- #safety: child safety measures -->
     <app-facilitiesslider></app-facilitiesslider>   <!-- Facilities -->
     <app-testimonialslider></app-testimonialslider> <!-- Parent testimonials -->
     <app-galleryhome></app-galleryhome>             <!-- Campus photos -->
-    <app-homeadmissions></app-homeadmissions>       <!-- #enquire: how to apply, documents and the enquiry form -->
     <app-homefaq></app-homefaq>                     <!-- FAQ -->
     <app-landingfooter></app-landingfooter>
     <app-stickycta></app-stickycta>                 <!-- A3: Call | WhatsApp | Enquire bar on phones -->

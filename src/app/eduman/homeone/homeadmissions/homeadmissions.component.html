@@ -5,7 +5,8 @@
       <h2>Admissions <span class="down-mark-line">2027&ndash;28</span></h2>
     </div>
     <div class="row">
-      <div [ngClass]="showForm ? 'col-lg-4' : 'col-lg-10 offset-lg-1'">
+      <!-- L21: on /home (formFirst), phones show the form before "How to apply"; computers keep it on the right. -->
+      <div [ngClass]="showForm ? 'col-lg-4' : 'col-lg-10 offset-lg-1'" [class.order-2]="formFirst" [class.order-lg-1]="formFirst">
         <div class="row">
           <div [ngClass]="showForm ? 'col-12 mb-30' : 'col-md-6 mb-30'">
             <h3>How to apply</h3>
@@ -27,7 +28,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-8" *ngIf="showForm">
+      <div class="col-lg-8" *ngIf="showForm" [class.order-1]="formFirst" [class.order-lg-2]="formFirst" [class.mb-30]="formFirst">
         <app-enquiry-form [inline]="true" [showProspectus]="true"></app-enquiry-form>
       </div>
     </div>

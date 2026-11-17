@@ -477,8 +477,8 @@ private captchaRenderTimer: ReturnType<typeof setTimeout> | null = null;
     if (!this.inline || !this.isBrowser) {
       return;
     }
-    // L20 (GADS Patch): reCAPTCHA is about 350 KB. It now loads only when the form comes near the
-    // screen (or the parent starts typing), so parents who only browse the page never download it.
+    // L20 (GADS Patch): reCAPTCHA is about 350 KB. It now loads only when the form scrolls into view
+    // (or the parent starts typing), so parents who only browse the page never download it.
     if (typeof IntersectionObserver === 'undefined') {
       this.startRecaptcha();
       return;
@@ -489,7 +489,9 @@ private captchaRenderTimer: ReturnType<typeof setTimeout> | null = null;
           this.startRecaptcha();
         }
       },
-      { rootMargin: '800px 0px' }
+      // L21: starts when the form itself scrolls into view. The checkbox sits by the Submit button,
+      // so it is ready long before the parent has filled in the fields.
+      { rootMargin: '0px 0px 50px 0px' }
     );
     // Watch the visible form box: the component's own tag has no size of its own.
     const target = (this.host.nativeElement.querySelector('.admission-inline') as HTMLElement | null) || this.host.nativeElement;
