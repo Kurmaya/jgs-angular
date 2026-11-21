@@ -97,6 +97,13 @@ function dobValidator(control: AbstractControl): ValidationErrors | null {
 }
 
 /** reCAPTCHA is loaded only on pages that show this form (brief item A9). */
+/**
+ * L17: web app of the Google Sheet "JGS Enquiry Form 2027-28" (apps-script/enquiry-form/Code.gs).
+ * L23: also counts visits to the /wa WhatsApp page.
+ */
+export const ENQUIRY_SHEET_URL =
+  'https://script.google.com/macros/s/AKfycbxGF8PPtPzN3F9qV3uQsVGCcpgHDTHhzfBen7j4vQLJdanWJ3XLbM2GtV14HmRlRQu_/exec';
+
 const RECAPTCHA_SCRIPT_ID = 'jgs-recaptcha-script';
 const RECAPTCHA_SCRIPT_SRC = 'https://www.google.com/recaptcha/api.js?render=explicit';
 
@@ -127,6 +134,9 @@ export class EnquiryFormComponent implements OnInit, AfterViewInit, OnDestroy {
    * false (default) keeps the short form everywhere else (home page, /home, the popup).
    */
   @Input() fullForm = false;
+
+  /** L23: campus chosen for the parent when the form opens (the /wa page uses 'Mokila'). They can still change it. */
+  @Input() defaultCampus: '' | 'Kokapet' | 'Mokila' = '';
 
   readonly genderOptions = ['Male', 'Female'];
 
@@ -172,8 +182,7 @@ export class EnquiryFormComponent implements OnInit, AfterViewInit, OnDestroy {
    * (apps-script/enquiry-form/Code.gs), deployed from the school's Google account on 13 Nov 2026.
    * The web app must be deployed with "Who has access: Anyone", or parents' enquiries cannot reach it.
    */
-  private readonly fullFormScriptUrl =
-    'https://script.google.com/macros/s/AKfycbxGF8PPtPzN3F9qV3uQsVGCcpgHDTHhzfBen7j4vQLJdanWJ3XLbM2GtV14HmRlRQu_/exec';
+  private readonly fullFormScriptUrl = ENQUIRY_SHEET_URL;
 
   private readonly recaptchaSiteKey = '6Lc9uOstAAAAAOzhMr1_pxOgktswK3zk5nY5LRSk';
 
@@ -291,6 +300,9 @@ private captchaRenderTimer: ReturnType<typeof setTimeout> | null = null;
   }
 
   ngOnInit(): void {
+    if (this.defaultCampus) {
+      this.form.controls.location.setValue(this.defaultCampus);
+    }
     if (this.fullForm) {
       const c = this.form.controls;
       c.curriculum.setValidators(Validators.required);

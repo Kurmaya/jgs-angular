@@ -176,7 +176,8 @@
               "/contact",
               "/about",
               "/facilities",
-              "/home"
+              "/home",
+              "/wa"
             ],
             "guessRoutes": false
           },

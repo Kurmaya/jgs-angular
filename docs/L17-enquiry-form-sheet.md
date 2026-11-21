@@ -76,6 +76,21 @@ From L22, the short enquiry forms send a **copy** of each enquiry to this Sheet.
 
 The web app URL stays the same.
 
+## L23: WhatsApp clicks from www.jgschool.in/wa
+The /wa page is the landing page for the school's JGS Mokila WhatsApp messages. The link in the message is `https://jgschool.in/wa`: one link, no batch numbers.
+- **Clicks:** each visit to /wa adds a row to the **WhatsApp visits** tab: date and time, new or return visitor, phone or computer. No personal details are kept. The script creates the tab the first time someone visits.
+- **Not counted:** WhatsApp's own link preview, which doesn't run the page's scripts.
+- **Summary:** the **WhatsApp summary** tab shows the totals in row 2, then one row per day, newest first:
+  - clicks;
+  - first-time visitors;
+  - enquiries sent from /wa;
+  - enquiries per 100 clicks.
+
+  An enquiry is counted on the day it was sent.
+- **Enquiries:** enquiries from /wa land in the **Quick enquiries** tab with Source `whatsapp` and Campaign `wa-mokila`. As with other quick enquiries, no email is sent.
+
+**After pasting the L23 version of `Code.gs`:** go to **Deploy → Manage deployments**, click the pencil icon, choose **Version: New version**, then **Deploy**. The web app URL stays the same. Running **setup** again is optional: it only adds the two new tabs straight away.
+
 ## D. Optional settings
 Use Apps Script → Project Settings → Script properties:
 - `NOTIFY_TO`: who gets the email. The default is admissions@jgschool.in.

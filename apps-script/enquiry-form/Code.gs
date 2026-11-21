@@ -13,6 +13,10 @@
  * (campaign, ad group, search term, Google click ID). They are not emailed (school decision, 17 Nov 2026).
  * The short forms still save to the "JGS - Website Leads" sheet as before; this tab is an extra copy.
  *
+ * L23: it also counts visits to www.jgschool.in/wa, the JGS Mokila WhatsApp campaign page. Each visit is a
+ * row in the "WhatsApp visits" tab (date, new or return visit, phone or computer; no personal details).
+ * The "WhatsApp summary" tab adds up clicks, first-time visitors and enquiries, in total and for each day.
+ *
  * One-time setup (full steps in docs/L17-enquiry-form-sheet.md):
  *   - Paste this file into the new Sheet (Extensions > Apps Script), save, choose "setup" and click Run.
  *   - Deploy > New deployment > Web app: Execute as "Me", Who has access "Anyone". Copy the web app URL.
@@ -28,6 +32,8 @@
 
 var SHEET_NAME = 'Enquiries';
 var QUICK_SHEET_NAME = 'Quick enquiries';
+var VISIT_SHEET_NAME = 'WhatsApp visits';
+var VISIT_SUMMARY_NAME = 'WhatsApp summary';
 var FOLDER_NAME = 'JGS Enquiry Forms 2027-28';
 var DEFAULT_TO = 'admissions@jgschool.in';
 var DEFAULT_CC = 'siddarth.k@jgschool.in';
@@ -105,10 +111,23 @@ var QUICK_COLUMNS = [
   ['Email sent', '_emailSent']
 ];
 
+/** L23: columns of the "WhatsApp visits" tab (one row per visit to www.jgschool.in/wa). */
+var VISIT_COLUMNS = [
+  ['Visited at', '_visitedAt'],
+  ['Date', '_date'],
+  ['Visit', 'visit'],
+  ['Device', 'device'],
+  ['Visitor ID', 'visitorId'],
+  ['Page', 'page'],
+  ['Referrer', 'referrer']
+];
+
 /** Run once after pasting: creates the tabs, their headings and the Drive folder, and asks for permissions. */
 function setup() {
   var sheet = getSheet_();
   getSheet_(QUICK_SHEET_NAME, QUICK_COLUMNS);
+  getSheet_(VISIT_SHEET_NAME, VISIT_COLUMNS);
+  getVisitSummary_();
   var folder = getFolder_();
   // Ask for the permissions the script needs (Mail and web requests) during setup, not on the first enquiry.
   MailApp.getRemainingDailyQuota();
@@ -123,6 +142,9 @@ function doPost(e) {
     var data = JSON.parse((e && e.postData && e.postData.contents) || '{}');
     if (data.formType === 'quick') {
       return handleQuick_(data, lock);
+    }
+    if (data.formType === 'visit') {
+      return handleVisit_(data, lock);
     }
     var spam = checkRecaptcha_(data.recaptchaToken);
     if (spam === 'Failed') {
@@ -193,6 +215,73 @@ function handleQuick_(data, lock) {
   var sheet = getSheet_(QUICK_SHEET_NAME, QUICK_COLUMNS);
   sheet.appendRow(QUICK_COLUMNS.map(function (c) { return cell_(data[c[1]]); }));
   return json_({ ok: true, enquiryNo: data.enquiryNo });
+}
+
+/**
+ * L23: one visit to the /wa WhatsApp page. Only short, expected values are saved; anything else is refused.
+ * WhatsApp's link preview does not run the page's scripts, so previews are not counted.
+ */
+function handleVisit_(data, lock) {
+  if (clean_(data.page) !== '/wa' || !/^[a-z0-9]{4,16}$/.test(clean_(data.visitorId))) {
+    return json_({ ok: false, error: 'invalid' });
+  }
+  var tz = Session.getScriptTimeZone() || 'Asia/Kolkata';
+  var now = new Date();
+  data._visitedAt = Utilities.formatDate(now, tz, 'dd/MM/yyyy HH:mm:ss');
+  data._date = Utilities.formatDate(now, tz, 'yyyy-MM-dd');
+  data.visit = data.visit === 'Return visit' ? 'Return visit' : 'New visitor';
+  data.device = data.device === 'Phone' ? 'Phone' : 'Computer / tablet';
+
+  lock.waitLock(20000);
+  var sheet = getSheet_(VISIT_SHEET_NAME, VISIT_COLUMNS);
+  sheet.appendRow(VISIT_COLUMNS.map(function (c) { return cell_(data[c[1]]); }));
+  getVisitSummary_();
+  return json_({ ok: true });
+}
+
+/**
+ * L23: the "WhatsApp summary" tab, made once. Row 2 is the total; below it, one row per day, newest first:
+ * clicks (all visits), first-time visitors, enquiries from /wa in the Quick enquiries tab (campaign
+ * "wa-mokila", counted on the day they were sent) and enquiries per 100 clicks.
+ */
+function getVisitSummary_() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  if (ss.getSheetByName(VISIT_SUMMARY_NAME)) return;
+  getSheet_(QUICK_SHEET_NAME, QUICK_COLUMNS); // the enquiry counts read this tab
+  var sum = ss.insertSheet(VISIT_SUMMARY_NAME);
+  var v = "'" + VISIT_SHEET_NAME + "'!";
+  var q = "'" + QUICK_SHEET_NAME + "'!";
+  var vDate = v + columnLetter_(VISIT_COLUMNS, '_date') + '2:' + columnLetter_(VISIT_COLUMNS, '_date');
+  var vVisit = v + columnLetter_(VISIT_COLUMNS, 'visit') + '2:' + columnLetter_(VISIT_COLUMNS, 'visit');
+  var qCampaign = q + columnLetter_(QUICK_COLUMNS, 'utm_campaign') + '2:' + columnLetter_(QUICK_COLUMNS, 'utm_campaign');
+  var qSent = q + columnLetter_(QUICK_COLUMNS, '_submittedAt') + '2:' + columnLetter_(QUICK_COLUMNS, '_submittedAt');
+  sum.getRange(1, 1, 1, 5).setValues([['Day', 'Clicks', 'First-time visitors', 'Enquiries', 'Enquiries per 100 clicks']])
+    .setFontWeight('bold').setBackground('#dbf0fb').setFontColor('#2c3b9a');
+  sum.setFrozenRows(2);
+  // Row 2: totals
+  sum.getRange('A2').setValue('All days');
+  sum.getRange('B2').setFormula('=COUNTA(' + vDate + ')');
+  sum.getRange('C2').setFormula('=COUNTIF(' + vVisit + ', "New visitor")');
+  sum.getRange('D2').setFormula('=COUNTIF(' + qCampaign + ', "wa-mokila")');
+  sum.getRange('E2').setFormula('=IFERROR(ROUND(D2 / B2 * 100, 1), 0)');
+  sum.getRange(2, 1, 1, 5).setFontWeight('bold');
+  // Row 3 onwards: one row per day (Quick enquiries dates are dd/MM/yyyy, so the day is rebuilt in that form)
+  sum.getRange('A3').setFormula('=IFERROR(SORT(UNIQUE(FILTER(' + vDate + ', ' + vDate + '<>"")), 1, FALSE), "")');
+  sum.getRange('B3').setFormula('=ARRAYFORMULA(IF(A3:A="", "", COUNTIF(' + vDate + ', A3:A)))');
+  sum.getRange('C3').setFormula('=ARRAYFORMULA(IF(A3:A="", "", COUNTIFS(' + vDate + ', A3:A, ' + vVisit + ', "New visitor")))');
+  sum.getRange('D3').setFormula('=ARRAYFORMULA(IF(A3:A="", "", COUNTIFS(' + qCampaign + ', "wa-mokila", ' + qSent +
+    ', MID(A3:A, 9, 2) & "/" & MID(A3:A, 6, 2) & "/" & LEFT(A3:A, 4) & "*")))');
+  sum.getRange('E3').setFormula('=ARRAYFORMULA(IF(A3:A="", "", IFERROR(ROUND(D3:D / B3:B * 100, 1), 0)))');
+  sum.setColumnWidth(1, 140);
+  sum.setColumnWidths(2, 4, 150);
+}
+
+/** Column letter (A, B, ...) of a field in a column list. */
+function columnLetter_(columns, field) {
+  for (var i = 0; i < columns.length; i++) {
+    if (columns[i][1] === field) return String.fromCharCode(65 + i);
+  }
+  throw new Error('No column for ' + field);
 }
 
 function sendQuickEmail_(d) {

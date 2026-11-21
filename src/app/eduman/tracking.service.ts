@@ -191,6 +191,42 @@ export class TrackingService {
     }
   }
 
+  /**
+   * L23: record a campaign that arrives without utm_ tags, e.g. the /wa WhatsApp page (?b=1).
+   * Replaces the stored source, as a new ad or campaign link would.
+   */
+  setAttribution(source: Partial<Attribution>): void {
+    const w = this.win();
+    if (!w) {
+      return;
+    }
+    try {
+      const a: Attribution = {
+        utm_source: '', utm_medium: '', utm_campaign: '', utm_term: '', utm_content: '',
+        gclid: '', gbraid: '', wbraid: '', fbclid: '',
+        landing_page: w.location.pathname,
+        referrer: (w.document.referrer || '').slice(0, 200),
+        first_seen: new Date().toISOString(),
+        ...source
+      };
+      w.localStorage.setItem(ATTRIBUTION_KEY, JSON.stringify(a));
+    } catch {
+      // Storage blocked: attribution is simply not recorded.
+    }
+  }
+
+  /** L23: a named page event for Google Analytics and the dataLayer (no Ads conversion). */
+  pageEvent(name: string, data: Record<string, unknown>): void {
+    const w = this.win();
+    if (!w) {
+      return;
+    }
+    this.pushDataLayer({ event: name, ...data });
+    if (typeof w.gtag === 'function') {
+      w.gtag('event', name, data);
+    }
+  }
+
   /** L13: the stored source, sent with an admission enquiry. Empty values if unknown. */
   getAttribution(): Attribution {
     const empty: Attribution = {
