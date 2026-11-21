@@ -171,6 +171,7 @@ import { HomeadmissionsComponent } from './homeone/homeadmissions/homeadmissions
 import { HomefaqComponent } from './homeone/homefaq/homefaq.component';
 import { HomewhyComponent } from './homeone/homewhy/homewhy.component';
 import { StickyctaComponent } from './homeone/stickycta/stickycta.component';
+import { WalandingComponent } from './walanding/walanding.component';
 import { HomesafetyComponent } from './homeone/homesafety/homesafety.component';
 import { CurriculumhubComponent } from './curriculumpages/curriculumhub/curriculumhub.component';
 import { CurriculumibComponent } from './curriculumpages/curriculumib/curriculumib.component';
@@ -355,6 +356,7 @@ import { CurriculumicseComponent } from './curriculumpages/curriculumicse/curric
     HomefaqComponent,
     HomewhyComponent,
     StickyctaComponent,
+    WalandingComponent,
     HomesafetyComponent,
     CurriculumhubComponent,
     CurriculumibComponent,

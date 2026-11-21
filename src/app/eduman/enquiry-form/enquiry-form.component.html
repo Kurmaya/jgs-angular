@@ -24,12 +24,43 @@
 
       <div class="status-icon">&#10003;</div>
 
-      <h3>Thank you for your enquiry!</h3>
+      <h3>Thank you!</h3>
 
       <p>
-        Your enquiry has been submitted.
-        Please contact the school to confirm receipt.
+        Our admissions team will contact you shortly.
       </p>
+
+      <p class="whatsapp-line">
+        If you would like to reach us sooner, please WhatsApp
+        <a href="https://wa.me/918977006304?text=Hello.%20I%20have%20just%20sent%20an%20admission%20enquiry%20on%20your%20website."
+           target="_blank" rel="noopener" (click)="onWhatsAppClick()">+91 89770 06304</a>.
+      </p>
+
+      <!-- L17: the parent's own copy of the enquiry form (/enquiry-form only) -->
+      <div class="enquiry-pdf-download" *ngIf="pdfData">
+        <h4>Your enquiry form</h4>
+        <p>Enquiry No. <strong>{{ pdfData.enquiryNo }}</strong>. Please bring a copy when you visit the campus.</p>
+        <button type="button" class="pdf-btn" (click)="downloadEnquiryPdf()" [disabled]="pdfBusy">
+          <span aria-hidden="true">&#8681;</span>
+          {{ pdfBusy ? 'Preparing your PDF…' : 'Download your enquiry form (PDF)' }}
+        </button>
+        <p class="pdf-error" *ngIf="pdfError" role="alert">{{ pdfError }}</p>
+      </div>
+
+      <!-- Prospectus downloads, offered after the parent has entered their details -->
+      <div class="prospectus-downloads" *ngIf="showProspectus && availableProspectuses.length">
+        <h4>Download our prospectus</h4>
+        <a
+          *ngFor="let prospectus of availableProspectuses"
+          class="prospectus-link"
+          [href]="prospectus.file"
+          target="_blank"
+          rel="noopener"
+          download
+          (click)="onProspectusClick(prospectus)">
+          <span aria-hidden="true">&#8681;</span> {{ prospectus.label }} (PDF)
+        </a>
+      </div>
 
       <button
         type="button"
@@ -50,14 +81,23 @@
     </div>
 
     <!-- Admission form -->
+    <!-- L13: (focusin) records that the parent started the form; data-clarity-mask hides typed details from Microsoft Clarity. -->
     <form
+      data-clarity-mask="true"
+      (focusin)="onFormFocus()"
       *ngIf="!submitted"
       [formGroup]="form"
       (ngSubmit)="submitForm()"
       novalidate>
 
-      <div class="form-grid">
-
+      <!--
+        L17: two layouts of the same fields.
+        - Short form (default): every page except /enquiry-form (home page, /home, the popup). L19: campus first.
+        - Full form ([fullForm]="true"): /enquiry-form only. Campus first, then curriculum,
+          then the child's details (name, gender, date of birth, grade), then the parents' details.
+        Each field is written once below and placed in either layout.
+      -->
+      <ng-template #fStudentName>
         <!-- Student Name -->
         <div class="form-group">
           <label for="studentName">
@@ -84,11 +124,13 @@
             Student name is required.
           </small>
         </div>
+      </ng-template>
 
+      <ng-template #fGrade>
         <!-- Student Grade -->
         <div class="form-group">
           <label for="studentGrade">
-            Student Grade <span>*</span>
+            {{ fullForm ? 'Grade Applying For' : 'Student Grade' }} <span>*</span>
           </label>
 
           <select
@@ -118,7 +160,9 @@
             Please select a student grade.
           </small>
         </div>
+      </ng-template>
 
+      <ng-template #fMother>
         <!-- Mother's Name -->
         <div class="form-group">
           <label for="motherName">
@@ -145,7 +189,9 @@
             Mother's name is required.
           </small>
         </div>
+      </ng-template>
 
+      <ng-template #fFather>
         <!-- Father's Name -->
         <div class="form-group">
           <label for="fatherName">
@@ -172,8 +218,10 @@
             Father's name is required.
           </small>
         </div>
+      </ng-template>
 
-<!-- Phone Number -->
+      <ng-template #fPhone>
+        <!-- Phone Number -->
 <div class="form-group">
   <label for="phoneNumber">
     Phone Number <span>*</span>
@@ -200,8 +248,10 @@
     Enter a valid 10-digit Indian mobile number.
   </small>
 </div>
+      </ng-template>
 
-<!-- Email Address -->
+      <ng-template #fEmail>
+        <!-- Email Address -->
 <div class="form-group">
   <label for="emailAddress">
     Email Address <span>*</span>
@@ -226,7 +276,9 @@
     Enter a valid email address.
   </small>
 </div>
+      </ng-template>
 
+      <ng-template #fYear>
         <!-- Academic Year -->
         <div class="form-group">
           <label for="academicYear">
@@ -239,11 +291,13 @@
             formControlName="academicYear"
             readonly>
         </div>
+      </ng-template>
 
-        <!-- School Location -->
+      <ng-template #fLocation>
+        <!-- Campus (sent as "location", the same Sheet column as before) -->
         <div class="form-group">
           <label for="location">
-            School Location <span>*</span>
+            Campus <span>*</span>
           </label>
 
           <select
@@ -254,7 +308,7 @@
               form.controls.location.invalid
             ">
 
-            <option value="">Select location</option>
+            <option value="">Select campus</option>
             <option value="Kokapet">Kokapet</option>
             <option value="Mokila">Mokila</option>
           </select>
@@ -265,11 +319,265 @@
               form.controls.location.invalid
             ">
 
-            Please select a school location.
+            Please select a campus.
           </small>
         </div>
+      </ng-template>
 
+      <ng-template #fAddress>
+        <!-- Residential address (full form only), across both columns -->
+        <div class="form-group form-group-wide">
+          <label for="residentialAddress">
+            Address <span>*</span>
+          </label>
+
+          <textarea
+            id="residentialAddress"
+            formControlName="residentialAddress"
+            rows="3"
+            maxlength="300"
+            placeholder="House / flat number, street, area, city and PIN code"
+            autocomplete="street-address"
+            [class.invalid-field]="
+              form.controls.residentialAddress.touched &&
+              form.controls.residentialAddress.invalid
+            "></textarea>
+
+          <small
+            *ngIf="
+              form.controls.residentialAddress.touched &&
+              form.controls.residentialAddress.invalid
+            ">
+
+            Please enter your residential address.
+          </small>
+        </div>
+      </ng-template>
+
+      <ng-template #fCurriculum>
+        <!-- Curriculum (full form only). Kokapet: IB PYP. Mokila: IB or ICSE, both planned. -->
+        <div class="form-group">
+          <label for="curriculum">
+            Curriculum <span>*</span>
+          </label>
+
+          <select
+            id="curriculum"
+            formControlName="curriculum"
+            [class.invalid-field]="
+              form.controls.curriculum.touched &&
+              form.controls.curriculum.invalid
+            ">
+
+            <option value="">{{ form.controls.location.value ? 'Select curriculum' : 'Select a campus first' }}</option>
+
+            <option
+              *ngFor="let option of curriculumOptions"
+              [value]="option.value">
+
+              {{ option.label }}
+            </option>
+          </select>
+
+          <small
+            *ngIf="
+              form.controls.curriculum.touched &&
+              form.controls.curriculum.invalid
+            ">
+
+            Please select a curriculum.
+          </small>
+
+          <p class="field-hint" *ngIf="form.controls.location.value === 'Mokila'">
+            JGS Mokila is not yet an IB World School, and is awaiting CISCE affiliation.
+          </p>
+        </div>
+      </ng-template>
+
+      <ng-template #fGender>
+        <!-- Gender (full form only) -->
+        <div class="form-group">
+          <span class="group-label" id="genderLabel">
+            Gender <span>*</span>
+          </span>
+
+          <div
+            class="choice-row"
+            role="radiogroup"
+            aria-labelledby="genderLabel"
+            [class.invalid-field]="
+              form.controls.gender.touched &&
+              form.controls.gender.invalid
+            ">
+
+            <label class="choice" *ngFor="let option of genderOptions">
+              <input type="radio" formControlName="gender" name="gender" [value]="option">
+              <span>{{ option }}</span>
+            </label>
+          </div>
+
+          <small
+            *ngIf="
+              form.controls.gender.touched &&
+              form.controls.gender.invalid
+            ">
+
+            Please select the child's gender.
+          </small>
+        </div>
+      </ng-template>
+
+      <ng-template #fDob>
+        <!-- Date of birth (full form only) -->
+        <div class="form-group">
+          <label for="dateOfBirth">
+            Date of Birth <span>*</span>
+          </label>
+
+          <!-- Typed as DD/MM/YYYY on every phone and computer; the slashes are added automatically. -->
+          <input
+            id="dateOfBirth"
+            type="text"
+            formControlName="dateOfBirth"
+            placeholder="DD/MM/YYYY"
+            inputmode="numeric"
+            maxlength="10"
+            autocomplete="off"
+            (input)="onDobInput($event)"
+            [class.invalid-field]="
+              form.controls.dateOfBirth.touched &&
+              form.controls.dateOfBirth.invalid
+            ">
+
+          <small
+            *ngIf="
+              form.controls.dateOfBirth.touched &&
+              form.controls.dateOfBirth.invalid
+            ">
+
+            Enter the child's date of birth as DD/MM/YYYY.
+          </small>
+        </div>
+      </ng-template>
+
+      <!-- Short form (home page, /home, popup). L19: campus first, so the grade list only shows that campus's grades. -->
+      <div class="form-grid" *ngIf="!fullForm">
+        <ng-container *ngTemplateOutlet="fLocation"></ng-container>
+        <ng-container *ngTemplateOutlet="fStudentName"></ng-container>
+        <ng-container *ngTemplateOutlet="fGrade"></ng-container>
+        <ng-container *ngTemplateOutlet="fMother"></ng-container>
+        <ng-container *ngTemplateOutlet="fFather"></ng-container>
+        <ng-container *ngTemplateOutlet="fPhone"></ng-container>
+        <ng-container *ngTemplateOutlet="fEmail"></ng-container>
+        <ng-container *ngTemplateOutlet="fYear"></ng-container>
       </div>
+
+      <!-- Full form (L17, /enquiry-form only): every field of the school's printed enquiry form -->
+      <ng-container *ngIf="fullForm">
+
+        <!-- Reusable text field: id is the form control name -->
+        <ng-template #textField let-id="id" let-label="label" let-placeholder="placeholder"
+                     let-type="type" let-error="error" let-wide="wide" let-mode="mode" let-max="max" let-auto="auto">
+          <div class="form-group" [class.form-group-wide]="wide">
+            <label [for]="id">{{ label }} <span *ngIf="showStar(id)">*</span></label>
+            <input
+              [id]="id"
+              [type]="type || 'text'"
+              [formControlName]="id"
+              [placeholder]="placeholder"
+              [attr.inputmode]="mode || null"
+              [attr.maxlength]="max || 100"
+              [attr.autocomplete]="auto || 'off'"
+              [class.invalid-field]="form.get(id)?.touched && form.get(id)?.invalid">
+            <small *ngIf="form.get(id)?.touched && form.get(id)?.invalid">{{ error }}</small>
+          </div>
+        </ng-template>
+
+        <!-- Reusable choice buttons (radio): id is the form control name -->
+        <ng-template #choiceField let-id="id" let-label="label" let-options="options" let-error="error" let-wide="wide">
+          <div class="form-group" [class.form-group-wide]="wide">
+            <span class="group-label" [id]="id + 'Label'">{{ label }} <span>*</span></span>
+            <div
+              class="choice-row choice-wrap"
+              role="radiogroup"
+              [attr.aria-labelledby]="id + 'Label'"
+              [class.invalid-field]="form.get(id)?.touched && form.get(id)?.invalid">
+              <label class="choice" *ngFor="let option of options">
+                <input type="radio" [formControlName]="id" [attr.name]="id" [value]="option">
+                <span>{{ option }}</span>
+              </label>
+            </div>
+            <small *ngIf="form.get(id)?.touched && form.get(id)?.invalid">{{ error }}</small>
+          </div>
+        </ng-template>
+
+        <div class="form-grid">
+          <ng-container *ngTemplateOutlet="fLocation"></ng-container>
+          <ng-container *ngTemplateOutlet="fCurriculum"></ng-container>
+        </div>
+
+        <h4 class="form-section-title"><span>Child's details</span></h4>
+        <div class="form-grid">
+          <ng-container *ngTemplateOutlet="textField; context: { id: 'studentName', label: 'Name of the Child', placeholder: 'Enter the child\'s full name', error: 'Please enter the child\'s name.', wide: true }"></ng-container>
+          <ng-container *ngTemplateOutlet="fGender"></ng-container>
+          <ng-container *ngTemplateOutlet="fDob"></ng-container>
+          <ng-container *ngTemplateOutlet="fGrade"></ng-container>
+          <ng-container *ngTemplateOutlet="fYear"></ng-container>
+        </div>
+
+        <h4 class="form-section-title"><span>Previous schooling</span></h4>
+        <div class="form-grid">
+          <ng-container *ngTemplateOutlet="choiceField; context: { id: 'previousSchooling', label: 'Has the child been to school before?', options: yesNo, error: 'Please choose Yes or No.' }"></ng-container>
+          <ng-container *ngIf="form.controls.previousSchooling.value === 'Yes'">
+            <ng-container *ngTemplateOutlet="textField; context: { id: 'previousSchoolName', label: 'School Name', placeholder: 'Name of the current or last school', error: 'Please enter the school\'s name.' }"></ng-container>
+            <ng-container *ngTemplateOutlet="choiceField; context: { id: 'previousBoard', label: 'Board', options: boardOptions, error: 'Please choose the board.' }"></ng-container>
+            <ng-container *ngTemplateOutlet="textField; context: { id: 'previousClass', label: 'Class', placeholder: 'e.g. UKG or Grade 2', error: 'Please enter the class.', max: 30 }"></ng-container>
+          </ng-container>
+        </div>
+
+        <h4 class="form-section-title"><span>Siblings in this school</span></h4>
+        <div class="form-grid">
+          <ng-container *ngTemplateOutlet="choiceField; context: { id: 'siblingAtJgs', label: 'Does the child have a brother or sister at JGS?', options: yesNo, error: 'Please choose Yes or No.' }"></ng-container>
+          <ng-container *ngIf="form.controls.siblingAtJgs.value === 'Yes'">
+            <ng-container *ngTemplateOutlet="textField; context: { id: 'siblingName', label: 'Name of Sibling(s)', placeholder: 'Full name of brother or sister', error: 'Please enter the sibling\'s name.' }"></ng-container>
+            <ng-container *ngTemplateOutlet="textField; context: { id: 'siblingClassSection', label: 'Class & Section', placeholder: 'e.g. Grade 3 B', error: 'Please enter the class and section.', max: 40 }"></ng-container>
+          </ng-container>
+        </div>
+
+        <p class="form-section-note">
+          Please fill in the details of <strong>at least one parent or guardian</strong>. Once you start a parent's
+          section, please complete all of it.
+        </p>
+        <p class="captcha-error" *ngIf="parentMissing && parentErrorShown">
+          Please fill in the details of at least one parent or guardian.
+        </p>
+
+        <ng-container *ngFor="let parent of parentSections">
+          <h4 class="form-section-title">
+            <span>{{ parent.title }}<em *ngIf="parentOptional(parent.key)"> (optional)</em></span>
+          </h4>
+          <div class="form-grid">
+            <ng-container *ngTemplateOutlet="textField; context: { id: parent.key + 'Name', label: 'Name', placeholder: 'Full name', error: 'Please enter the name.', wide: true }"></ng-container>
+            <ng-container *ngTemplateOutlet="textField; context: { id: parent.key + 'Qualification', label: 'Qualification', placeholder: 'e.g. B.Tech, MBA', error: 'Please enter the qualification.' }"></ng-container>
+            <ng-container *ngTemplateOutlet="textField; context: { id: parent.key + 'Organisation', label: 'Organisation', placeholder: 'Where they work', error: 'Please enter the organisation.' }"></ng-container>
+            <ng-container *ngTemplateOutlet="textField; context: { id: parent.key + 'Mobile', label: 'Mobile No.', placeholder: '10-digit mobile number', error: 'Enter a valid 10-digit Indian mobile number.', type: 'tel', mode: 'numeric', max: 10, auto: 'tel' }"></ng-container>
+            <ng-container *ngTemplateOutlet="textField; context: { id: parent.key + 'Email', label: 'Email Address', placeholder: 'Email address', error: 'Enter a valid email address.', type: 'email', max: 254, auto: 'email' }"></ng-container>
+          </div>
+        </ng-container>
+
+        <h4 class="form-section-title"><span>Residential address</span></h4>
+        <div class="form-grid">
+          <ng-container *ngTemplateOutlet="fAddress"></ng-container>
+        </div>
+
+        <h4 class="form-section-title"><span>How did you hear about us?</span></h4>
+        <div class="form-grid">
+          <ng-container *ngTemplateOutlet="choiceField; context: { id: 'heardFrom', label: 'Choose one', options: heardFromOptions, error: 'Please tell us how you heard about JGS.', wide: true }"></ng-container>
+          <ng-container *ngIf="form.controls.heardFrom.value === 'Referral'">
+            <ng-container *ngTemplateOutlet="textField; context: { id: 'referralName', label: 'Referred by', placeholder: 'Name of the person who referred you', error: 'Please enter who referred you.', wide: true }"></ng-container>
+          </ng-container>
+        </div>
+      </ng-container>
 <!-- reCAPTCHA -->
  
 <!-- Google reCAPTCHA -->
@@ -339,6 +647,6 @@
 </div>
 
 <!-- On-page version -->
-<div class="admission-inline" *ngIf="inline">
+<div class="admission-inline" [class.admission-inline-full]="fullForm" *ngIf="inline">
   <ng-container *ngTemplateOutlet="formBody"></ng-container>
 </div>

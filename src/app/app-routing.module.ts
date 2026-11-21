@@ -43,6 +43,7 @@ import { NewsComponent } from './eduman/news/news.component';
 import { NewlandingpageComponent } from './eduman/homeone/newlandingpage/newlandingpage.component';
 import { CurriculumhubComponent } from './eduman/curriculumpages/curriculumhub/curriculumhub.component';
 import { CurriculumibComponent } from './eduman/curriculumpages/curriculumib/curriculumib.component';
+import { WalandingComponent } from './eduman/walanding/walanding.component';
 import { CurriculumicseComponent } from './eduman/curriculumpages/curriculumicse/curriculumicse.component';
 
 const routes: Routes = [ 
@@ -60,6 +61,11 @@ const routes: Routes = [
   //   path: 'home-3',
   //   component: HomethreemainComponent
   // },
+  {
+    // L23: JGS Mokila WhatsApp campaign landing page (link: jgschool.in/wa?b=1)
+    path: 'wa',
+    component: WalandingComponent
+  },
   {
     path: 'about',
     component: AboutmainComponent

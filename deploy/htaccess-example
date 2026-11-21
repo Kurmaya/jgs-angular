@@ -18,7 +18,19 @@ DirectorySlash Off
     <FilesMatch "\.html$">
         Header set Cache-Control "no-cache"
     </FilesMatch>
-    <FilesMatch "\.[0-9a-f]{16}\.(js|css)$">
+    # NEW (L20, GADS Patch): images and fonts can be kept by the browser for 7 days, so returning
+    # parents don't download them again. (Before, they had no caching at all.) If an image is ever
+    # replaced under the same name, some visitors may see the old one for up to a week.
+    <FilesMatch "\.(png|jpe?g|webp|gif|svg|ico|woff2?|ttf|eot|otf)$">
+        Header set Cache-Control "public, max-age=604800"
+    </FilesMatch>
+    # Prospectus and policy PDFs: kept for one day.
+    <FilesMatch "\.pdf$">
+        Header set Cache-Control "public, max-age=86400"
+    </FilesMatch>
+    # Build files with a version code in the name (main.<hash>.js, fa-solid-900.<hash>.woff2, ...)
+    # never change, so they can be kept for a year. CHANGED (L20): fonts and images added.
+    <FilesMatch "\.[0-9a-f]{16}\.(js|css|woff2?|ttf|eot|png|jpe?g|webp|gif|svg)$">
         Header set Cache-Control "public, max-age=31536000, immutable"
     </FilesMatch>
 </IfModule>

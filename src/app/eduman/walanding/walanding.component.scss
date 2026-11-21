@@ -1,0 +1,353 @@
+@import '../../../custom-palettes.scss';
+
+// L23: /wa, JGS Mokila WhatsApp campaign landing page
+$wa-red: #EB0008;
+$wa-navy: #1f2a6b;
+$wa-tint: #eef2ff;
+
+.wa-page {
+  background: #ffffff;
+  color: #2b2b2b;
+}
+
+.wa-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+
+  .wa-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 64px;
+    gap: 12px;
+  }
+
+  .wa-logo img {
+    display: block;
+    width: 160px;
+    height: auto;
+  }
+
+  .wa-header-call {
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: $wa-red;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 15px;
+    white-space: nowrap;
+  }
+}
+
+.wa-hero {
+  background: $wa-tint;
+  padding-bottom: 36px;
+
+  .wa-hero-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 520px;
+    object-fit: cover;
+  }
+
+  .wa-hero-card {
+    position: relative;
+    max-width: 760px;
+    margin: -90px auto 0;
+    padding: 28px 30px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(31, 42, 107, 0.12);
+  }
+
+  .wa-kicker {
+    margin: 0 0 6px;
+    color: $wa-red;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0 0 12px;
+    color: $wa-navy;
+    font-size: 36px;
+    line-height: 1.2;
+  }
+
+  .wa-hero-sub {
+    margin: 0 0 16px;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+}
+
+.wa-grades {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+
+  li {
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: $wa-tint;
+    color: $wa-navy;
+    font-size: 15px;
+  }
+
+  strong {
+    margin-right: 4px;
+    color: $wa-red;
+  }
+}
+
+.wa-hero-btns,
+.wa-visit-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.wa-btn {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.2;
+  text-align: center;
+  transition: background 0.2s, color 0.2s;
+}
+
+.wa-btn-primary {
+  background: $wa-red;
+  color: #ffffff;
+
+  &:hover { background: darken($wa-red, 8%); color: #ffffff; }
+}
+
+.wa-btn-outline {
+  border-color: $wa-navy;
+  color: $wa-navy;
+
+  &:hover { background: $wa-navy; color: #ffffff; }
+}
+
+.wa-btn-whatsapp {
+  background: #1fa855;
+  color: #ffffff;
+
+  &:hover { background: #178a45; color: #ffffff; }
+}
+
+.wa-note,
+.wa-caption {
+  margin: 16px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #6b6b6b;
+}
+
+.wa-section {
+  padding: 56px 0;
+
+  h2 {
+    margin: 0 0 24px;
+    color: $wa-navy;
+    font-size: 30px;
+  }
+}
+
+.wa-tint {
+  background: $wa-tint;
+}
+
+.wa-form-section {
+  scroll-margin-top: 70px;
+  padding-top: 40px;
+
+  .wa-form-wrap {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  h2 { margin-bottom: 6px; }
+
+  .wa-lead {
+    margin: 0 0 18px;
+    font-size: 16px;
+  }
+}
+
+.wa-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.wa-card {
+  padding: 24px;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+
+  h3 {
+    margin: 0 0 4px;
+    color: $wa-red;
+    font-size: 26px;
+  }
+
+  .wa-card-grades {
+    margin: 0 0 12px;
+    color: $wa-navy;
+    font-weight: 600;
+    font-size: 18px;
+  }
+
+  ul {
+    margin: 0 0 12px;
+    padding-left: 18px;
+
+    li {
+      list-style: disc;
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+  }
+
+  .wa-card-status {
+    margin: 0;
+    font-size: 13px;
+    color: #6b6b6b;
+  }
+}
+
+.wa-proof {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+
+  li {
+    padding: 18px;
+    border-radius: 12px;
+    background: $wa-tint;
+    text-align: center;
+  }
+
+  strong {
+    display: block;
+    color: $wa-red;
+    font-size: 22px;
+  }
+
+  span {
+    font-size: 15px;
+    color: #444444;
+  }
+}
+
+.wa-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+
+  figure {
+    margin: 0;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  figcaption {
+    margin-top: 6px;
+    font-size: 14px;
+    color: #444444;
+    text-align: center;
+  }
+}
+
+.wa-visit {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+
+  p { font-size: 16px; }
+
+  .wa-visit-btns { justify-content: center; }
+}
+
+.wa-footer {
+  padding: 20px 0;
+  background: $wa-navy;
+  text-align: center;
+
+  p {
+    margin: 0;
+    font-size: 14px;
+    color: #dfe3ff;
+  }
+
+  a { color: #ffffff; }
+}
+
+@media (max-width: 991px) {
+  .wa-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 767px) {
+  .wa-header {
+    .wa-logo img { width: 130px; }
+    .wa-header-call { padding: 7px 12px; font-size: 14px; }
+  }
+
+  .wa-hero {
+    padding-bottom: 24px;
+
+    .wa-hero-img { max-height: 210px; }
+
+    .wa-hero-card {
+      margin: -36px 12px 0;
+      padding: 20px 18px;
+    }
+
+    h1 { font-size: 26px; }
+    .wa-hero-sub { font-size: 16px; }
+  }
+
+  .wa-hero-btns .wa-btn,
+  .wa-visit-btns .wa-btn {
+    flex: 1 1 100%;
+  }
+
+  .wa-section {
+    padding: 40px 0;
+
+    h2 { font-size: 24px; }
+  }
+
+  .wa-form-section { padding-top: 28px; }
+
+  .wa-cards,
+  .wa-proof { grid-template-columns: 1fr; }
+}

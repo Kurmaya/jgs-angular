@@ -20,7 +20,12 @@
              <a href="javascript:void(0)">Admissions</a>
             <ul class="sub-menu">
                <li><a [routerLink]="['/enquiry-form']">Enquiry Form</a></li>
-                  <li><a href="assets/pdfs/JGS brochure.pdf" target="_blank">View Brochure</a></li>
+                  <li class="has-arrow"><a href="javascript:void(0)">View Prospectus</a>
+                     <ul class="sub-menu">
+                        <li><a href="assets/pdfs/JGS%20brochure.pdf" target="_blank" rel="noopener">JGS Kokapet</a></li>
+                        <li><a href="assets/pdfs/JGS-Mokila-Prospectus.pdf" target="_blank" rel="noopener">JGS Mokila</a></li>
+                     </ul>
+                  </li>
                                     <li><a href="assets/pdfs/Fee Structure.pdf" target="_blank">Fee Structure</a></li>
             </ul>
          </li>
@@ -36,7 +41,7 @@
                                  </ul>
                               </li>
           <li><a [routerLink]="['/gallery']">Gallery</a></li>
-          <li><a href="https://jgschool.in/blog/">Blog</a></li>
+          <li><a href="https://www.jgschool.in/blog/">Blog</a></li>
           <li><a [routerLink]="['/contact']">Contact Us</a></li>
        </ul>
     </div>

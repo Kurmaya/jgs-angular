@@ -1,0 +1,139 @@
+<!--
+  L23: /wa, JGS Mokila WhatsApp campaign landing page (see walanding.component.ts).
+  Wording rules for Mokila: IB and ICSE are planned, subject to IB authorisation and CISCE affiliation;
+  "Not yet an IB World School"; no IB or CISCE logos.
+-->
+<main class="wa-page">
+  <header class="wa-header">
+    <div class="container wa-header-inner">
+      <a [routerLink]="['/']" class="wa-logo">
+        <img src="assets/img/whatsinaname/jgs-logo.webp" width="180" height="56"
+             alt="Johnson Grammar School Mokila and Kokapet">
+      </a>
+      <a class="wa-header-call" [href]="'tel:' + phone" (click)="tracking.contactClicked('call')">Call<span class="d-none d-sm-inline"> {{ phoneLabel }}</span></a>
+    </div>
+  </header>
+
+  <!-- Banner: matches the WhatsApp message -->
+  <section class="wa-hero">
+    <picture>
+      <source media="(min-width: 768px)" srcset="assets/img/wa/mokila-hero-1280.webp">
+      <img class="wa-hero-img" src="assets/img/wa/mokila-hero-768.webp" width="768" height="432"
+           alt="Artist's impression of the JGS Mokila campus" fetchpriority="high">
+    </picture>
+    <div class="container">
+      <div class="wa-hero-card">
+        <p class="wa-kicker">Johnson Grammar School &middot; Since 1979</p>
+        <h1>Admissions open for 2027&ndash;28 at JGS&nbsp;Mokila</h1>
+        <p class="wa-hero-sub">
+          Shaping young minds in Hyderabad for 47 years with ICSE and the IB Diploma (since 2008),
+          Johnson Grammar School now opens at Mokila.
+        </p>
+        <ul class="wa-grades">
+          <li><strong>IB</strong> Nursery to Grade 7</li>
+          <li><strong>ICSE</strong> Grades 1 to 6</li>
+        </ul>
+        <div class="wa-hero-btns">
+          <a class="wa-btn wa-btn-primary" [routerLink]="[]" fragment="enquire">Request a call back</a>
+          <!-- Phones already have Call in the bar at the bottom of the screen -->
+          <a class="wa-btn wa-btn-outline d-none d-md-inline-block" [href]="'tel:' + phone" (click)="tracking.contactClicked('call')">Call {{ phoneLabel }}</a>
+        </div>
+        <p class="wa-note">
+          IB programmes at Mokila are planned, subject to IB authorisation; JGS Mokila is not yet an IB World School.
+          ICSE is subject to CISCE affiliation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enquiry form, Mokila already chosen -->
+  <section id="enquire" class="wa-section wa-form-section">
+    <div class="container">
+      <div class="wa-form-wrap">
+        <h2>Request a call back</h2>
+        <p class="wa-lead">Share a few details and our Mokila admissions team will call you.</p>
+        <app-enquiry-form [inline]="true" [showProspectus]="true" defaultCampus="Mokila"></app-enquiry-form>
+      </div>
+    </div>
+  </section>
+
+  <!-- What Mokila will offer -->
+  <section class="wa-section wa-tint">
+    <div class="container">
+      <h2 class="text-center">Planned at JGS Mokila</h2>
+      <div class="wa-cards">
+        <div class="wa-card">
+          <h3>IB</h3>
+          <p class="wa-card-grades">Nursery to Grade 7</p>
+          <ul>
+            <li>Primary Years Programme (PYP): Nursery to Grade 5</li>
+            <li>Middle Years Programme (MYP): Grades 6 and 7</li>
+          </ul>
+          <p class="wa-card-status">Planned, subject to IB authorisation. Not yet an IB World School.</p>
+        </div>
+        <div class="wa-card">
+          <h3>ICSE</h3>
+          <p class="wa-card-grades">Grades 1 to 6</p>
+          <ul>
+            <li>The JGS ICSE approach, led by Dr B. Chandra Sekhar since the 1980s</li>
+          </ul>
+          <p class="wa-card-status">Planned, subject to CISCE affiliation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Johnson Grammar School -->
+  <section class="wa-section">
+    <div class="container">
+      <h2 class="text-center">47 years of Johnson Grammar School</h2>
+      <ul class="wa-proof">
+        <li><strong>Since 1979</strong><span>Founded in Hyderabad by S.R.N. Mudiraj</span></li>
+        <li><strong>IB Diploma</strong><span>at JGS Mallapur since 2008</span></li>
+        <li><strong>4 branches</strong><span>Habsiguda, Mallapur, Kokapet and Mokila</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Campus renders -->
+  <section class="wa-section wa-tint">
+    <div class="container">
+      <h2 class="text-center">A first look at the Mokila campus</h2>
+      <div class="wa-gallery">
+        <figure><img src="assets/img/wa/mokila-atrium.webp" width="600" height="450" loading="lazy" alt="Atrium"><figcaption>Atrium</figcaption></figure>
+        <figure><img src="assets/img/wa/mokila-early-years.webp" width="600" height="450" loading="lazy" alt="Early years classroom"><figcaption>Early years classroom</figcaption></figure>
+        <figure><img src="assets/img/wa/mokila-library.webp" width="498" height="373" loading="lazy" alt="Library"><figcaption>Library</figcaption></figure>
+        <figure><img src="assets/img/wa/mokila-aerial.webp" width="600" height="450" loading="lazy" alt="Campus from above"><figcaption>Campus from above</figcaption></figure>
+      </div>
+      <p class="wa-caption text-center">Artist's impressions of the campus under construction.</p>
+    </div>
+  </section>
+
+  <!-- Visit / contact -->
+  <section class="wa-section">
+    <div class="container">
+      <div class="wa-visit">
+        <h2>Visit JGS Mokila</h2>
+        <p>Behind Vijetha Supermarket, SARK Garden Villas Road, Mokila, Shankarpally, Hyderabad 501203</p>
+        <div class="wa-visit-btns">
+          <a class="wa-btn wa-btn-primary" [href]="'tel:' + phone" (click)="tracking.contactClicked('call')">Call {{ phoneLabel }}</a>
+          <a class="wa-btn wa-btn-whatsapp" [href]="whatsappHref"
+             target="_blank" rel="noopener" (click)="tracking.contactClicked('whatsapp')">WhatsApp us</a>
+          <a class="wa-btn wa-btn-outline" href="https://www.google.com/maps/search/?api=1&query=Johnson+Grammar+School+Mokila"
+             target="_blank" rel="noopener">Get directions</a>
+          <a class="wa-btn wa-btn-outline" href="assets/pdfs/JGS-Mokila-Prospectus.pdf" target="_blank" rel="noopener">Mokila prospectus (PDF)</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="wa-footer">
+    <div class="container">
+      <p>&copy; {{ year }} Johnson Grammar School &middot; <a [routerLink]="['/']">www.jgschool.in</a> &middot;
+        <a [routerLink]="['/privacypolicy']">Privacy policy</a></p>
+    </div>
+  </footer>
+
+  <!-- Phones: Call | WhatsApp | Enquire, with the Mokila number -->
+  <app-stickycta [phone]="phone" [whatsapp]="whatsapp" [whatsappText]="whatsappText"></app-stickycta>
+</main>

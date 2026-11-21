@@ -6,7 +6,7 @@ import { FaqItem } from '../homeone/home-content';
  * the structured data). Edit it here so the page and the JSON-LD always match.
  *
  * IB wording rules (from the IB's guidance for schools): JGS Mokila is NOT yet an
- * IB World School or IB candidate school. Describe it only as "planned", with
+ * IB World School. Describe it only as "planned", with
  * "intends to apply" and "subject to IB approval"; never "offers" or "will offer"
  * with a date, and never with an IB logo. The same applies to CISCE affiliation.
  */
@@ -24,7 +24,7 @@ export const IB_FAQ: FaqItem[] = [
   },
   {
     question: 'Will JGS Mokila offer the IB?',
-    answer: 'Johnson Grammar School plans for JGS Mokila to offer the IB Primary Years Programme (Nursery to Grade 5), the Middle Years Programme (starting with Grades 6 and 7 and adding a grade each year up to Grade 10) and the Diploma Programme (Grades 11 and 12). JGS intends to apply to the IB for PYP and MYP candidacy in 2027. JGS Mokila is not yet an IB World School or an IB candidate school, and only schools authorised by the IB can offer its programmes.'
+    answer: 'Johnson Grammar School plans for JGS Mokila to offer the IB Primary Years Programme (Nursery to Grade 5), the Middle Years Programme (starting with Grades 6 and 7 and adding a grade each year up to Grade 10) and the Diploma Programme (Grades 11 and 12). JGS intends to apply to the IB for PYP and MYP candidacy in 2027. JGS Mokila is not yet an IB World School, and only schools authorised by the IB can offer its programmes.'
   },
   {
     question: 'What is the IB Middle Years Programme (MYP)?',
@@ -51,19 +51,19 @@ export const IB_FAQ: FaqItem[] = [
 export const ICSE_FAQ: FaqItem[] = [
   {
     question: 'Will JGS Mokila offer the ICSE curriculum?',
-    answer: 'Yes, that is our plan. JGS Mokila is planned to offer the ICSE curriculum from Grade 1 to Grade 7 from the 2027–28 academic year, subject to affiliation to the Council for the Indian School Certificate Examinations (CISCE). JGS Mokila is awaiting CISCE affiliation.'
+    answer: 'Yes, that is our plan. JGS Mokila is planned to offer the ICSE curriculum from Grade 1 to Grade 6 from the 2027–28 academic year, subject to affiliation to the Council for the Indian School Certificate Examinations (CISCE). JGS Mokila is awaiting CISCE affiliation.'
   },
   {
     question: 'Which grades will follow the ICSE at JGS Mokila?',
-    answer: 'Grade 1 to Grade 7, from the 2027–28 academic year, subject to CISCE affiliation.'
+    answer: 'Grade 1 to Grade 6, from the 2027–28 academic year, subject to CISCE affiliation.'
   },
   {
     question: 'Does Johnson Grammar School have experience with the ICSE?',
     answer: 'Yes. Johnson Grammar School was founded in Hyderabad in 1979 and has offered the ICSE ever since. Our Habsiguda and Mallapur campuses offer the ICSE and ISC today.'
   },
   {
-    question: 'Are there board examinations in Grades 1 to 7?',
-    answer: 'No. In Grades 1 to 7, students are assessed by the school through class work, projects and examinations. The first CISCE board examination is the ICSE at the end of Class 10.'
+    question: 'Are there board examinations in Grades 1 to 6?',
+    answer: 'No. In Grades 1 to 6, students are assessed by the school through class work, projects and examinations. The first CISCE board examination is the ICSE at the end of Class 10.'
   },
   {
     question: 'Is the ICSE recognised for higher studies?',
@@ -111,7 +111,8 @@ const KOKAPET = {
 
 const MOKILA_ADDRESS = {
   '@type': 'PostalAddress',
-  streetAddress: 'Behind Vijetha Supermarket, SARC Garden Villas Road, Mokila, Shankarpally',
+  postalCode: '501203',
+  streetAddress: 'Behind Vijetha Supermarket, SARK Garden Villas Road, Mokila, Shankarpally',
   addressLocality: 'Hyderabad',
   addressRegion: 'Telangana',
   addressCountry: 'IN'
@@ -131,7 +132,8 @@ export const IB_SEO: PageSeo = {
         '@type': 'School',
         '@id': `${SITE_ORIGIN}/#mokila`,
         name: 'JGS Mokila',
-        description: 'New Johnson Grammar School campus in Mokila, Hyderabad. JGS plans for JGS Mokila to offer the IB PYP, MYP and DP; JGS intends to apply for PYP and MYP candidacy in 2027. JGS Mokila is not yet an IB World School or IB candidate school.',
+        description: 'New Johnson Grammar School campus in Mokila, Hyderabad. JGS plans for JGS Mokila to offer the IB PYP, MYP and DP; JGS intends to apply for PYP and MYP candidacy in 2027. JGS Mokila is not yet an IB World School.',
+        telephone: '+91-9000287940',
         parentOrganization: { '@id': ORG_ID },
         address: MOKILA_ADDRESS
       },
@@ -166,11 +168,11 @@ export const IB_SEO: PageSeo = {
 };
 
 export const ICSE_SEO: PageSeo = {
-  title: 'ICSE at JGS Mokila, Hyderabad | Grades 1 to 7, Planned from 2027–28 | Johnson Grammar School',
-  description: 'JGS Mokila plans to offer the ICSE curriculum from Grade 1 to Grade 7 from 2027–28, subject to CISCE affiliation, building on Johnson Grammar School’s ICSE experience since 1979.',
+  title: 'ICSE at JGS Mokila, Hyderabad | Grades 1 to 6, Planned from 2027–28 | Johnson Grammar School',
+  description: 'JGS Mokila plans to offer the ICSE curriculum from Grade 1 to Grade 6 from 2027–28, subject to CISCE affiliation, building on Johnson Grammar School’s ICSE experience since 1979.',
   path: '/curriculum/icse',
   shareTitle: 'ICSE at JGS Mokila (planned) | Johnson Grammar School',
-  shareDescription: 'The ICSE, Grades 1 to 7, planned at JGS Mokila from 2027–28, from a school that has taught the ICSE since 1979.',
+  shareDescription: 'The ICSE, Grades 1 to 6, planned at JGS Mokila from 2027–28, from a school that has taught the ICSE since 1979.',
   jsonLd: {
     '@context': 'https://schema.org',
     '@graph': [
@@ -178,7 +180,8 @@ export const ICSE_SEO: PageSeo = {
         '@type': 'School',
         '@id': `${SITE_ORIGIN}/#mokila`,
         name: 'JGS Mokila',
-        description: 'New Johnson Grammar School campus in Mokila, Hyderabad, planned to offer the ICSE curriculum from Grade 1 to Grade 7 from 2027–28, subject to CISCE affiliation.',
+        description: 'New Johnson Grammar School campus in Mokila, Hyderabad, planned to offer the ICSE curriculum from Grade 1 to Grade 6 from 2027–28, subject to CISCE affiliation.',
+        telephone: '+91-9000287940',
         parentOrganization: { '@id': ORG_ID },
         address: MOKILA_ADDRESS
       },
@@ -186,7 +189,7 @@ export const ICSE_SEO: PageSeo = {
         '@type': 'WebPage',
         '@id': `${SITE_ORIGIN}/curriculum/icse`,
         url: `${SITE_ORIGIN}/curriculum/icse`,
-        name: 'ICSE at JGS Mokila: Grades 1 to 7, planned from 2027–28',
+        name: 'ICSE at JGS Mokila: Grades 1 to 6, planned from 2027–28',
         about: { '@id': ORG_ID },
         inLanguage: 'en-IN'
       },

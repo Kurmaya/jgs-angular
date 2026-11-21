@@ -1,14 +1,18 @@
 <main>
     <app-headerone></app-headerone>
     <app-breadcrumb breadcrumbTitle="About"  breadcrumbSubTitle="About" imgName="About" imgMobName="AboutMob"></app-breadcrumb>
-    <app-studentsection></app-studentsection>
+    <!-- L14: the history timeline (1979 to 2023) comes first. It was on the home page until 30 Oct 2026. -->
+    <app-customslider></app-customslider>
+    <!-- L14: "Committed to building a resilient future" and the 360-degree virtual tour of JGS Kokapet are
+         switched off here, not deleted. The virtual tour now appears on the Gallery page.
+         To bring the section back, uncomment the next line. -->
+    <!-- <app-studentsection></app-studentsection> -->
     <!--<app-aboutfeature></app-aboutfeature>
     <app-aboutfeaturevideo></app-aboutfeaturevideo>-->
-    <app-aboutcounter></app-aboutcounter>
-    <app-aboutmission></app-aboutmission>
+    <app-aboutcounter></app-aboutcounter>   <!-- JGS Difference -->
+    <app-aboutmission></app-aboutmission>   <!-- Message from the Chairman, then Our Principal -->
     <!--<app-knowsbetter></app-knowsbetter>
     <app-aboutinstructor></app-aboutinstructor>
     <app-affiliatesection></app-affiliatesection>-->
     <app-footerone></app-footerone>
 </main>
-

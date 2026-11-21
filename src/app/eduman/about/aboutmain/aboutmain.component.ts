@@ -12,7 +12,8 @@ export class AboutmainComponent implements OnInit {
   constructor(private titleService:Title) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle("your page title")
+    // L18: switched off. This placeholder title overrode the About page's real title (set in aboutmission).
+    // this.titleService.setTitle("your page title")
   }
 
 }

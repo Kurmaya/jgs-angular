@@ -49,3 +49,8 @@
         display: block;
     }
 }
+
+/* L14: keep the off-screen slides inside the timeline so the page never scrolls sideways (About page, phones) */
+.vCustomSlider {
+  overflow: hidden;
+}

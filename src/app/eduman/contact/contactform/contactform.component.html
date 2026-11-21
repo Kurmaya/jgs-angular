@@ -1,205 +1,169 @@
-<!--<div class="contact-form">
-    <form action="#">
-         <div class="row">
-             <div class="col-xl-6">
-             <div class="contact-from-input mb-20">
-                 <input type="text" placeholder="Name">
-             </div>
-             </div>
-             <div class="col-xl-6">
-             <div class="contact-from-input mb-20">
-                 <input type="text" placeholder="Phone">
-             </div>
-             </div>
-             <div class="col-xl-6">
-             <div class="contact-from-input mb-20">
-                 <input type="text" placeholder="Email">
-             </div>
-             </div>
-             <div class="col-xl-6">
-             <div class="contact-select">
-                 <select class="mb-20">
-                     <option value="Subject">Course</option>
-                     <option value="Subject">Financial Aid</option>
-                     <option value="Subject">Payment</option>
-                     <option value="Subject">Information</option>
-                 </select>
-             </div>
-             </div>
-             <div class="col-xl-12">
-             <div class="contact-from-input mb-20">
-                 <textarea placeholder="Message" name="message"></textarea>
-             </div>
-             </div>
-             <div class="col-xl-2 ">
-             <div class="cont-btn mb-20">
-                 <a href="#" class="cont-btn">Submit</a>
-             </div>
-             </div>
-         </div>
-    </form>
- </div>-->
-<section class="contact-area pt-40 pb-50">
+<!--
+  Contact Us (/contact), L5.
+  Admission enquiries are pointed to /enquiry-form (Google Sheet, tracked as a lead, prospectus download).
+  The "Send us a message" form below is for everything else and is emailed to hello@jgschool.in via FormSubmit.
+-->
+<section class="jgs-contact pt-40 pb-60">
   <div class="container">
     <div class="row">
       <div class="col-lg-10 offset-lg-1">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="vContactTopHead">
-                  <h3>Know more about one of the best schools in Kokapet</h3>
-                  <p>
-                    We understand your parental urge to dig deep into the organisation
-                    and know as much as you can about us. We appreciate your interest
-                    and are glad to answer all your queries. Please fill out the form
-                    below, and we will get back to you soon.
-                  </p>
-                </div>
+
+        <div class="jc-intro">
+          <h1>Contact Johnson Grammar School</h1>
+          <p>
+            We are happy to answer your questions about JGS Kokapet and our new JGS Mokila campus.
+            Call, WhatsApp or email us, or send a message using the form on this page.
+          </p>
+        </div>
+
+        <!-- Admissions go to the admission enquiry form -->
+        <div class="jc-admissions">
+          <div>
+            <h2>Looking for admission in 2027&ndash;28?</h2>
+            <p>
+              Please use our Admission Enquiry form. It goes straight to our admissions team, and you can
+              download the prospectus as soon as you send it.
+            </p>
+          </div>
+          <a class="jc-btn jc-btn-gold" [routerLink]="['/enquiry-form']">Admission Enquiry</a>
+        </div>
+
+        <div class="row mt-30">
+          <!-- Contact details and campuses -->
+          <div class="col-lg-5 mb-30">
+            <h2 class="jc-h2">Get in touch</h2>
+            <div class="jc-actions">
+              <a class="jc-action" href="tel:+919513251488" (click)="tracking.contactClicked('call')">
+                <i class="fas fa-phone-alt" aria-hidden="true"></i>
+                <span><small>Call</small>+91 95132 51488</span>
+              </a>
+              <a class="jc-action" href="https://wa.me/918977006304?text=Hello.%20I%20would%20like%20to%20know%20more%20about%20Johnson%20Grammar%20School."
+                 target="_blank" rel="noopener" (click)="tracking.contactClicked('whatsapp')">
+                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                <span><small>WhatsApp</small>+91 89770 06304</span>
+              </a>
+              <a class="jc-action" href="mailto:hello@jgschool.in">
+                <i class="fas fa-envelope" aria-hidden="true"></i>
+                <span><small>Email</small>hello@jgschool.in</span>
+              </a>
+            </div>
+
+            <h2 class="jc-h2 jc-h2-gap">Our campuses</h2>
+            <div class="jc-campus">
+              <h3>JGS Kokapet</h3>
+              <p>Plot No. 65/6, Brindavan Colony, Narsingi, Hyderabad 500075</p>
+              <p class="jc-muted">Landmark: lane next to Ratnadeep Select, opposite Rajapushpa Regalia, Kokapet</p>
+              <a class="jc-link" href="https://www.google.com/maps/search/?api=1&query=Johnson%20Grammar%20School%20Kokapet%20Narsingi%20Hyderabad"
+                 target="_blank" rel="noopener">Open in Google Maps</a>
+            </div>
+            <div class="jc-campus jc-campus-new">
+              <h3>JGS Mokila <span class="jc-tag">New campus</span></h3>
+              <p>Behind Vijetha Supermarket, SARK Garden Villas Road, Mokila, Shankarpally, Hyderabad 501203</p>
+              <p>Phone: <a class="jc-link" href="tel:+919000287940" (click)="tracking.contactClicked('call')">+91 90002 87940</a></p>
+              <a class="jc-link" href="https://www.google.com/maps/search/?api=1&amp;query=Johnson%20Grammar%20School%20Mokila&amp;query_place_id=ChIJobVWAKrvyzsRNIAg7gUiyIk"
+                 target="_blank" rel="noopener">Open in Google Maps</a>
+            </div>
+          </div>
+
+          <!-- General message form -->
+          <div class="col-lg-7 mb-30">
+            <div class="contact-form-wrapper">
+              <div class="contact-form-header">
+                <h2>Send us a message</h2>
+                <p>For questions about anything other than admissions. We reply by email or phone.</p>
               </div>
-              <div class="col-lg-6 col-md-5">
-                <div class="vAddress">
-                    <h4>Want to <span class="down-mark-line">get in touch</span> with us?</h4>
-                    <strong>Address:</strong>
-                    <p><strong>Mokila: </strong>Behind Vijetha Supermarket, <br> SARC Garden Villas Road, Mokila, <br> Shankarpally, Hyderabad</p>
-                    <p> <br>
-                      <strong>Kokapet:</strong>
-                      Plot No 65/6, Brindavan Colony, Narsingi, <br>Hyderabad - 500075 </p>
-                      <p><strong>Kokapet Landmark:</strong> Lane next to Ratnadeep select,<br/> Opp to Rajapushpa Regalia - Kokapet.</p>
-                    <!--<p><strong>Phone / Whatsapp:</strong> +91 89 77 00 6304, +91 89 77 00 4363</p>-->
-                    <p><strong>Phone:</strong> +91 95 13 25 1488</p>
-                    <p><strong>Email:</strong> hello@jgschool.in</p>
+
+              <form #contactForm="ngForm" (ngSubmit)="submitForm(contactForm)" novalidate data-clarity-mask="true">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="contact-form-group">
+                      <label for="name">Full Name <span>*</span></label>
+                      <input type="text" id="name" name="name" [(ngModel)]="formData.name"
+                             placeholder="Enter your name" autocomplete="name" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="contact-form-group">
+                      <label for="phone">Phone Number <span>*</span></label>
+                      <input type="tel" id="phone" name="phone" [(ngModel)]="formData.phone"
+                             placeholder="10-digit mobile number" autocomplete="tel" inputmode="tel"
+                             pattern="^(\+91[\s-]?)?[6-9][0-9]{9}$" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="contact-form-group">
+                      <label for="email">Email Address <span>*</span></label>
+                      <input type="email" id="email" name="email" [(ngModel)]="formData.email"
+                             placeholder="Enter your email address" autocomplete="email" email required>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="contact-form-group">
+                      <label for="subject">Subject</label>
+                      <input type="text" id="subject" name="subject" [(ngModel)]="formData.subject"
+                             placeholder="What is your message about?">
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="contact-form-group">
+                      <label for="message">Message <span>*</span></label>
+                      <textarea id="message" name="message" rows="6" [(ngModel)]="formData.message"
+                                placeholder="Write your message here..." required></textarea>
+                    </div>
+                  </div>
+
+                  <!-- Spam trap: hidden from people, often filled in by bots. FormSubmit drops messages that fill it. -->
+                  <div class="jc-honey" aria-hidden="true">
+                    <label for="website">Leave this empty</label>
+                    <input type="text" id="website" name="_honey" [(ngModel)]="formData.honey" tabindex="-1" autocomplete="off">
+                  </div>
+
+                  <div class="col-12" *ngIf="successMessage">
+                    <div class="form-success" role="status">{{ successMessage }}</div>
+                  </div>
+                  <div class="col-12" *ngIf="errorMessage">
+                    <div class="form-error" role="alert">{{ errorMessage }}</div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="contact-form-submit">
+                      <button type="submit" [disabled]="isSubmitting">
+                        <span *ngIf="!isSubmitting">Send Message <i class="fas fa-arrow-right"></i></span>
+                        <span *ngIf="isSubmitting">Sending...</span>
+                      </button>
+                    </div>
+                    <p class="jc-consent">
+                      By sending this message, you agree that Johnson Grammar School may contact you about it.
+                      See our <a [routerLink]="['/privacypolicy']">Privacy Policy</a>.
+                    </p>
+                  </div>
                 </div>
-                <div>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.5629069196616!2d78.3401889!3d17.3847532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb95520415506d%3A0xbe7cb41dde272c64!2sJohnson%20Grammar%20School%20IB%20PYP!5e0!3m2!1sen!2suk!4v1668674403362!5m2!1sen!2suk" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-              </div>
-              <div class="col-lg-6 col-md-7">
-              
-
-<div class="contact-form-wrapper">
-
-  <div class="contact-form-header">
-    <h3>Send us a message</h3>
-  </div>
-
-  <form #contactForm="ngForm" (ngSubmit)="submitForm(contactForm)">
-
-    <div class="row">
-
-      <!-- Name -->
-      <div class="col-lg-6 col-md-6">
-        <div class="contact-form-group">
-          <label for="name">Full Name <span>*</span></label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            [(ngModel)]="formData.name"
-            placeholder="Enter your name"
-            required>
+              </form>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Phone -->
-      <div class="col-lg-6 col-md-6">
-        <div class="contact-form-group">
-          <label for="phone">Phone Number <span>*</span></label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            [(ngModel)]="formData.phone"
-            placeholder="Enter your phone number"
-            required>
+        <!-- Maps of both campuses -->
+        <div class="row jc-maps">
+          <div class="col-md-6 mb-30">
+            <h3 class="jc-map-title">JGS Kokapet</h3>
+            <div class="jc-map">
+              <iframe title="Map of JGS Kokapet"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.5629069196616!2d78.3401889!3d17.3847532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb95520415506d%3A0xbe7cb41dde272c64!2sJohnson%20Grammar%20School%20IB%20PYP!5e0!3m2!1sen!2suk!4v1668674403362!5m2!1sen!2suk"
+                width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+          <div class="col-md-6 mb-30">
+            <h3 class="jc-map-title">JGS Mokila</h3>
+            <div class="jc-map">
+              <!-- Google Maps listing "Johnson Grammar School Mokila", Sy No 208, Sark Garden Villas Main Rd, Mokila 501203 -->
+              <iframe title="Map of JGS Mokila"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.0!2d78.1972337!3d17.4234753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcbefaa0056b5a1%3A0x89c82205ee208034!2sJohnson%20Grammar%20School%20Mokila!5e0!3m2!1sen!2sin!4v1793542000000!5m2!1sen!2sin"
+                width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- Email -->
-      <div class="col-lg-6 col-md-6">
-        <div class="contact-form-group">
-          <label for="email">Email Address <span>*</span></label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            [(ngModel)]="formData.email"
-            placeholder="Enter your email address"
-            required>
-        </div>
-      </div>
-
-      <!-- Subject -->
-      <div class="col-lg-6 col-md-6">
-        <div class="contact-form-group">
-          <label for="subject">Subject</label>
-          <input
-            type="text"
-            id="subject"
-            name="subject"
-            [(ngModel)]="formData.subject"
-            placeholder="What is your enquiry about?">
-        </div>
-      </div>
-
-      <!-- Message -->
-      <div class="col-12">
-        <div class="contact-form-group">
-          <label for="message">Message <span>*</span></label>
-          <textarea
-            id="message"
-            name="message"
-            rows="6"
-            [(ngModel)]="formData.message"
-            placeholder="Write your message here..."
-            required></textarea>
-        </div>
-      </div>
-
-      <!-- Status message -->
-      <div class="col-12" *ngIf="successMessage">
-        <div class="form-success">
-          {{ successMessage }}
-        </div>
-      </div>
-
-      <div class="col-12" *ngIf="errorMessage">
-        <div class="form-error">
-          {{ errorMessage }}
-        </div>
-      </div>
-
-      <!-- Submit -->
-      <div class="col-12">
-        <div class="contact-form-submit">
-
-          <button
-            type="submit"
-            [disabled]="isSubmitting">
-
-            <span *ngIf="!isSubmitting">
-              Send Message
-              <i class="fas fa-arrow-right"></i>
-            </span>
-
-            <span *ngIf="isSubmitting">
-              Sending...
-            </span>
-
-          </button>
-
-        </div>
-      </div>
-
-    </div>
-
-  </form>
-
-</div>
-
-
-
-
-              </div>
-        </div>
       </div>
     </div>
   </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
+import { SeoService } from '../seo.service';
 
 @Component({
   selector: 'app-facilities',
@@ -9,11 +9,16 @@ import { Meta, Title } from '@angular/platform-browser';
 })
 export class FacilitesComponent implements OnInit {
 
-  constructor(private title: Title, private meta: Meta) { }
+  constructor(private seo: SeoService) { }
 
   ngOnInit(): void {
-    this.title.setTitle('Top School Facilities In HYD - Best School for Your Child | JGS');
-    this.meta.addTag({name: 'decription', content: 'Choose the best school for your childs education. Get information on school infrastructure, amenities, sports facilities and more. Find the perfect school for your childs academic and personal development.'})
+    // Title, description, canonical link and social sharing tags.
+    // (The old code set the description under a misspelt name, "decription", so search engines never saw it.)
+    this.seo.apply({
+      title: 'Facilities | Johnson Grammar School Kokapet & Mokila, Hyderabad',
+      description: 'Facilities at JGS Kokapet and JGS Mokila, Hyderabad: CCTV across campus, trained security guards, a full-time nurse and annual health checkups, air-conditioned GPS-tracked buses, an amphitheatre, a library and play areas.',
+      path: '/facilities'
+    });
   }
 
 }

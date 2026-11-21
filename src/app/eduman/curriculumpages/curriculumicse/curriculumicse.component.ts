@@ -3,7 +3,7 @@ import { SeoService } from '../../seo.service';
 import { TrackingService } from '../../tracking.service';
 import { ICSE_FAQ, ICSE_SEO } from '../curriculum-content';
 
-/** ICSE page (/curriculum/icse): the ICSE planned at JGS Mokila, Grades 1 to 7, from 2027-28. */
+/** ICSE page (/curriculum/icse): the ICSE planned at JGS Mokila, Grades 1 to 6, from 2027-28. */
 @Component({
   selector: 'app-curriculumicse',
   templateUrl: './curriculumicse.component.html',

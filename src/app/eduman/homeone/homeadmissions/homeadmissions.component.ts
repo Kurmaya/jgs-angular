@@ -12,4 +12,7 @@ export class HomeadmissionsComponent {
    * false (/home): show only the steps and documents; the form is in the hero there.
    */
   @Input() showForm = true;
+
+  /** L21: on /home, phones show the enquiry form first, then "How to apply" and the documents. */
+  @Input() formFirst = false;
 }
